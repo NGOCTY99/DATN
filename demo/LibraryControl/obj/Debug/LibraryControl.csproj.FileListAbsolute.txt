@@ -1,0 +1,16 @@
+D:\doan\testVS2019_Winform\LibraryControl\bin\Debug\LibraryControl.dll
+D:\doan\testVS2019_Winform\LibraryControl\bin\Debug\LibraryControl.pdb
+D:\doan\testVS2019_Winform\LibraryControl\obj\Debug\LibraryControl.csproj.CoreCompileInputs.cache
+D:\doan\testVS2019_Winform\LibraryControl\obj\Debug\LibraryControl.dll
+D:\doan\testVS2019_Winform\LibraryControl\obj\Debug\LibraryControl.pdb
+D:\doan\demo\LibraryControl\bin\Debug\LibraryControl.dll
+D:\doan\demo\LibraryControl\bin\Debug\LibraryControl.pdb
+D:\doan\demo\LibraryControl\obj\Debug\LibraryControl.csprojAssemblyReference.cache
+D:\doan\demo\LibraryControl\obj\Debug\LibraryControl.csproj.CoreCompileInputs.cache
+D:\doan\demo\LibraryControl\obj\Debug\LibraryControl.dll
+D:\doan\demo\LibraryControl\obj\Debug\LibraryControl.pdb
+D:\GitHub\DATN\DATN2020\demo\LibraryControl\bin\Debug\LibraryControl.dll
+D:\GitHub\DATN\DATN2020\demo\LibraryControl\bin\Debug\LibraryControl.pdb
+D:\GitHub\DATN\DATN2020\demo\LibraryControl\obj\Debug\LibraryControl.csproj.CoreCompileInputs.cache
+D:\GitHub\DATN\DATN2020\demo\LibraryControl\obj\Debug\LibraryControl.dll
+D:\GitHub\DATN\DATN2020\demo\LibraryControl\obj\Debug\LibraryControl.pdb
