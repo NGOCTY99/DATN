@@ -33,5 +33,16 @@ namespace DAL_BLL.Properties {
                 return ((string)(this["QLHocSinhTHPTConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NGOCTY\\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;User ID=sa;Password=s" +
+            "a2012")]
+        public string QLHocSinhTHPTConnectionString1 {
+            get {
+                return ((string)(this["QLHocSinhTHPTConnectionString1"]));
+            }
+        }
     }
 }

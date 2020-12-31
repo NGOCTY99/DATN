@@ -30,8 +30,22 @@ namespace DAL_BLL.Class
         //    dtgv.DataSource = dt;
 
         //}
-
-
+        //đếm sĩ số
+        public int demSLHS(string malop)
+        {
+            return db.PHANLOPs.Where(t => t.MaLop == malop).Count();
+        }
+        public void capNhatSS(string malop, string makhoi, string manamhoc)
+        {
+            int siso = demSLHS(malop);
+            LOP lop = db.LOPs.Where(t => t.MaLop == malop).FirstOrDefault();
+            lop.MaKhoiLop = makhoi;
+            lop.MaNamHoc = manamhoc;
+            lop.SiSo = siso;
+            //  db.LOPs.InsertOnSubmit(lop);
+            db.SubmitChanges();
+            MessageBox.Show("cập nhật sĩ số thành công");
+        }
         public dynamic locPhanLop()
         {
             var pl = (from p1 in db.PHANLOPs

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLHocSinhTHPT" Class="QLDiemTHPTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-SPL0PUE\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;Persist Security Info=True;User ID=sa" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLHocSinhTHPTConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=NGOCTY\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;User ID=sa" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLHocSinhTHPTConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.DANTOC" Member="DANTOCs">
     <Type Name="DANTOC">
       <Column Name="MaDanToc" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -65,6 +65,14 @@
       <Association Name="GroupPer_Permission" Member="Permissions" ThisKey="ID_GroupPer" OtherKey="ID_Group" Type="Permission" />
     </Type>
   </Table>
+  <Table Name="dbo.HANHKIEM" Member="HANHKIEMs">
+    <Type Name="HANHKIEM">
+      <Column Name="MaHanhKiem" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenHanhKiem" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="HANHKIEM_KQ_CA_NAM_TONG_HOP" Member="KQ_CA_NAM_TONG_HOPs" ThisKey="MaHanhKiem" OtherKey="MaHanhKiem" Type="KQ_CA_NAM_TONG_HOP" />
+      <Association Name="HANHKIEM_KQ_HOC_KY_TONG_HOP" Member="KQ_HOC_KY_TONG_HOPs" ThisKey="MaHanhKiem" OtherKey="MaHanhKiem" Type="KQ_HOC_KY_TONG_HOP" />
+    </Type>
+  </Table>
   <Table Name="dbo.HOCKY" Member="HOCKies">
     <Type Name="HOCKY">
       <Column Name="MaHocKy" Type="System.String" DbType="VarChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -73,14 +81,6 @@
       <Association Name="HOCKY_DIEM" Member="DIEMs" ThisKey="MaHocKy" OtherKey="MaHocKy" Type="DIEM" />
       <Association Name="HOCKY_KQ_HOC_KY_MON_HOC" Member="KQ_HOC_KY_MON_HOCs" ThisKey="MaHocKy" OtherKey="MaHocKy" Type="KQ_HOC_KY_MON_HOC" />
       <Association Name="HOCKY_KQ_HOC_KY_TONG_HOP" Member="KQ_HOC_KY_TONG_HOPs" ThisKey="MaHocKy" OtherKey="MaHocKy" Type="KQ_HOC_KY_TONG_HOP" />
-    </Type>
-  </Table>
-  <Table Name="dbo.HANHKIEM" Member="HANHKIEMs">
-    <Type Name="HANHKIEM">
-      <Column Name="MaHanhKiem" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenHanhKiem" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Association Name="HANHKIEM_KQ_CA_NAM_TONG_HOP" Member="KQ_CA_NAM_TONG_HOPs" ThisKey="MaHanhKiem" OtherKey="MaHanhKiem" Type="KQ_CA_NAM_TONG_HOP" />
-      <Association Name="HANHKIEM_KQ_HOC_KY_TONG_HOP" Member="KQ_HOC_KY_TONG_HOPs" ThisKey="MaHanhKiem" OtherKey="MaHanhKiem" Type="KQ_HOC_KY_TONG_HOP" />
     </Type>
   </Table>
   <Table Name="dbo.HOCLUC" Member="HOCLUCs">
@@ -227,8 +227,8 @@
       <Association Name="LOP_KQ_CA_NAM_TONG_HOP" Member="KQ_CA_NAM_TONG_HOPs" ThisKey="MaLop" OtherKey="MaLop" Type="KQ_CA_NAM_TONG_HOP" />
       <Association Name="LOP_KQ_HOC_KY_MON_HOC" Member="KQ_HOC_KY_MON_HOCs" ThisKey="MaLop" OtherKey="MaLop" Type="KQ_HOC_KY_MON_HOC" />
       <Association Name="LOP_KQ_HOC_KY_TONG_HOP" Member="KQ_HOC_KY_TONG_HOPs" ThisKey="MaLop" OtherKey="MaLop" Type="KQ_HOC_KY_TONG_HOP" />
-      <Association Name="LOP_PHANLOP" Member="PHANLOPs" ThisKey="MaLop" OtherKey="MaLop" Type="PHANLOP" />
       <Association Name="LOP_PHANCONG" Member="PHANCONGs" ThisKey="MaLop" OtherKey="MaLop" Type="PHANCONG" />
+      <Association Name="LOP_PHANLOP" Member="PHANLOPs" ThisKey="MaLop" OtherKey="MaLop" Type="PHANLOP" />
       <Association Name="GIAOVIEN_LOP" Member="GIAOVIEN" ThisKey="MaGiaoVien" OtherKey="MaGiaoVien" Type="GIAOVIEN" IsForeignKey="true" />
       <Association Name="KHOILOP_LOP" Member="KHOILOP" ThisKey="MaKhoiLop" OtherKey="MaKhoiLop" Type="KHOILOP" IsForeignKey="true" />
       <Association Name="NAMHOC_LOP" Member="NAMHOC" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="NAMHOC" IsForeignKey="true" />
@@ -257,8 +257,8 @@
       <Association Name="NAMHOC_KQ_HOC_KY_MON_HOC" Member="KQ_HOC_KY_MON_HOCs" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="KQ_HOC_KY_MON_HOC" />
       <Association Name="NAMHOC_KQ_HOC_KY_TONG_HOP" Member="KQ_HOC_KY_TONG_HOPs" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="KQ_HOC_KY_TONG_HOP" />
       <Association Name="NAMHOC_LOP" Member="LOPs" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="LOP" />
-      <Association Name="NAMHOC_PHANLOP" Member="PHANLOPs" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="PHANLOP" />
       <Association Name="NAMHOC_PHANCONG" Member="PHANCONGs" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="PHANCONG" />
+      <Association Name="NAMHOC_PHANLOP" Member="PHANLOPs" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="PHANLOP" />
     </Type>
   </Table>
   <Table Name="dbo.NGHENGHIEP" Member="NGHENGHIEPs">
@@ -291,18 +291,6 @@
       <Association Name="GroupPer_Permission" Member="GroupPer" ThisKey="ID_Group" OtherKey="ID_GroupPer" Type="GroupPer" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PHANLOP" Member="PHANLOPs">
-    <Type Name="PHANLOP">
-      <Column Name="MaNamHoc" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaKhoiLop" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaLop" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaHocSinh" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="HOCSINH_PHANLOP" Member="HOCSINH" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HOCSINH" IsForeignKey="true" />
-      <Association Name="KHOILOP_PHANLOP" Member="KHOILOP" ThisKey="MaKhoiLop" OtherKey="MaKhoiLop" Type="KHOILOP" IsForeignKey="true" />
-      <Association Name="LOP_PHANLOP" Member="LOP" ThisKey="MaLop" OtherKey="MaLop" Type="LOP" IsForeignKey="true" />
-      <Association Name="NAMHOC_PHANLOP" Member="NAMHOC" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="NAMHOC" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PHANCONG" Member="PHANCONGs">
     <Type Name="PHANCONG">
       <Column Name="STT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -314,6 +302,18 @@
       <Association Name="GIAOVIEN_PHANCONG" Member="GIAOVIEN" ThisKey="MaGiaoVien" OtherKey="MaGiaoVien" Type="GIAOVIEN" IsForeignKey="true" />
       <Association Name="LOP_PHANCONG" Member="LOP" ThisKey="MaLop" OtherKey="MaLop" Type="LOP" IsForeignKey="true" />
       <Association Name="MONHOC_PHANCONG" Member="MONHOC" ThisKey="MaMonHoc" OtherKey="MaMonHoc" Type="MONHOC" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHANLOP" Member="PHANLOPs">
+    <Type Name="PHANLOP">
+      <Column Name="MaNamHoc" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKhoiLop" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaLop" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaHocSinh" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="HOCSINH_PHANLOP" Member="HOCSINH" ThisKey="MaHocSinh" OtherKey="MaHocSinh" Type="HOCSINH" IsForeignKey="true" />
+      <Association Name="KHOILOP_PHANLOP" Member="KHOILOP" ThisKey="MaKhoiLop" OtherKey="MaKhoiLop" Type="KHOILOP" IsForeignKey="true" />
+      <Association Name="LOP_PHANLOP" Member="LOP" ThisKey="MaLop" OtherKey="MaLop" Type="LOP" IsForeignKey="true" />
+      <Association Name="NAMHOC_PHANLOP" Member="NAMHOC" ThisKey="MaNamHoc" OtherKey="MaNamHoc" Type="NAMHOC" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Role" Member="Roles">

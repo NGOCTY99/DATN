@@ -99,6 +99,7 @@ namespace testVS2019_Winform
             this.btnGiaoVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGiaoVien.ImageOptions.Image")));
             this.btnGiaoVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGiaoVien.ImageOptions.LargeImage")));
             this.btnGiaoVien.Name = "btnGiaoVien";
+            this.btnGiaoVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGiaoVien_ItemClick);
             // 
             // btnTraCuuHS
             // 
@@ -226,6 +227,7 @@ namespace testVS2019_Winform
             this.btnMonHoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMonHoc.ImageOptions.Image")));
             this.btnMonHoc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMonHoc.ImageOptions.LargeImage")));
             this.btnMonHoc.Name = "btnMonHoc";
+            this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
             // 
             // btnDiem
             // 
@@ -234,6 +236,7 @@ namespace testVS2019_Winform
             this.btnDiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDiem.ImageOptions.Image")));
             this.btnDiem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDiem.ImageOptions.LargeImage")));
             this.btnDiem.Name = "btnDiem";
+            this.btnDiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDiem_ItemClick);
             // 
             // ribbonKetQua
             // 
@@ -250,6 +253,7 @@ namespace testVS2019_Winform
             this.btnKetQua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKetQua.ImageOptions.Image")));
             this.btnKetQua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKetQua.ImageOptions.LargeImage")));
             this.btnKetQua.Name = "btnKetQua";
+            this.btnKetQua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKetQua_ItemClick);
             // 
             // btnHocLuc
             // 
@@ -258,6 +262,7 @@ namespace testVS2019_Winform
             this.btnHocLuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHocLuc.ImageOptions.Image")));
             this.btnHocLuc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHocLuc.ImageOptions.LargeImage")));
             this.btnHocLuc.Name = "btnHocLuc";
+            this.btnHocLuc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHocLuc_ItemClick);
             // 
             // btnHanhKiem
             // 
@@ -266,6 +271,7 @@ namespace testVS2019_Winform
             this.btnHanhKiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHanhKiem.ImageOptions.Image")));
             this.btnHanhKiem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHanhKiem.ImageOptions.LargeImage")));
             this.btnHanhKiem.Name = "btnHanhKiem";
+            this.btnHanhKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHanhKiem_ItemClick);
             // 
             // ribbonHocSinh
             // 
@@ -284,6 +290,7 @@ namespace testVS2019_Winform
             this.btnHocSinh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHocSinh.ImageOptions.Image")));
             this.btnHocSinh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHocSinh.ImageOptions.LargeImage")));
             this.btnHocSinh.Name = "btnHocSinh";
+            this.btnHocSinh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHocSinh_ItemClick);
             // 
             // btnPhanLop
             // 
@@ -292,6 +299,7 @@ namespace testVS2019_Winform
             this.btnPhanLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPhanLop.ImageOptions.Image")));
             this.btnPhanLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPhanLop.ImageOptions.LargeImage")));
             this.btnPhanLop.Name = "btnPhanLop";
+            this.btnPhanLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhanLop_ItemClick);
             // 
             // btnDanToc
             // 
@@ -311,6 +319,7 @@ namespace testVS2019_Winform
             this.btnTonGiao.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTonGiao.ImageOptions.LargeImage")));
             this.btnTonGiao.Name = "btnTonGiao";
             this.btnTonGiao.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnTonGiao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTonGiao_ItemClick);
             // 
             // btnNgheNghiep
             // 
@@ -320,6 +329,7 @@ namespace testVS2019_Winform
             this.btnNgheNghiep.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnNgheNghiep.ImageOptions.LargeImage")));
             this.btnNgheNghiep.Name = "btnNgheNghiep";
             this.btnNgheNghiep.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnNgheNghiep.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNgheNghiep_ItemClick);
             // 
             // ribbonGiaoVien_PhanCong
             // 
@@ -336,6 +346,7 @@ namespace testVS2019_Winform
             this.btnPhanCong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPhanCong.ImageOptions.Image")));
             this.btnPhanCong.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPhanCong.ImageOptions.LargeImage")));
             this.btnPhanCong.Name = "btnPhanCong";
+            this.btnPhanCong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhanCong_ItemClick);
             // 
             // ribbonTraCuu
             // 
@@ -376,11 +387,10 @@ namespace testVS2019_Winform
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 524);
-            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 426);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(952, 30);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(816, 24);
             // 
             // ribbon
             // 
@@ -427,7 +437,6 @@ namespace testVS2019_Winform
             this.btnTacVu,
             this.barButtonItem7});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbon.MaxItemId = 45;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -436,7 +445,7 @@ namespace testVS2019_Winform
             this.ribbonTraCuu,
             this.ribbonThongKe,
             this.PageAdmin});
-            this.ribbon.Size = new System.Drawing.Size(952, 193);
+            this.ribbon.Size = new System.Drawing.Size(816, 158);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItem3
@@ -589,14 +598,13 @@ namespace testVS2019_Winform
             // 
             // frm_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(952, 554);
+            this.ClientSize = new System.Drawing.Size(816, 450);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frm_Main";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;

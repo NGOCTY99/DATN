@@ -14,3 +14,9 @@ D:\GitHub\DATN\DATN2020\demo\LibraryControl\bin\Debug\LibraryControl.pdb
 D:\GitHub\DATN\DATN2020\demo\LibraryControl\obj\Debug\LibraryControl.csproj.CoreCompileInputs.cache
 D:\GitHub\DATN\DATN2020\demo\LibraryControl\obj\Debug\LibraryControl.dll
 D:\GitHub\DATN\DATN2020\demo\LibraryControl\obj\Debug\LibraryControl.pdb
+E:\NGOC TY\DATN\DATN\demo\LibraryControl\bin\Debug\LibraryControl.dll
+E:\NGOC TY\DATN\DATN\demo\LibraryControl\bin\Debug\LibraryControl.pdb
+E:\NGOC TY\DATN\DATN\demo\LibraryControl\obj\Debug\LibraryControl.csprojAssemblyReference.cache
+E:\NGOC TY\DATN\DATN\demo\LibraryControl\obj\Debug\LibraryControl.csproj.CoreCompileInputs.cache
+E:\NGOC TY\DATN\DATN\demo\LibraryControl\obj\Debug\LibraryControl.dll
+E:\NGOC TY\DATN\DATN\demo\LibraryControl\obj\Debug\LibraryControl.pdb

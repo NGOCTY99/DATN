@@ -79,6 +79,7 @@ namespace QLDiemTHPT_Winform
             phanLop_HSMoi();
             frm_PhanLop_Load(sender, e);
             loadDGV();
+            phanlop.capNhatSS(cboLopHoc.SelectedValue.ToString(), cboKhoiLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString());
         }
 
         //Xóa HS ra khỏi lớp học
@@ -86,6 +87,8 @@ namespace QLDiemTHPT_Winform
         {
             phanlop.xoaHS_Lop(dgvOut.CurrentRow.Cells[0].Value.ToString());
             MessageBox.Show("Loại học sinh ra khỏi lớp học thành công ", dgvOut.CurrentRow.Cells[1].Value.ToString());
+            phanlop.capNhatSS(cboLopHoc.SelectedValue.ToString(), cboKhoiLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString());
+
         }
         private void btnOut_Click(object sender, EventArgs e)
         {

@@ -77,23 +77,20 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 554);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvIn);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(4, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(497, 546);
+            this.groupBox1.Size = new System.Drawing.Size(372, 444);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Học sinh mới";
@@ -109,12 +106,11 @@ namespace QLDiemTHPT_Winform
             this.Column3,
             this.Column4});
             this.dgvIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvIn.Location = new System.Drawing.Point(4, 19);
-            this.dgvIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvIn.Location = new System.Drawing.Point(3, 16);
             this.dgvIn.MultiSelect = false;
             this.dgvIn.Name = "dgvIn";
             this.dgvIn.RowHeadersWidth = 51;
-            this.dgvIn.Size = new System.Drawing.Size(489, 523);
+            this.dgvIn.Size = new System.Drawing.Size(366, 425);
             this.dgvIn.TabIndex = 0;
             // 
             // Column1
@@ -152,13 +148,12 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.dgvOut, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(565, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(423, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.76577F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.23424F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(498, 546);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(374, 444);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -176,33 +171,30 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnLocDK, 2, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.73684F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.26316F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(490, 78);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(368, 64);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // cboLopHoc
             // 
             this.cboLopHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboLopHoc.FormattingEnabled = true;
-            this.cboLopHoc.Location = new System.Drawing.Point(53, 38);
-            this.cboLopHoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboLopHoc.Location = new System.Drawing.Point(39, 31);
             this.cboLopHoc.Name = "cboLopHoc";
-            this.cboLopHoc.Size = new System.Drawing.Size(188, 24);
+            this.cboLopHoc.Size = new System.Drawing.Size(141, 21);
             this.cboLopHoc.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(4, 34);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(3, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 44);
+            this.label3.Size = new System.Drawing.Size(30, 36);
             this.label3.TabIndex = 4;
             this.label3.Text = "Lớp học:";
             // 
@@ -210,20 +202,18 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboNamHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboNamHoc.FormattingEnabled = true;
-            this.cboNamHoc.Location = new System.Drawing.Point(298, 4);
-            this.cboNamHoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboNamHoc.Location = new System.Drawing.Point(222, 3);
             this.cboNamHoc.Name = "cboNamHoc";
-            this.cboNamHoc.Size = new System.Drawing.Size(188, 24);
+            this.cboNamHoc.Size = new System.Drawing.Size(143, 21);
             this.cboNamHoc.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(249, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(186, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 34);
+            this.label2.Size = new System.Drawing.Size(30, 28);
             this.label2.TabIndex = 2;
             this.label2.Text = "Năm học:";
             // 
@@ -231,10 +221,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboKhoiLop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboKhoiLop.FormattingEnabled = true;
-            this.cboKhoiLop.Location = new System.Drawing.Point(53, 4);
-            this.cboKhoiLop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboKhoiLop.Location = new System.Drawing.Point(39, 3);
             this.cboKhoiLop.Name = "cboKhoiLop";
-            this.cboKhoiLop.Size = new System.Drawing.Size(188, 24);
+            this.cboKhoiLop.Size = new System.Drawing.Size(141, 21);
             this.cboKhoiLop.TabIndex = 0;
             this.cboKhoiLop.SelectedValueChanged += new System.EventHandler(this.cboKhoiLop_SelectedValueChanged);
             // 
@@ -242,10 +231,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 34);
+            this.label1.Size = new System.Drawing.Size(30, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Khối lớp:";
             // 
@@ -254,10 +242,9 @@ namespace QLDiemTHPT_Winform
             this.btnLocDK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLocDK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLocDK.ImageOptions.Image")));
             this.btnLocDK.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.btnLocDK.Location = new System.Drawing.Point(249, 38);
-            this.btnLocDK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLocDK.Location = new System.Drawing.Point(186, 31);
             this.btnLocDK.Name = "btnLocDK";
-            this.btnLocDK.Size = new System.Drawing.Size(41, 36);
+            this.btnLocDK.Size = new System.Drawing.Size(30, 30);
             this.btnLocDK.TabIndex = 13;
             this.btnLocDK.Click += new System.EventHandler(this.btnLocDK_Click);
             // 
@@ -275,12 +262,11 @@ namespace QLDiemTHPT_Winform
             this.Column10,
             this.Column11});
             this.dgvOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOut.Location = new System.Drawing.Point(4, 90);
-            this.dgvOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvOut.Location = new System.Drawing.Point(3, 73);
             this.dgvOut.MultiSelect = false;
             this.dgvOut.Name = "dgvOut";
             this.dgvOut.RowHeadersWidth = 51;
-            this.dgvOut.Size = new System.Drawing.Size(490, 452);
+            this.dgvOut.Size = new System.Drawing.Size(368, 368);
             this.dgvOut.TabIndex = 3;
             // 
             // Column5
@@ -336,26 +322,24 @@ namespace QLDiemTHPT_Winform
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Controls.Add(this.btnOut, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnIn, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(509, 4);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(381, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(48, 546);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(36, 444);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // btnOut
             // 
             this.btnOut.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOut.Location = new System.Drawing.Point(4, 277);
-            this.btnOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOut.Location = new System.Drawing.Point(3, 225);
             this.btnOut.Name = "btnOut";
-            this.btnOut.Size = new System.Drawing.Size(40, 28);
+            this.btnOut.Size = new System.Drawing.Size(30, 23);
             this.btnOut.TabIndex = 1;
             this.btnOut.Text = "<";
             this.btnOut.UseVisualStyleBackColor = true;
@@ -364,10 +348,9 @@ namespace QLDiemTHPT_Winform
             // btnIn
             // 
             this.btnIn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnIn.Location = new System.Drawing.Point(4, 241);
-            this.btnIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIn.Location = new System.Drawing.Point(3, 196);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(40, 28);
+            this.btnIn.Size = new System.Drawing.Size(30, 23);
             this.btnIn.TabIndex = 0;
             this.btnIn.Text = ">";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -375,11 +358,10 @@ namespace QLDiemTHPT_Winform
             // 
             // frm_PhanLop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_PhanLop";
             this.Text = "Phân lớp";
             this.Load += new System.EventHandler(this.frm_PhanLop_Load);

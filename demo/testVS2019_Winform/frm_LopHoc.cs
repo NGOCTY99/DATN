@@ -69,12 +69,14 @@ namespace testVS2019_Winform.Controller
                 cboGVCN.DisplayMember = "TenGiaoVien";
             } 
         }
+      
         private void frm_LopHoc_Load(object sender, EventArgs e)
         {
             loadper();
             loadLop();
             loadKhoiLop();
             LoadGVCN();
+
         }
         public void loadLoptheoMaKhoi()
         {
@@ -113,6 +115,7 @@ namespace testVS2019_Winform.Controller
             txtTenLop.Enabled = false;
             cboMaNamHoc.Enabled = false;
             cboKhoiLop.Enabled = false;
+            txtSiSo.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -128,9 +128,26 @@ namespace DAL_BLL
                 return false;
             }
         }
-
-        // thêm lớp học mới
-        public void themLop(string malop, string tenlop, string makhoi, string manamhoc, int siso, string magv)
+        ////đếm sĩ số
+        //public int demSLHS(string malop)
+        //{
+        //    return db.PHANLOPs.Select(t => t.MaLop == malop).Count();
+        //}
+        //public void capNhatSS(string malop, string tenlop, string makhoi, string manamhoc, string magv)
+        //{
+        //    int siso = demSLHS(malop);
+        //    LOP lop = db.LOPs.Where(t => t.MaLop == malop).FirstOrDefault();
+        //        lop.TenLop = tenlop;
+        //        lop.MaKhoiLop = makhoi;
+        //        lop.MaNamHoc = manamhoc;
+        //        lop.SiSo = siso;
+        //        lop.MaGiaoVien = magv;
+        //      //  db.LOPs.InsertOnSubmit(lop);
+        //        db.SubmitChanges();
+        //        MessageBox.Show("cập nhật sĩ số thành công");
+        //}
+            // thêm lớp học mới
+            public void themLop(string malop, string tenlop, string makhoi, string manamhoc, int siso, string magv)
         {
             if (ktkc(malop,manamhoc) == true)
             {

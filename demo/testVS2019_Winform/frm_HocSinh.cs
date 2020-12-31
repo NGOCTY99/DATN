@@ -183,8 +183,8 @@ namespace QLDiemTHPT_Winform
                 }
                 else // thêm mới 
                 {
-                    if (txtMaHS.Text != "" || txtHoTen.Text != "" || txtNoiSinh.Text != "" || cboDanToc.Text != "" ||
-                        cboTonGiao.Text != "" || txtHoTenCha.Text != "" || cboNNCha.Text != "" || txtHoTenMe.Text != "" ||
+                    if (txtMaHS.Text != "" && txtHoTen.Text != "" && txtNoiSinh.Text != "" && cboDanToc.Text != "" &&
+                        cboTonGiao.Text != "" && txtHoTenCha.Text != "" && cboNNCha.Text != "" && txtHoTenMe.Text != "" &&
                         cboNNMe.Text != "")
                     {
                         if (hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
