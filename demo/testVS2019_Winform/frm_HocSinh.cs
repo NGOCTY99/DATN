@@ -93,9 +93,6 @@ namespace QLDiemTHPT_Winform
             LoadNNMe();
         }
         
-      
-
-     
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             frm_HocSinh_Load(sender, e);
@@ -124,7 +121,6 @@ namespace QLDiemTHPT_Winform
             cboNNMe.Text = dgvHocSinh.CurrentRow.Cells[11].Value.ToString();
 
         }
-
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             btnSua.Enabled = false;
