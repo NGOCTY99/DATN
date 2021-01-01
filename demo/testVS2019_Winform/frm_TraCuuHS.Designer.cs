@@ -32,34 +32,34 @@ namespace QLDiemTHPT_Winform
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_TraCuuHS));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.grbChiTietHS = new System.Windows.Forms.GroupBox();
-            this.dgvCTHS = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvHS = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiemHS = new DevExpress.XtraEditors.SearchControl();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.cboLopHoc = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboKhoiLop = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cboNamHoc = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboKhoiLop = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboLopHoc = new System.Windows.Forms.ComboBox();
             this.btnLocDK = new DevExpress.XtraEditors.SimpleButton();
+            this.dgvHS = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grbChiTietHS = new System.Windows.Forms.GroupBox();
+            this.dgvCTHS = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.grbChiTietHS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCTHS)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiemHS.Properties)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiemHS.Properties)).BeginInit();
+            this.grbChiTietHS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTHS)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -95,29 +95,6 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel2.Size = new System.Drawing.Size(794, 301);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // grbChiTietHS
-            // 
-            this.grbChiTietHS.Controls.Add(this.dgvCTHS);
-            this.grbChiTietHS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbChiTietHS.Location = new System.Drawing.Point(3, 310);
-            this.grbChiTietHS.Name = "grbChiTietHS";
-            this.grbChiTietHS.Size = new System.Drawing.Size(794, 137);
-            this.grbChiTietHS.TabIndex = 1;
-            this.grbChiTietHS.TabStop = false;
-            this.grbChiTietHS.Text = "Thông tin chi tiết";
-            // 
-            // dgvCTHS
-            // 
-            this.dgvCTHS.AllowUserToAddRows = false;
-            this.dgvCTHS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCTHS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCTHS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCTHS.Location = new System.Drawing.Point(3, 16);
-            this.dgvCTHS.MultiSelect = false;
-            this.dgvCTHS.Name = "dgvCTHS";
-            this.dgvCTHS.Size = new System.Drawing.Size(788, 118);
-            this.dgvCTHS.TabIndex = 0;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -133,50 +110,6 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(788, 27);
             this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 7;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel4.Controls.Add(this.cboLopHoc, 5, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label4, 4, 0);
-            this.tableLayoutPanel4.Controls.Add(this.cboKhoiLop, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.cboNamHoc, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnLocDK, 6, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 36);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(788, 27);
-            this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // dgvHS
-            // 
-            this.dgvHS.AllowUserToAddRows = false;
-            this.dgvHS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dgvHS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHS.Location = new System.Drawing.Point(3, 69);
-            this.dgvHS.MultiSelect = false;
-            this.dgvHS.Name = "dgvHS";
-            this.dgvHS.Size = new System.Drawing.Size(788, 229);
-            this.dgvHS.TabIndex = 2;
             // 
             // label1
             // 
@@ -200,6 +133,70 @@ namespace QLDiemTHPT_Winform
             this.txtTimKiemHS.TabIndex = 1;
             this.txtTimKiemHS.TextChanged += new System.EventHandler(this.txtTimKiemHS_TextChanged);
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 7;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel4.Controls.Add(this.cboLopHoc, 5, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label4, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cboKhoiLop, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cboNamHoc, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnLocDK, 6, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 36);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(788, 27);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // cboLopHoc
+            // 
+            this.cboLopHoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboLopHoc.FormattingEnabled = true;
+            this.cboLopHoc.Location = new System.Drawing.Point(521, 3);
+            this.cboLopHoc.Name = "cboLopHoc";
+            this.cboLopHoc.Size = new System.Drawing.Size(142, 21);
+            this.cboLopHoc.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label4.Location = new System.Drawing.Point(466, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 27);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Lớp học:";
+            // 
+            // cboKhoiLop
+            // 
+            this.cboKhoiLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboKhoiLop.FormattingEnabled = true;
+            this.cboKhoiLop.Location = new System.Drawing.Point(299, 3);
+            this.cboKhoiLop.Name = "cboKhoiLop";
+            this.cboKhoiLop.Size = new System.Drawing.Size(142, 21);
+            this.cboKhoiLop.TabIndex = 3;
+            this.cboKhoiLop.SelectedValueChanged += new System.EventHandler(this.cboKhoiLop_SelectedValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Location = new System.Drawing.Point(245, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 27);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Khối lớp:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -219,52 +216,34 @@ namespace QLDiemTHPT_Winform
             this.cboNamHoc.Size = new System.Drawing.Size(142, 21);
             this.cboNamHoc.TabIndex = 1;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(245, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 27);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Khối lớp:";
-            // 
-            // cboKhoiLop
-            // 
-            this.cboKhoiLop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboKhoiLop.FormattingEnabled = true;
-            this.cboKhoiLop.Location = new System.Drawing.Point(299, 3);
-            this.cboKhoiLop.Name = "cboKhoiLop";
-            this.cboKhoiLop.Size = new System.Drawing.Size(142, 21);
-            this.cboKhoiLop.TabIndex = 3;
-            this.cboKhoiLop.SelectedValueChanged += new System.EventHandler(this.cboKhoiLop_SelectedValueChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label4.Location = new System.Drawing.Point(466, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 27);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Lớp học:";
-            // 
-            // cboLopHoc
-            // 
-            this.cboLopHoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboLopHoc.FormattingEnabled = true;
-            this.cboLopHoc.Location = new System.Drawing.Point(521, 3);
-            this.cboLopHoc.Name = "cboLopHoc";
-            this.cboLopHoc.Size = new System.Drawing.Size(142, 21);
-            this.cboLopHoc.TabIndex = 5;
-            // 
             // btnLocDK
             // 
-            this.btnLocDK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnLocDK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLocDK.ImageOptions.Image")));
             this.btnLocDK.Location = new System.Drawing.Point(669, 3);
             this.btnLocDK.Name = "btnLocDK";
             this.btnLocDK.Size = new System.Drawing.Size(22, 21);
             this.btnLocDK.TabIndex = 6;
+            this.btnLocDK.Click += new System.EventHandler(this.btnLocDK_Click);
+            // 
+            // dgvHS
+            // 
+            this.dgvHS.AllowUserToAddRows = false;
+            this.dgvHS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dgvHS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHS.Location = new System.Drawing.Point(3, 69);
+            this.dgvHS.MultiSelect = false;
+            this.dgvHS.Name = "dgvHS";
+            this.dgvHS.Size = new System.Drawing.Size(788, 229);
+            this.dgvHS.TabIndex = 2;
+            this.dgvHS.SelectionChanged += new System.EventHandler(this.dgvHS_SelectionChanged);
             // 
             // Column1
             // 
@@ -302,6 +281,29 @@ namespace QLDiemTHPT_Winform
             this.Column6.HeaderText = "Năm học";
             this.Column6.Name = "Column6";
             // 
+            // grbChiTietHS
+            // 
+            this.grbChiTietHS.Controls.Add(this.dgvCTHS);
+            this.grbChiTietHS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grbChiTietHS.Location = new System.Drawing.Point(3, 310);
+            this.grbChiTietHS.Name = "grbChiTietHS";
+            this.grbChiTietHS.Size = new System.Drawing.Size(794, 137);
+            this.grbChiTietHS.TabIndex = 1;
+            this.grbChiTietHS.TabStop = false;
+            this.grbChiTietHS.Text = "Thông tin chi tiết";
+            // 
+            // dgvCTHS
+            // 
+            this.dgvCTHS.AllowUserToAddRows = false;
+            this.dgvCTHS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCTHS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCTHS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCTHS.Location = new System.Drawing.Point(3, 16);
+            this.dgvCTHS.MultiSelect = false;
+            this.dgvCTHS.Name = "dgvCTHS";
+            this.dgvCTHS.Size = new System.Drawing.Size(788, 118);
+            this.dgvCTHS.TabIndex = 0;
+            // 
             // frm_TraCuuHS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,14 +315,14 @@ namespace QLDiemTHPT_Winform
             this.Load += new System.EventHandler(this.frm_TraCuuHS_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.grbChiTietHS.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCTHS)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiemHS.Properties)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiemHS.Properties)).EndInit();
+            this.grbChiTietHS.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTHS)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -18,6 +18,10 @@ namespace DAL_BLL.Class
         {
             return db.HOCSINHs.Select(t => t);
         }
+        public IEnumerable<HOCSINH> loadTTHS(string mahs)
+        {
+            return db.HOCSINHs.Where(t => t.MaHocSinh == mahs);
+        }
         public string loadTenTG(string tg)
         {
             return db.TONGIAOs.SingleOrDefault(t => t.MaTonGiao == tg).TenTonGiao.ToString(); ;

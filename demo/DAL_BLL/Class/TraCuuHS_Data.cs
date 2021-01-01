@@ -83,5 +83,32 @@ namespace DAL_BLL.Class
                          l.MaNamHoc == namhoc
                    select new { l.TenLop, l.MaLop };
         }
+        // lọc ds học sinh theo mã khối, mã lớp, mã năm
+        public dynamic loadDLLoc(string makhoi, string malop, string manam)
+        {
+            var dl = from k in db.KHOILOPs
+                     from l in db.LOPs
+                     from n in db.NAMHOCs
+                     from h in db.HOCSINHs
+                     from p in db.PHANLOPs
+                     where k.MaKhoiLop == makhoi &&
+                           l.MaLop == malop &&
+                           n.MaNamHoc == manam &&
+                           p.MaHocSinh == h.MaHocSinh &&
+                           p.MaNamHoc == n.MaNamHoc &&
+                           p.MaKhoiLop == k.MaKhoiLop &&
+                           p.MaLop == l.MaLop
+                     select new
+                     {
+                         h.MaHocSinh,
+                         h.HoTen,
+                         h.NgaySinh,
+                         l.TenLop,
+                         k.TenKhoiLop,
+                         n.TenNamHoc,
+                         h.NoiSinh
+                     };
+            return dl;
+        }
     }
 }
