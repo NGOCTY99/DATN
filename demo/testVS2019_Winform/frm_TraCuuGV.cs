@@ -13,8 +13,8 @@ namespace QLDiemTHPT_Winform
 {
     public partial class frm_TraCuuGV : Form
     {
+        TraCuuGV_Data tracuu = new TraCuuGV_Data();
         GiaoVien_Data gv = new GiaoVien_Data();
-        QLDiemTHPTDataContext db = new QLDiemTHPTDataContext();
         public frm_TraCuuGV()
         {
             InitializeComponent();
@@ -24,22 +24,7 @@ namespace QLDiemTHPT_Winform
         {
             try
             {
-                dgvGiaoVien.DataSource = from x in db.GIAOVIENs
-                                         from mh in db.MONHOCs
-                                         where (x.TenGiaoVien.StartsWith(txtTimKiem.Text) ||
-                                         x.DiaChi.StartsWith(txtTimKiem.Text) ||
-                                         x.MaGiaoVien.StartsWith(txtTimKiem.Text) ||
-                                         mh.TenMonHoc.StartsWith(txtTimKiem.Text) ||
-                                         x.DienThoai.StartsWith(txtTimKiem.Text)) &&
-                                         x.MaMonHoc == mh.MaMonHoc
-                                         select new
-                                         {
-                                             x.MaGiaoVien,
-                                             x.TenGiaoVien,
-                                             x.DiaChi,
-                                             x.DienThoai,
-                                             mh.TenMonHoc
-                                         };
+                dgvGiaoVien.DataSource = tracuu.traCuu(txtTimKiem.Text);
 
             }
             catch (Exception ex)

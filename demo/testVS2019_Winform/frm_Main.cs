@@ -410,6 +410,41 @@ namespace testVS2019_Winform
             }
         }
 
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form frm = kiemtraform(typeof(frm_TraCuuGV));
+            if (frm == null)
+            {
+                frm_TraCuuGV forms = new frm_TraCuuGV();
+                forms.MdiParent = this;
+                forms.Show();
+            }
+            else
+            {
+                frm.Activate();
+            }
+        }
+
+        private void btnTacVu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnTraCuuHS_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form frm = kiemtraform(typeof(frm_TraCuuHS));
+            if (frm == null)
+            {
+                frm_TraCuuHS forms = new frm_TraCuuHS();
+                forms.MdiParent = this;
+                forms.Show();
+            }
+            else
+            {
+                frm.Activate();
+            }
+        }
+
         private void btnNND_ItemClick(object sender, ItemClickEventArgs e)
         {
             //Form frm = kiemtraform(typeof(FrmNhomND));

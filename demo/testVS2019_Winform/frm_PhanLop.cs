@@ -38,9 +38,17 @@ namespace QLDiemTHPT_Winform
             cboLopHoc.ValueMember = "MaLop";
             cboLopHoc.DisplayMember = "TenLop";
         }
-
-        //Load DL lên datagrid theo điều kiện lọc
-        public void loadDGV()
+        //Load dl đầu vào bảng phân lớp: DS HS được phân bổ
+        public void loadHS_Lop()
+        {
+            dgvOut.DataSource = phanlop.loadDLDauVao();
+        }
+        public void LoadHS_ChuaPL() 
+        { 
+            dgvIn.DataSource = phanlop.locPhanLop();
+         }
+            //Load DL lên datagrid theo điều kiện lọc
+            public void loadDGVTheoDK()
         {
             dgvOut.DataSource = phanlop.loadDL(cboKhoiLop.SelectedValue.ToString(),
                                                cboLopHoc.SelectedValue.ToString(),
@@ -48,9 +56,11 @@ namespace QLDiemTHPT_Winform
         }
         private void frm_PhanLop_Load(object sender, EventArgs e)
         {
-            dgvIn.DataSource = phanlop.locPhanLop();
+            LoadHS_ChuaPL();
             loadCBO_NamHoc();
             loadCBO_KhoiLop();
+            loadHS_Lop();
+            btnLocDK.Visible = false;
             //loadCBO_LopHoc();
         }
 
@@ -63,8 +73,7 @@ namespace QLDiemTHPT_Winform
         // lọc DS học sinh theo điều kiện
         private void btnLocDK_Click(object sender, EventArgs e)
         {
-            loadDGV();
-            
+            loadDGVTheoDK();
         }
 
         //Phân lớp cho HS
@@ -78,7 +87,7 @@ namespace QLDiemTHPT_Winform
         {
             phanLop_HSMoi();
             frm_PhanLop_Load(sender, e);
-            loadDGV();
+            loadDGVTheoDK();
             phanlop.capNhatSS(cboLopHoc.SelectedValue.ToString(), cboKhoiLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString());
         }
 
@@ -94,7 +103,17 @@ namespace QLDiemTHPT_Winform
         {
             xoaHS_Lop();
             frm_PhanLop_Load(sender, e);
-            loadDGV();
+            loadDGVTheoDK();
+        }
+
+        private void cboLopHoc_SelectedValueChanged(object sender, EventArgs e)
+        {
+            btnLocDK.Visible = true;
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            frm_PhanLop_Load(sender, e);
         }
     }
 }

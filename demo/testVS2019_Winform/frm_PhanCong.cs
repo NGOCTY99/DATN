@@ -36,9 +36,9 @@ namespace QLDiemTHPT_Winform
         public void LoadLopHoctheoKL()
         {
             cboLopHoc.DataSource = phancong.loadcboLopHoc(cboKhoiLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString());
-            cboLopHoc.ValueMember = "MaLop";
-            cboLopHoc.DisplayMember = "TenLop";
-
+           
+                cboLopHoc.ValueMember = "MaLop";
+                cboLopHoc.DisplayMember = "TenLop";
         }
 
         private void cboKhoiLop_SelectedValueChanged(object sender, EventArgs e)
@@ -55,15 +55,22 @@ namespace QLDiemTHPT_Winform
         {
             dgvIn.DataSource = phancong.loadGVMoi();
         }
-
+        //Load dsgv đã được phân công giảng dạy
+        public void loadGVGiangDay()
+        {
+            dgvOut.DataSource = phancong.loadGVday();
+        }
         private void frm_PhanCong_Load(object sender, EventArgs e)
         {
 
             loadGV();
+            loadGVGiangDay();
             loadKhoiLop();
             loadcboNamHoc();
             loadMonHoc();
+            
             cboLopHoc.Text = "";
+            btnLocDK.Visible = false;
         }
 
         // Load datagridview phải (DS giáo viên được phân công theo điều kiện lọc: năm học, lớp học, môn học)
@@ -84,7 +91,8 @@ namespace QLDiemTHPT_Winform
                                 dgvIn.CurrentRow.Cells[3].Value.ToString(), dgvIn.CurrentRow.Cells[0].Value.ToString());
             MessageBox.Show("Phân công giáo viên giảng dạy thành công ", dgvIn.CurrentRow.Cells[1].Value.ToString());
             loadGV();
-            load_DKLoc();
+            loadGVGiangDay();
+            //load_DKLoc();
 
         }
         private void btnIn_Click(object sender, EventArgs e)
@@ -99,7 +107,8 @@ namespace QLDiemTHPT_Winform
             MessageBox.Show("Loại giáo viên giảng dạy thành công ", dgvOut.CurrentRow.Cells[1].Value.ToString());
 
             loadGV();
-            load_DKLoc();
+            loadGVGiangDay();
+            //load_DKLoc();
 
         }
         private void btnOut_Click(object sender, EventArgs e)
@@ -114,15 +123,28 @@ namespace QLDiemTHPT_Winform
             LoadLopHoctheoKL();
         }
 
-        private void cboKhoiLop_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            cboLopHoc.Text = "";
-            LoadLopHoctheoKL();
-        }
+     
 
         private void dgvIn_SelectionChanged(object sender, EventArgs e)
         {
             cboMonHoc.Text = dgvIn.CurrentRow.Cells[4].Value.ToString();
+        }
+
+       
+
+        private void btnReFresh_Click(object sender, EventArgs e)
+        {
+            frm_PhanCong_Load(sender, e);
+        }
+
+        private void cboKhoiLop_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            LoadLopHoctheoKL();
+        }
+
+        private void cboLopHoc_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            btnLocDK.Visible = true;
         }
     }
 }

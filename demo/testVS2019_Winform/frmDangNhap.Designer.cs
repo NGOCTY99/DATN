@@ -54,26 +54,27 @@ namespace QLDiemTHPT_Winform
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(478, 104);
+            this.layoutControl1.Size = new System.Drawing.Size(358, 84);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // txtMK
             // 
-            this.txtMK.Location = new System.Drawing.Point(144, 59);
+            this.txtMK.Location = new System.Drawing.Point(109, 51);
             this.txtMK.Name = "txtMK";
             this.txtMK.Properties.UseSystemPasswordChar = true;
-            this.txtMK.Size = new System.Drawing.Size(322, 22);
+            this.txtMK.Size = new System.Drawing.Size(241, 20);
             this.txtMK.StyleController = this.layoutControl1;
             this.txtMK.TabIndex = 5;
             // 
             // txtTenDN
             // 
-            this.txtTenDN.Location = new System.Drawing.Point(144, 33);
+            this.txtTenDN.Location = new System.Drawing.Point(109, 27);
             this.txtTenDN.Name = "txtTenDN";
-            this.txtTenDN.Size = new System.Drawing.Size(322, 22);
+            this.txtTenDN.Size = new System.Drawing.Size(241, 20);
             this.txtTenDN.StyleController = this.layoutControl1;
             this.txtTenDN.TabIndex = 4;
             // 
@@ -86,7 +87,7 @@ namespace QLDiemTHPT_Winform
             this.lblTenDN,
             this.lblMatKhau});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(478, 104);
+            this.Root.Size = new System.Drawing.Size(358, 84);
             this.Root.TextVisible = false;
             // 
             // lblTieuDe
@@ -94,44 +95,46 @@ namespace QLDiemTHPT_Winform
             this.lblTieuDe.AllowHotTrack = false;
             this.lblTieuDe.Location = new System.Drawing.Point(0, 0);
             this.lblTieuDe.Name = "lblTieuDe";
-            this.lblTieuDe.Size = new System.Drawing.Size(458, 21);
+            this.lblTieuDe.Size = new System.Drawing.Size(344, 17);
             this.lblTieuDe.Text = "Thông tin đăng nhập";
-            this.lblTieuDe.TextSize = new System.Drawing.Size(129, 17);
+            this.lblTieuDe.TextSize = new System.Drawing.Size(99, 13);
             // 
             // lblTenDN
             // 
             this.lblTenDN.Control = this.txtTenDN;
-            this.lblTenDN.Location = new System.Drawing.Point(0, 21);
+            this.lblTenDN.Location = new System.Drawing.Point(0, 17);
             this.lblTenDN.Name = "lblTenDN";
-            this.lblTenDN.Size = new System.Drawing.Size(458, 26);
+            this.lblTenDN.Size = new System.Drawing.Size(344, 24);
             this.lblTenDN.Text = "Tên đăng nhập";
-            this.lblTenDN.TextSize = new System.Drawing.Size(129, 17);
+            this.lblTenDN.TextSize = new System.Drawing.Size(99, 13);
             // 
             // lblMatKhau
             // 
             this.lblMatKhau.Control = this.txtMK;
-            this.lblMatKhau.Location = new System.Drawing.Point(0, 47);
+            this.lblMatKhau.Location = new System.Drawing.Point(0, 41);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(458, 37);
+            this.lblMatKhau.Size = new System.Drawing.Size(344, 27);
             this.lblMatKhau.Text = "Mật khẩu";
-            this.lblMatKhau.TextSize = new System.Drawing.Size(129, 17);
+            this.lblMatKhau.TextSize = new System.Drawing.Size(99, 13);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(211, 110);
+            this.btnLogin.Location = new System.Drawing.Point(158, 89);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(160, 29);
+            this.btnLogin.Size = new System.Drawing.Size(120, 24);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // frmDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 151);
+            this.ClientSize = new System.Drawing.Size(358, 123);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.layoutControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";

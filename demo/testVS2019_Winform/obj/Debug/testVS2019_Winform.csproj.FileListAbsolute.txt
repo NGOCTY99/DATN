@@ -290,3 +290,4 @@ E:\NGOC TY\DATN\DATN\demo\testVS2019_Winform\bin\Debug\es\DevExpress.XtraVertica
 E:\NGOC TY\DATN\DATN\demo\testVS2019_Winform\bin\Debug\ja\DevExpress.XtraVerticalGrid.v19.2.resources.dll
 E:\NGOC TY\DATN\DATN\demo\testVS2019_Winform\bin\Debug\ru\DevExpress.XtraVerticalGrid.v19.2.resources.dll
 E:\NGOC TY\DATN\DATN\demo\testVS2019_Winform\obj\Debug\testVS2019_Winform.csproj.CopyComplete
+E:\NGOC TY\DATN\DATN\demo\testVS2019_Winform\obj\Debug\QLDiemTHPT_Winform.frm_TraCuuHS.resources
