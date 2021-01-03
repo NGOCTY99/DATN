@@ -43,7 +43,9 @@ namespace QLDiemTHPT_Winform
                         frm_Main frm = new frm_Main(txtTenDN.Text);
                         frm.ShowDialog();
                     }
-                }
+
+                this.Dispose();
+            }
         }
     }
 }

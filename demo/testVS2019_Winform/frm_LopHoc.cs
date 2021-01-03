@@ -187,6 +187,9 @@ namespace testVS2019_Winform.Controller
             }
         }
 
-        
+        private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frm_LopHoc_Load(sender, e);
+        }
     }
 }

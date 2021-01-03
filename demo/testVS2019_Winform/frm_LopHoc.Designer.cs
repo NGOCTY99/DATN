@@ -61,6 +61,7 @@ namespace testVS2019_Winform.Controller
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -89,9 +90,10 @@ namespace testVS2019_Winform.Controller
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnThem,
             this.btnSua,
-            this.btnLuu});
+            this.btnLuu,
+            this.btnRefresh});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 5;
             // 
             // bar2
             // 
@@ -102,7 +104,8 @@ namespace testVS2019_Winform.Controller
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -186,50 +189,50 @@ namespace testVS2019_Winform.Controller
             // cboGVCN
             // 
             this.cboGVCN.FormattingEnabled = true;
-            this.cboGVCN.Location = new System.Drawing.Point(639, 35);
+            this.cboGVCN.Location = new System.Drawing.Point(640, 37);
             this.cboGVCN.Name = "cboGVCN";
-            this.cboGVCN.Size = new System.Drawing.Size(153, 21);
+            this.cboGVCN.Size = new System.Drawing.Size(148, 21);
             this.cboGVCN.TabIndex = 10;
             // 
             // cboMaNamHoc
             // 
             this.cboMaNamHoc.FormattingEnabled = true;
-            this.cboMaNamHoc.Location = new System.Drawing.Point(109, 34);
+            this.cboMaNamHoc.Location = new System.Drawing.Point(114, 36);
             this.cboMaNamHoc.Name = "cboMaNamHoc";
-            this.cboMaNamHoc.Size = new System.Drawing.Size(168, 21);
+            this.cboMaNamHoc.Size = new System.Drawing.Size(163, 21);
             this.cboMaNamHoc.TabIndex = 9;
             // 
             // cboKhoiLop
             // 
             this.cboKhoiLop.FormattingEnabled = true;
-            this.cboKhoiLop.Location = new System.Drawing.Point(639, 10);
+            this.cboKhoiLop.Location = new System.Drawing.Point(640, 12);
             this.cboKhoiLop.Name = "cboKhoiLop";
-            this.cboKhoiLop.Size = new System.Drawing.Size(153, 21);
+            this.cboKhoiLop.Size = new System.Drawing.Size(148, 21);
             this.cboKhoiLop.TabIndex = 8;
             // 
             // txtTenLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(380, 10);
+            this.txtTenLop.Location = new System.Drawing.Point(383, 12);
             this.txtTenLop.MenuManager = this.barManager1;
             this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.Size = new System.Drawing.Size(156, 20);
+            this.txtTenLop.Size = new System.Drawing.Size(151, 20);
             this.txtTenLop.StyleController = this.layoutControl1;
             this.txtTenLop.TabIndex = 5;
             // 
             // txtMaLop
             // 
-            this.txtMaLop.Location = new System.Drawing.Point(109, 10);
+            this.txtMaLop.Location = new System.Drawing.Point(114, 12);
             this.txtMaLop.MenuManager = this.barManager1;
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(168, 20);
+            this.txtMaLop.Size = new System.Drawing.Size(163, 20);
             this.txtMaLop.StyleController = this.layoutControl1;
             this.txtMaLop.TabIndex = 4;
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(380, 34);
+            this.txtSiSo.Location = new System.Drawing.Point(383, 36);
             this.txtSiSo.Name = "txtSiSo";
-            this.txtSiSo.Size = new System.Drawing.Size(156, 20);
+            this.txtSiSo.Size = new System.Drawing.Size(151, 20);
             this.txtSiSo.StyleController = this.layoutControl1;
             this.txtSiSo.TabIndex = 5;
             this.txtSiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSiSo_KeyPress);
@@ -254,16 +257,16 @@ namespace testVS2019_Winform.Controller
             this.layoutControlItem1.Control = this.txtMaLop;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(271, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(269, 24);
             this.layoutControlItem1.Text = "Mã lớp:";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(99, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtTenLop;
-            this.layoutControlItem2.Location = new System.Drawing.Point(271, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(269, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(259, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(257, 24);
             this.layoutControlItem2.Text = "Tên lớp:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(99, 13);
             // 
@@ -272,18 +275,18 @@ namespace testVS2019_Winform.Controller
             this.sád.Control = this.txtSiSo;
             this.sád.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.sád.CustomizationFormText = "Tên lớp:";
-            this.sád.Location = new System.Drawing.Point(271, 24);
+            this.sád.Location = new System.Drawing.Point(269, 24);
             this.sád.Name = "sád";
-            this.sád.Size = new System.Drawing.Size(259, 35);
+            this.sád.Size = new System.Drawing.Size(257, 31);
             this.sád.Text = "Sỉ số:";
             this.sád.TextSize = new System.Drawing.Size(99, 13);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.cboKhoiLop;
-            this.layoutControlItem3.Location = new System.Drawing.Point(530, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(526, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(256, 25);
+            this.layoutControlItem3.Size = new System.Drawing.Size(254, 25);
             this.layoutControlItem3.Text = "Mã khối lớp:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(99, 13);
             // 
@@ -292,16 +295,16 @@ namespace testVS2019_Winform.Controller
             this.layoutControlItem4.Control = this.cboMaNamHoc;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(271, 35);
+            this.layoutControlItem4.Size = new System.Drawing.Size(269, 31);
             this.layoutControlItem4.Text = "Mã năm học:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(99, 13);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.cboGVCN;
-            this.layoutControlItem5.Location = new System.Drawing.Point(530, 25);
+            this.layoutControlItem5.Location = new System.Drawing.Point(526, 25);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(256, 34);
+            this.layoutControlItem5.Size = new System.Drawing.Size(254, 30);
             this.layoutControlItem5.Text = "Giáo viên chủ nhiệm:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(99, 13);
             // 
@@ -368,6 +371,16 @@ namespace testVS2019_Winform.Controller
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Caption = "Refresh";
+            this.btnRefresh.Id = 4;
+            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
+            // 
             // frm_LopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,5 +446,6 @@ namespace testVS2019_Winform.Controller
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn ss;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private DevExpress.XtraBars.BarButtonItem btnRefresh;
     }
 }

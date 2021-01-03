@@ -108,7 +108,27 @@ namespace DAL_BLL.Class
             }).Where(t => !pc1.Contains(t)) ;
             return pc2;
         }
-
+        public dynamic loadGVday()
+        {
+            var dl = from n in db.NAMHOCs
+                     from g in db.GIAOVIENs
+                     from p in db.PHANCONGs
+                     from l in db.LOPs
+                     from m in db.MONHOCs
+                     where n.MaNamHoc == p.MaNamHoc &&
+                           g.MaGiaoVien == p.MaGiaoVien &&
+                           l.MaLop == p.MaLop &&
+                           m.MaMonHoc == p.MaMonHoc
+                     select new
+                     {
+                         g.MaGiaoVien,
+                         g.TenGiaoVien,
+                         m.TenMonHoc,
+                         l.TenLop,
+                         n.TenNamHoc
+                     };
+            return dl;
+        }
         public dynamic locDLTheoDK(string manh, string malop, string mamh)
         {
             var dl = from n in db.NAMHOCs
