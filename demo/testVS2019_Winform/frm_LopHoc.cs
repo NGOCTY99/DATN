@@ -42,8 +42,12 @@ namespace testVS2019_Winform.Controller
                 btnLuu.Visibility = BarItemVisibility.Never;
                 bar2.Visible = false;
             }
-            if (dgvLopHoc.Visible == true)
-                dgvLopHoc.DataSource = lophoc.loadDataGridView(idnv, pq.loadMagv(idnv));
+            if (dgvLopHoc.Visible == true) loaddgv();
+        }
+
+        public void loaddgv()
+        {
+            dgvLopHoc.DataSource = lophoc.loadDataGridView(idnv, pq.loadMagv(idnv));
         }
 
         public void loadKhoiLop()
@@ -100,7 +104,6 @@ namespace testVS2019_Winform.Controller
             cboMaNamHoc.Enabled = true;
             cboKhoiLop.Enabled = true;
             txtMaLop.Text = "";
-            txtSiSo.Text = "";
             txtTenLop.Text = "";
             cboGVCN.Text = "";
             cboKhoiLop.Text = "";
@@ -115,63 +118,39 @@ namespace testVS2019_Winform.Controller
             txtTenLop.Enabled = false;
             cboMaNamHoc.Enabled = false;
             cboKhoiLop.Enabled = false;
-            txtSiSo.Enabled = false;
         }
 
-        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //try
-            //{
-            //    if (lophoc.xoaLop(txtMaLop.Text) == true)
-            //    {
-            //        MessageBox.Show("Xóa thành công");
-            //        frm_LopHoc_Load(sender, e);
-            //    }
-            //    else
-            //        MessageBox.Show("Xóa thất bại");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Xóa thất bại, lỗi ràng buộc khóa chính");
-            //}
-        }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            try { 
-            //int ss = int.Parse(txtSiSo.Text);
-            //    if (ss > 30 && ss < 45)
-            //    {
-            //        if (txtMaLop.Enabled == false) // Trạng thái sửa
-            //    {
-            //        if (lophoc.suaLop(txtMaLop.Text, ss, cboGVCN.SelectedValue.ToString()) == true)
-            //        {
-            //            MessageBox.Show("Sửa lớp học thành công");
-            //            frm_LopHoc_Load(sender, e);
-            //            txtMaLop.Enabled = true;
-            //            txtTenLop.Enabled = true;
-            //            cboMaNamHoc.Enabled = true;
-            //            cboKhoiLop.Enabled = true;
-            //        }
-            //        else
-            //            MessageBox.Show("Thất bại");
-            //    }    
-            //    else // trạng thái thêm mới
-            //     {
-                   
-            //        if (lophoc.themLop(txtMaLop.Text, txtTenLop.Text, cboKhoiLop.SelectedValue.ToString(), cboMaNamHoc.SelectedValue.ToString(), ss, cboGVCN.SelectedValue.ToString()) == true)
-            //        {
-            //            MessageBox.Show("Thêm lớp học mới thành công");
-            //            frm_LopHoc_Load(sender, e);
-            //        }
-            //        else
-            //            MessageBox.Show("Lớp học này đã có");
-            //      }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Sỉ số lớp học tối thiểu 30, tối đa 45 học sinh");
-            //    }
+            try
+            {
+                if (txtMaLop.Text != "" && txtTenLop.Text != "")
+                {
+                    if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Never)
+                    {
+                        lophoc.themLop(txtMaLop.Text, txtTenLop.Text,cboKhoiLop.SelectedValue.ToString(),cboMaNamHoc.SelectedValue.ToString(),0,cboGVCN.SelectedValue.ToString());
+                    }
+                    if (btnSua.Visibility == BarItemVisibility.Always && btnThem.Visibility == BarItemVisibility.Never)
+                    {
+                        //string malop,string manamhoc,string tenlop, string magv
+                        lophoc.suaLop(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString(), txtTenLop.Text, cboGVCN.SelectedValue.ToString());
+                    }
+                    else if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Always)
+                    {
+                        if (lophoc.ktkc(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString()) == false)
+                        {
+                            lophoc.suaLop(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString(), txtTenLop.Text, cboGVCN.SelectedValue.ToString());
+                        }
+                        else
+                            lophoc.themLop(txtMaLop.Text, txtTenLop.Text, cboKhoiLop.SelectedValue.ToString(), cboMaNamHoc.SelectedValue.ToString(), 0, cboGVCN.SelectedValue.ToString());
+                    }
+                    loaddgv();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                }
             }
             catch
             {

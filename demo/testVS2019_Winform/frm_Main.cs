@@ -325,7 +325,7 @@ namespace testVS2019_Winform
             Form frm = kiemtraform(typeof(frm_HocSinh));
             if (frm == null)
             {
-                frm_HocSinh forms = new frm_HocSinh();
+                frm_HocSinh forms = new frm_HocSinh(db.LoaiNV(idnv), db.Group(btnHocSinh.Name));
                 forms.MdiParent = this;
                 forms.Show();
             }
@@ -443,6 +443,13 @@ namespace testVS2019_Winform
             {
                 frm.Activate();
             }
+        }
+
+        private void frm_Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+            frmDangNhap frm = new frmDangNhap();
+            frm.Show();
         }
 
         private void btnNND_ItemClick(object sender, ItemClickEventArgs e)

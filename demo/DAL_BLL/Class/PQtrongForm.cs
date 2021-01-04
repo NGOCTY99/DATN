@@ -46,11 +46,7 @@ namespace DAL_BLL.Class
             else
             {
                 var per1 = db.Permissions.SingleOrDefault(t => t.Per_Code == pername).ID_Per;
-                if (per1 == null)
-                {
-                    return false;
-                }
-                else
+                if (per1 != null)
                 {
                     var kq = db.Details.Single(t => t.ID_NV == id && t.ID_Group == groupname && t.ID_Per == per1).Action_Check;
                     if (kq == null)
@@ -64,11 +60,22 @@ namespace DAL_BLL.Class
                         else return true;
                     }
                 }
+                else return false;
             }
         }
         public string loadMagv(string id)
         {
             return db.NGUOIDUNGs.FirstOrDefault(t => t.MaLoai == id).TenND;
         }
+
+        public bool LoadCombobox(ComboBox comboBox)
+        {
+            if (comboBox.Tag.Equals(32) || comboBox.Tag.Equals(26) || comboBox.Tag.Equals(29))
+            {
+                return true;
+            }
+            else return false;
+        }
+
     }
 }

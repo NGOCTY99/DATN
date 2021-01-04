@@ -9,88 +9,108 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL_BLL;
 using DAL_BLL.Class;
+using DevExpress.XtraBars;
+
 namespace QLDiemTHPT_Winform
 {
     public partial class frm_HocSinh : Form
     {
         QLDiemTHPTDataContext db = new QLDiemTHPTDataContext();
         HocSinh_Data hocsinh = new HocSinh_Data();
+        PQtrongForm pq = new PQtrongForm();
+        string idnv;
+        int group;
         public frm_HocSinh()
         {
             InitializeComponent();
         }
-       
+        public frm_HocSinh(string id, int group)
+        {
+            InitializeComponent();
+            this.idnv = id;
+            this.group = group;
+        }
+
+        public void loadper()
+        {
+            btnThem.Visibility = pq.loadper(idnv, group, btnThem.Name);
+            btnSua.Visibility = pq.loadper(idnv, group, btnSua.Name);
+            dgvHocSinh.Visible = pq.loaddgv(idnv, group, dgvHocSinh.Name);
+            if (btnSua.Visibility == BarItemVisibility.Never && btnThem.Visibility == BarItemVisibility.Never)
+            {
+                btnLuu.Visibility = BarItemVisibility.Never;
+                bar2.Visible = false;
+            }
+            if (dgvHocSinh.Visible == true)
+            {
+                loadDSHS();
+            }    
+        }
 
         public void loadDSHS()
         {
-            DataTable Dt = new DataTable();
-            Dt.Columns.Add("STT");
-            Dt.Columns.Add("Mã học sinh");
-            Dt.Columns.Add("Họ tên");
-            Dt.Columns.Add("Giới tính");
-            Dt.Columns.Add("Ngày sinh");
-            Dt.Columns.Add("Nơi sinh");
-            Dt.Columns.Add("Dân tộc");
-            Dt.Columns.Add("Tôn giáo");
-            Dt.Columns.Add("Họ tên cha");
-            Dt.Columns.Add("Nghề nghiệp cha");
-            Dt.Columns.Add("Họ tên mẹ");
-            Dt.Columns.Add("Nghề nghiệp mẹ");
-            int t = 1;
-            foreach (var item in hocsinh.loadDSHS())
-            {
-                DataRow dr = Dt.NewRow();
-                DataGridViewRow dgvR = (DataGridViewRow)dgvHocSinh.CurrentRow;
-                dr[0] = t;
-                dr[1] = item.MaHocSinh;
-                dr[2] = item.HoTen;
-                dr[3] = hocsinh.LoadGT(item.GioiTinh.Value);
-                dr[4] = DateTime.Parse(item.NgaySinh.ToString()).ToShortDateString().ToString();
-                dr[5] = item.NoiSinh;
-                dr[6] = hocsinh.loadTenDT(item.MaDanToc);
-                dr[7] = hocsinh.loadTenTG(item.MaTonGiao);
-                dr[8] = item.HoTenCha;
-                dr[9] = hocsinh.loadTenNN(item.MaNNghiepCha);
-                dr[10] = item.HoTenMe;
-                dr[11] = hocsinh.loadTenNN(item.MaNNghiepMe);
-                Dt.Rows.Add(dr);
-                t++;
-            }
-
-            dgvHocSinh.DataSource = Dt;
+            dgvHocSinh.DataSource = hocsinh.loadDSHS(idnv, pq.loadMagv(idnv));
         }
 
         public void LoadDanToc()
         {
-            cboDanToc.DataSource = hocsinh.load_CboDanToc();
-            cboDanToc.ValueMember = "MaDanToc";
-            cboDanToc.DisplayMember = "TenDanToc";
+            if (pq.LoadCombobox(cboDanToc) == false)
+            {
+                cboDanToc.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboDanToc.DataSource = hocsinh.load_CboDanToc();
+                cboDanToc.ValueMember = "MaDanToc";
+                cboDanToc.DisplayMember = "TenDanToc";
+            }
         }
         public void LoadTonGiao()
         {
-            cboTonGiao.DataSource = hocsinh.load_CboTonGiao();
-            cboTonGiao.ValueMember = "MaTonGiao";
-            cboTonGiao.DisplayMember = "TenTonGiao";
+            if (pq.LoadCombobox(cboTonGiao) == false)
+            {
+                cboTonGiao.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboTonGiao.DataSource = hocsinh.load_CboTonGiao();
+                cboTonGiao.ValueMember = "MaTonGiao";
+                cboTonGiao.DisplayMember = "TenTonGiao";
+            }
         }
         public void LoadNNCha()
         {
-            cboNNCha.DataSource = hocsinh.load_CboNgheNghiep();
-            cboNNCha.ValueMember = "MaNghe";
-            cboNNCha.DisplayMember = "TenNghe";
+            if (pq.LoadCombobox(cboNNCha) == false)
+            {
+                cboNNCha.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboNNCha.DataSource = hocsinh.load_CboNgheNghiep();
+                cboNNCha.ValueMember = "MaNghe";
+                cboNNCha.DisplayMember = "TenNghe";
+            }
         }
         public void LoadNNMe()
         {
-            cboNNMe.DataSource = hocsinh.load_CboNgheNghiep();
-            cboNNMe.ValueMember = "MaNghe";
-            cboNNMe.DisplayMember = "TenNghe";
+            if (pq.LoadCombobox(cboNNMe) == false)
+            {
+                cboNNMe.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboNNMe.DataSource = hocsinh.load_CboNgheNghiep();
+                cboNNMe.ValueMember = "MaNghe";
+                cboNNMe.DisplayMember = "TenNghe";
+            }
         }
         private void frm_HocSinh_Load(object sender, EventArgs e)
         {
-            loadDSHS();
-            LoadDanToc();
-            LoadTonGiao();
-            LoadNNCha();
-            LoadNNMe();
+            loadper();
+            txtMaHS.Enabled = txtHoTen.Enabled = txtHoTenCha.Enabled = txtHoTenMe.Enabled
+                = cboDanToc.Enabled = cboNNCha.Enabled = cboNNMe.Enabled =
+                cboTonGiao.Enabled = rbtNam.Enabled = rbtNu.Enabled = txtNgaySinh.Enabled = txtNoiSinh.Enabled = false;
+
         }
         
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -100,18 +120,15 @@ namespace QLDiemTHPT_Winform
 
         private void dgvHocSinh_SelectionChanged(object sender, EventArgs e)
         {
-            txtMaHS.Enabled = true;
-            btnSua.Enabled = true;
-            btnLuu.Enabled = false;
-           txtMaHS.Text = dgvHocSinh.CurrentRow.Cells[1].Value.ToString();
-           txtHoTen.Text = dgvHocSinh.CurrentRow.Cells[2].Value.ToString();
+            txtMaHS.Text = dgvHocSinh.CurrentRow.Cells[1].Value.ToString();
+            txtHoTen.Text = dgvHocSinh.CurrentRow.Cells[2].Value.ToString();
             if (dgvHocSinh.CurrentRow.Cells[3].Value.ToString() == "Nam")
             {
                 rbtNam.Checked = true;
             }
             else
                 rbtNu.Checked = true;
-           txtNgaySinh.Value = DateTime.Parse(dgvHocSinh.CurrentRow.Cells[4].Value.ToString());
+            txtNgaySinh.Value = DateTime.Parse(dgvHocSinh.CurrentRow.Cells[4].Value.ToString());
             txtNoiSinh.Text = dgvHocSinh.CurrentRow.Cells[5].Value.ToString();
             cboDanToc.Text = dgvHocSinh.CurrentRow.Cells[6].Value.ToString();
             cboTonGiao.Text = dgvHocSinh.CurrentRow.Cells[7].Value.ToString();
@@ -123,9 +140,9 @@ namespace QLDiemTHPT_Winform
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            btnSua.Enabled = false;
-            txtMaHS.Enabled = true;
-            txtHoTen.Enabled = true;
+            txtMaHS.Enabled = txtHoTen.Enabled = txtHoTenCha.Enabled = txtHoTenMe.Enabled
+                = cboDanToc.Enabled = cboNNCha.Enabled = cboNNMe.Enabled =
+                cboTonGiao.Enabled = rbtNam.Enabled = rbtNu.Enabled = txtNgaySinh.Enabled = txtNoiSinh.Enabled = true;
             btnLuu.Enabled = true;
             txtMaHS.Text = "";
             txtHoTen.Text = "";
@@ -137,14 +154,18 @@ namespace QLDiemTHPT_Winform
             cboNNCha.Text = "";
             txtHoTenMe.Text = "";
             cboNNMe.Text = "";
+            LoadDanToc();
+            LoadTonGiao();
+            LoadNNCha();
+            LoadNNMe();
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtMaHS.Enabled = false;
+            txtHoTen.Enabled = txtHoTenCha.Enabled = txtHoTenMe.Enabled =
+            cboDanToc.Enabled = cboNNCha.Enabled = cboNNMe.Enabled =
+            cboTonGiao.Enabled = rbtNam.Enabled = rbtNu.Enabled = txtNgaySinh.Enabled = txtNoiSinh.Enabled = true;
             btnLuu.Enabled = true;
-            rbtNu.Enabled = true;
-            rbtNam.Enabled = true;
         }
 
         public bool gioiTinh()
@@ -164,43 +185,34 @@ namespace QLDiemTHPT_Winform
         {
             try
             {
-                if (txtMaHS.Enabled == false) // sửa
+                if (txtMaHS.Text != "" && txtHoTen.Text != "" && txtNoiSinh.Text != "" && txtHoTenCha.Text != "" && txtHoTenMe.Text != "")
                 {
-                    if (hocsinh.suaHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, DateTime.Parse(txtNgaySinh.Text),
-                        cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
-                        txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString()) == true)
+                    if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Never)
                     {
-                        MessageBox.Show("Sửa học sinh thành công");
-                        frm_HocSinh_Load(sender, e);
-                        txtMaHS.Enabled = true;
-                    }
-                    else
-                        MessageBox.Show("Thất bại");
-                }
-                else // thêm mới 
-                {
-                    if (txtMaHS.Text != "" && txtHoTen.Text != "" && txtNoiSinh.Text != "" && cboDanToc.Text != "" &&
-                        cboTonGiao.Text != "" && txtHoTenCha.Text != "" && cboNNCha.Text != "" && txtHoTenMe.Text != "" &&
-                        cboNNMe.Text != "")
+                        hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
+                                cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
+                                txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());                    }
+                    if (btnSua.Visibility == BarItemVisibility.Always && btnThem.Visibility == BarItemVisibility.Never)
                     {
-                        if (hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
+                        hocsinh.suaHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, DateTime.Parse(txtNgaySinh.Text),
                             cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
-                            txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString()) == true)
+                            txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());                   }
+                    else if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Always)
+                    {
+                        if (hocsinh.ktkc(txtMaHS.Text) == false)
                         {
-                            MessageBox.Show("Thêm học sinh mới thành công");
-                            frm_HocSinh_Load(sender, e);
+                            hocsinh.suaHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, DateTime.Parse(txtNgaySinh.Text),
+                            cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
+                            txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());
                         }
                         else
-                        {
-                            MessageBox.Show("Mã học sinh đã tồn tại");
-                        }
-                    }
-                    else
-                        MessageBox.Show("Vui lòng điền thông tin đầy đủ");
+                            hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
+                                    cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
+                                    txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());                  }
                 }
-
-            }
-            catch (Exception ex)
+                loadDSHS();
+                }
+            catch
             {
                 MessageBox.Show("Thất bại, vui lòng kiểm tra dữ liệu nhập vào");
             }

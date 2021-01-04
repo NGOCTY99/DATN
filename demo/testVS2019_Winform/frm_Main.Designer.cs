@@ -389,10 +389,11 @@ namespace testVS2019_Winform
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 426);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 524);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(816, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(952, 30);
             // 
             // ribbon
             // 
@@ -439,6 +440,7 @@ namespace testVS2019_Winform
             this.btnTacVu,
             this.barButtonItem7});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbon.MaxItemId = 45;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -447,7 +449,7 @@ namespace testVS2019_Winform
             this.ribbonTraCuu,
             this.ribbonThongKe,
             this.PageAdmin});
-            this.ribbon.Size = new System.Drawing.Size(816, 158);
+            this.ribbon.Size = new System.Drawing.Size(952, 193);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItem3
@@ -601,18 +603,20 @@ namespace testVS2019_Winform
             // 
             // frm_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(816, 450);
+            this.ClientSize = new System.Drawing.Size(952, 554);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frm_Main";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "QUẢN LÝ ĐIỂM HỌC SINH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_Main_FormClosed);
             this.Load += new System.EventHandler(this.frm_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();

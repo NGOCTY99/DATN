@@ -31,6 +31,8 @@ namespace QLDiemTHPT_Winform
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            try
+            {
                 if (string.IsNullOrEmpty(txtTenDN.Text) == true || string.IsNullOrEmpty(txtMK.Text) == true)
                     MessageBox.Show("Vui lòng nhập");
                 else
@@ -40,12 +42,21 @@ namespace QLDiemTHPT_Winform
                     else
                     {
                         MessageBox.Show("Đăng nhập thành công");
+                        this.Hide();
                         frm_Main frm = new frm_Main(txtTenDN.Text);
-                        frm.ShowDialog();
+                        frm.ShowDialog();                      
                     }
-
-                this.Dispose();
+                }
             }
+            catch
+            {
+                MessageBox.Show("Thất bại");
+            }
+        }
+
+        private void frmDangNhap_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

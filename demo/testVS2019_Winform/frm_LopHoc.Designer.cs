@@ -36,6 +36,7 @@ namespace testVS2019_Winform.Controller
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -61,7 +62,6 @@ namespace testVS2019_Winform.Controller
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -137,37 +137,51 @@ namespace testVS2019_Winform.Controller
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLuu_ItemClick);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Caption = "Refresh";
+            this.btnRefresh.Id = 4;
+            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
+            this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.LargeImage")));
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(800, 24);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1067, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 450);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 554);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(800, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1067, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 426);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(800, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1067, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 426);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
             // 
             // layoutControl1
             // 
@@ -178,61 +192,69 @@ namespace testVS2019_Winform.Controller
             this.layoutControl1.Controls.Add(this.txtMaLop);
             this.layoutControl1.Controls.Add(this.txtSiSo);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 30);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(716, 0, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(800, 75);
+            this.layoutControl1.Size = new System.Drawing.Size(1067, 92);
             this.layoutControl1.TabIndex = 8;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // cboGVCN
             // 
             this.cboGVCN.FormattingEnabled = true;
-            this.cboGVCN.Location = new System.Drawing.Point(640, 37);
+            this.cboGVCN.Location = new System.Drawing.Point(850, 44);
+            this.cboGVCN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboGVCN.Name = "cboGVCN";
-            this.cboGVCN.Size = new System.Drawing.Size(148, 21);
+            this.cboGVCN.Size = new System.Drawing.Size(201, 24);
             this.cboGVCN.TabIndex = 10;
             // 
             // cboMaNamHoc
             // 
             this.cboMaNamHoc.FormattingEnabled = true;
-            this.cboMaNamHoc.Location = new System.Drawing.Point(114, 36);
+            this.cboMaNamHoc.Location = new System.Drawing.Point(148, 40);
+            this.cboMaNamHoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaNamHoc.Name = "cboMaNamHoc";
-            this.cboMaNamHoc.Size = new System.Drawing.Size(163, 21);
+            this.cboMaNamHoc.Size = new System.Drawing.Size(221, 24);
             this.cboMaNamHoc.TabIndex = 9;
             // 
             // cboKhoiLop
             // 
             this.cboKhoiLop.FormattingEnabled = true;
-            this.cboKhoiLop.Location = new System.Drawing.Point(640, 12);
+            this.cboKhoiLop.Location = new System.Drawing.Point(850, 14);
+            this.cboKhoiLop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboKhoiLop.Name = "cboKhoiLop";
-            this.cboKhoiLop.Size = new System.Drawing.Size(148, 21);
+            this.cboKhoiLop.Size = new System.Drawing.Size(201, 24);
             this.cboKhoiLop.TabIndex = 8;
             // 
             // txtTenLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(383, 12);
+            this.txtTenLop.Location = new System.Drawing.Point(507, 14);
+            this.txtTenLop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTenLop.MenuManager = this.barManager1;
             this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.Size = new System.Drawing.Size(151, 20);
+            this.txtTenLop.Size = new System.Drawing.Size(205, 22);
             this.txtTenLop.StyleController = this.layoutControl1;
             this.txtTenLop.TabIndex = 5;
             // 
             // txtMaLop
             // 
-            this.txtMaLop.Location = new System.Drawing.Point(114, 12);
+            this.txtMaLop.Location = new System.Drawing.Point(148, 14);
+            this.txtMaLop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMaLop.MenuManager = this.barManager1;
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(163, 20);
+            this.txtMaLop.Size = new System.Drawing.Size(221, 22);
             this.txtMaLop.StyleController = this.layoutControl1;
             this.txtMaLop.TabIndex = 4;
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(383, 36);
+            this.txtSiSo.Enabled = false;
+            this.txtSiSo.Location = new System.Drawing.Point(507, 40);
+            this.txtSiSo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSiSo.Name = "txtSiSo";
-            this.txtSiSo.Size = new System.Drawing.Size(151, 20);
+            this.txtSiSo.Size = new System.Drawing.Size(205, 22);
             this.txtSiSo.StyleController = this.layoutControl1;
             this.txtSiSo.TabIndex = 5;
             this.txtSiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSiSo_KeyPress);
@@ -249,7 +271,7 @@ namespace testVS2019_Winform.Controller
             this.layoutControlItem4,
             this.layoutControlItem5});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(800, 75);
+            this.Root.Size = new System.Drawing.Size(1067, 92);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -257,56 +279,56 @@ namespace testVS2019_Winform.Controller
             this.layoutControlItem1.Control = this.txtMaLop;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(269, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(359, 26);
             this.layoutControlItem1.Text = "Mã lớp:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(99, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(128, 17);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtTenLop;
-            this.layoutControlItem2.Location = new System.Drawing.Point(269, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(359, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(257, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(343, 26);
             this.layoutControlItem2.Text = "Tên lớp:";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(99, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(128, 17);
             // 
             // sád
             // 
             this.sád.Control = this.txtSiSo;
             this.sád.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.sád.CustomizationFormText = "Tên lớp:";
-            this.sád.Location = new System.Drawing.Point(269, 24);
+            this.sád.Location = new System.Drawing.Point(359, 26);
             this.sád.Name = "sád";
-            this.sád.Size = new System.Drawing.Size(257, 31);
+            this.sád.Size = new System.Drawing.Size(343, 42);
             this.sád.Text = "Sỉ số:";
-            this.sád.TextSize = new System.Drawing.Size(99, 13);
+            this.sád.TextSize = new System.Drawing.Size(128, 17);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.cboKhoiLop;
-            this.layoutControlItem3.Location = new System.Drawing.Point(526, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(702, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(254, 25);
+            this.layoutControlItem3.Size = new System.Drawing.Size(339, 30);
             this.layoutControlItem3.Text = "Mã khối lớp:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(99, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(128, 17);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.cboMaNamHoc;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(269, 31);
+            this.layoutControlItem4.Size = new System.Drawing.Size(359, 42);
             this.layoutControlItem4.Text = "Mã năm học:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(99, 13);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(128, 17);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.cboGVCN;
-            this.layoutControlItem5.Location = new System.Drawing.Point(526, 25);
+            this.layoutControlItem5.Location = new System.Drawing.Point(702, 30);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(254, 30);
+            this.layoutControlItem5.Size = new System.Drawing.Size(339, 38);
             this.layoutControlItem5.Text = "Giáo viên chủ nhiệm:";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(99, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(128, 17);
             // 
             // dgvLopHoc
             // 
@@ -321,11 +343,12 @@ namespace testVS2019_Winform.Controller
             this.ss,
             this.Column6});
             this.dgvLopHoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLopHoc.Location = new System.Drawing.Point(0, 99);
+            this.dgvLopHoc.Location = new System.Drawing.Point(0, 122);
+            this.dgvLopHoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvLopHoc.MultiSelect = false;
             this.dgvLopHoc.Name = "dgvLopHoc";
             this.dgvLopHoc.RowHeadersWidth = 51;
-            this.dgvLopHoc.Size = new System.Drawing.Size(800, 351);
+            this.dgvLopHoc.Size = new System.Drawing.Size(1067, 432);
             this.dgvLopHoc.TabIndex = 18;
             this.dgvLopHoc.SelectionChanged += new System.EventHandler(this.dgvLopHoc_SelectionChanged);
             // 
@@ -371,27 +394,18 @@ namespace testVS2019_Winform.Controller
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Caption = "Refresh";
-            this.btnRefresh.Id = 4;
-            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
-            // 
             // frm_LopHoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.dgvLopHoc);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_LopHoc";
             this.Text = "Lớp học";
             this.Load += new System.EventHandler(this.frm_LopHoc_Load);

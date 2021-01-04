@@ -62,7 +62,7 @@ namespace DAL_BLL
 
 
         
-        public IQueryable<KHOILOP> loadKhoiLop(string id, string magv)
+        public dynamic loadKhoiLop(string id, string magv)
         {
             if (id == "LND004")
             {
@@ -78,14 +78,14 @@ namespace DAL_BLL
                              gv.MaGiaoVien == magv
                              select new
                              {
-                                   l.MaLop,
-                                   l.TenLop,
+                                   k.MaKhoiLop,
+                                   k.TenKhoiLop,
                              };
-                return (IQueryable<KHOILOP>)kltgv;
+                return kltgv;
             }    
         }
 
-        public IQueryable<NAMHOC> loadNamHoc(string id, string magv)
+        public dynamic loadNamHoc(string id, string magv)
         {
             if (id == "LND004")
             {
@@ -104,7 +104,7 @@ namespace DAL_BLL
                                 nh.MaNamHoc,
                                 nh.TenNamHoc
                             };
-                return (IQueryable<NAMHOC>)kltgv;
+                return kltgv;
             }
         }
         public IQueryable<GIAOVIEN> loadGiaoVien(string id, string magv)
@@ -148,7 +148,7 @@ namespace DAL_BLL
         //}
             // thêm lớp học mới
             public void themLop(string malop, string tenlop, string makhoi, string manamhoc, int siso, string magv)
-        {
+            {
             if (ktkc(malop,manamhoc) == true)
             {
                 LOP lop = new LOP();
