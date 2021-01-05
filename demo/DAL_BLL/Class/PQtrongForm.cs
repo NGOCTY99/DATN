@@ -36,6 +36,29 @@ namespace DAL_BLL.Class
             }
             return barButtonItem.Visibility;
         }
+        public bool loadpertheobutton(string id, int groupname, string pername)
+        {
+            var per = db.Permissions.Single(t => t.ID_Group == groupname && t.Per_Code.Equals(pername)).ID_Per;
+            var kq = db.Details.FirstOrDefault(t => t.ID_NV == id && t.ID_Group == groupname && t.ID_Per == per);
+            if (id == "LND004")
+            {
+               return true;
+            }
+            else
+            {
+                if (kq == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    var kq1 = db.Details.FirstOrDefault(t => t.ID_NV == id && t.ID_Group == groupname && t.ID_Per == per).Action_Check;
+                    if (kq1 == true)
+                        return true;
+                    else return false;
+                }
+            }
+        }
 
         public bool loaddgv(string id, int groupname, string pername)
         {
@@ -70,11 +93,15 @@ namespace DAL_BLL.Class
 
         public bool LoadCombobox(ComboBox comboBox)
         {
-            if (comboBox.Tag.Equals(32) || comboBox.Tag.Equals(26) || comboBox.Tag.Equals(29))
+            var hienthi = db.Permissions.FirstOrDefault(t => t.ID_Per == int.Parse(comboBox.Tag.ToString()));
+            if(hienthi == null)
+            {
+                return false;
+            }    
+            else
             {
                 return true;
             }
-            else return false;
         }
 
     }

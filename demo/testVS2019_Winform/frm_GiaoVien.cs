@@ -9,34 +9,68 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL_BLL;
 using DAL_BLL.Class;
+using DevExpress.XtraBars;
+
 namespace QLDiemTHPT_Winform
 {
     public partial class frm_GiaoVien : Form
     {
         QLDiemTHPTDataContext db = new QLDiemTHPTDataContext();
         GiaoVien_Data gv = new GiaoVien_Data();
+        PQtrongForm pq = new PQtrongForm();
+        string idnv;
+        int group;
         public frm_GiaoVien()
         {
             InitializeComponent();
         }
 
+        public frm_GiaoVien(string id, int group)
+        {
+            InitializeComponent();
+            this.idnv = id;
+            this.group = group;
+        }
+
+        public void loadper()
+        {
+            btnThem.Visibility = pq.loadper(idnv, group, btnThem.Name);
+            btnSua.Visibility = pq.loadper(idnv, group, btnSua.Name);
+            dgvGiaoVien.Visible = pq.loaddgv(idnv, group, dgvGiaoVien.Name);
+            if (btnSua.Visibility == BarItemVisibility.Never && btnThem.Visibility == BarItemVisibility.Never)
+            {
+                btnLuu.Visibility = BarItemVisibility.Never;
+                bar2.Visible = false;
+            }
+            if (dgvGiaoVien.Visible == true)
+            {
+                LoadDL();
+            }
+            loadcboMonHoc();
+        }
+
         public void LoadDL()
         {
-            dgvGiaoVien.DataSource = gv.loadDataGridView();
+            dgvGiaoVien.DataSource = gv.loadDataGridView(idnv,pq.loadMagv(idnv));
         }
+
         public void loadcboMonHoc()
         {
-            cboMonHoc.DataSource = gv.loadMonHoc();
-            cboMonHoc.ValueMember = "MaMonHoc";
-            cboMonHoc.DisplayMember = "TenMonHoc";
+            if (pq.LoadCombobox(cboMonHoc) == false)
+            {
+                cboMonHoc.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboMonHoc.DataSource = gv.loadMonHoc(idnv,pq.loadMagv(idnv));
+                cboMonHoc.ValueMember = "MaMonHoc";
+                cboMonHoc.DisplayMember = "TenMonHoc";
+            }
         }
+
         private void frm_GiaoVien_Load(object sender, EventArgs e)
         {
-            btnLuu.Enabled = false;
-            btnSua.Enabled = false;
-            LoadDL();
-            loadcboMonHoc();
-
+            loadper();
         }
 
         private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -50,18 +84,15 @@ namespace QLDiemTHPT_Winform
 
         private void dgvGiaoVien_SelectionChanged(object sender, EventArgs e)
         {
-            btnSua.Enabled = true;
-            txtMaGV.Text = dgvGiaoVien.CurrentRow.Cells[0].Value.ToString();
-            txtTenGV.Text = dgvGiaoVien.CurrentRow.Cells[1].Value.ToString();
-            txtDiaChi.Text = dgvGiaoVien.CurrentRow.Cells[2].Value.ToString();
-            txtSDT.Text = dgvGiaoVien.CurrentRow.Cells[3].Value.ToString();
-            cboMonHoc.Text = dgvGiaoVien.CurrentRow.Cells[4].Value.ToString();
-
+            //txtMaGV.Text = dgvGiaoVien.CurrentRow.Cells[0].Value.ToString();
+            //txtTenGV.Text = dgvGiaoVien.CurrentRow.Cells[1].Value.ToString();
+            //txtDiaChi.Text = dgvGiaoVien.CurrentRow.Cells[2].Value.ToString();
+            //txtSDT.Text = dgvGiaoVien.CurrentRow.Cells[3].Value.ToString();
+            //cboMonHoc.Text = dgvGiaoVien.CurrentRow.Cells[4].Value.ToString();
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            btnSua.Enabled = false;
             txtMaGV.Enabled = true;
             txtTenGV.Enabled = true;
             btnLuu.Enabled = true;
@@ -88,45 +119,57 @@ namespace QLDiemTHPT_Winform
         {
             try
             {
-                if (txtMaGV.Enabled == false) // Trạng thái sửa
+                if (string.IsNullOrEmpty(txtMaGV.Text) || string.IsNullOrEmpty(txtTenGV.Text) || string.IsNullOrEmpty(txtDiaChi.Text) || string.IsNullOrEmpty(txtSDT.Text))
                 {
-                    if (gv.suaGV(txtMaGV.Text, txtTenGV.Text, txtDiaChi.Text, txtSDT.Text, cboMonHoc.SelectedValue.ToString()) == true)
-                    {
-                        MessageBox.Show("Sửa giáo viên thành công");
-                        frm_GiaoVien_Load(sender, e);
-                        txtMaGV.Enabled = true;
-
-                    }
-                    else
-                        MessageBox.Show("Thất bại");
+                    MessageBox.Show("Vui lòng điền thông tin");
                 }
-                else // trạng thái thêm mới
+                else
                 {
-                    if (txtMaGV.Text != "" && txtTenGV.Text != "" && txtDiaChi.Text != "" && txtSDT.Text != "" && cboMonHoc.Text != "")
+                    if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Never)
                     {
-                        if (gv.themGV(txtMaGV.Text, txtTenGV.Text, txtDiaChi.Text, txtSDT.Text, cboMonHoc.SelectedValue.ToString()) == true)
+                        if (cboMonHoc.Text == "-Vui lòng chọn-" )
                         {
-                            MessageBox.Show("Thêm giáo viên mới thành công");
-                            frm_GiaoVien_Load(sender, e);
+                            MessageBox.Show("Không có quyền");
                         }
                         else
-                            MessageBox.Show("Mã giáo viên này đã có");
+                        {
+                            gv.themGV(txtMaGV.Text, txtTenGV.Text, txtDiaChi.Text, txtSDT.Text, cboMonHoc.SelectedValue.ToString());
+                        }
                     }
-                    else
+                    if (btnSua.Visibility == BarItemVisibility.Always && btnThem.Visibility == BarItemVisibility.Never)
                     {
-                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        if (cboMonHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            gv.suaGV(txtMaGV.Text, txtTenGV.Text, txtDiaChi.Text, txtSDT.Text, cboMonHoc.SelectedValue.ToString());                        }
+                    }
+                    else if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Always)
+                    {
+                        if (cboMonHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            if (gv.ktkc(txtMaGV.Text) == false)
+                            {
+                                gv.themGV(txtMaGV.Text, txtTenGV.Text, txtDiaChi.Text, txtSDT.Text, cboMonHoc.SelectedValue.ToString());
+                            }
+                            else
+                                gv.suaGV(txtMaGV.Text, txtTenGV.Text, txtDiaChi.Text, txtSDT.Text, cboMonHoc.SelectedValue.ToString());
+                        }
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Thất bại");
             }
         }
-
-
-
-        
+     
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             try
@@ -147,9 +190,8 @@ namespace QLDiemTHPT_Winform
                                              x.DienThoai,
                                              mh.TenMonHoc
                                          };
-           
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Không tìm được nội dung phù hợp");
             }

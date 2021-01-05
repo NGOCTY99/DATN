@@ -43,6 +43,9 @@ namespace testVS2019_Winform.Controller
                 bar2.Visible = false;
             }
             if (dgvLopHoc.Visible == true) loaddgv();
+            loadLop();
+            loadKhoiLop();
+            LoadGVCN();
         }
 
         public void loaddgv()
@@ -52,22 +55,40 @@ namespace testVS2019_Winform.Controller
 
         public void loadKhoiLop()
         {
-            cboKhoiLop.DataSource = lophoc.loadKhoiLop(idnv, pq.loadMagv(idnv));
-            cboKhoiLop.ValueMember = "MaKhoiLop";
-            cboKhoiLop.DisplayMember = "TenKhoiLop";
+            if (pq.LoadCombobox(cboKhoiLop) == false)
+            {
+                cboKhoiLop.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboKhoiLop.DataSource = lophoc.loadKhoiLop(idnv, pq.loadMagv(idnv));
+                cboKhoiLop.ValueMember = "MaKhoiLop";
+                cboKhoiLop.DisplayMember = "TenKhoiLop";
+            }
         }
 
         public void loadLop()
         {
-            cboMaNamHoc.DataSource = lophoc.loadNamHoc(idnv, pq.loadMagv(idnv));
-            cboMaNamHoc.ValueMember = "MaNamHoc";
-            cboMaNamHoc.DisplayMember = "TenNamHoc";
+            if (pq.LoadCombobox(cboMaNamHoc) == false)
+            {
+                cboMaNamHoc.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboMaNamHoc.DataSource = lophoc.loadNamHoc(idnv, pq.loadMagv(idnv));
+                cboMaNamHoc.ValueMember = "MaNamHoc";
+                cboMaNamHoc.DisplayMember = "TenNamHoc";
+            }
         }
 
         public void LoadGVCN()
         {
-            if (idnv == "LND004")
+            if (pq.LoadCombobox(cboGVCN) == false)
             {
+                cboGVCN.Text = "-Vui lòng chọn-";
+            }
+            else
+            {    
                 cboGVCN.DataSource = lophoc.loadGiaoVien(idnv, pq.loadMagv(idnv));
                 cboGVCN.ValueMember = "MaGiaoVien";
                 cboGVCN.DisplayMember = "TenGiaoVien";
@@ -77,24 +98,11 @@ namespace testVS2019_Winform.Controller
         private void frm_LopHoc_Load(object sender, EventArgs e)
         {
             loadper();
-            loadLop();
-            loadKhoiLop();
-            LoadGVCN();
 
         }
         public void loadLoptheoMaKhoi()
         {
             dgvLopHoc.DataSource = lophoc.load_dgv_Theo_MaKhoiLop(idnv, pq.loadMagv(idnv),cboKhoiLop.SelectedValue.ToString());
-        }
-
-        private void dgvLopHoc_SelectionChanged(object sender, EventArgs e)
-        {
-            txtMaLop.Text = dgvLopHoc.CurrentRow.Cells[0].Value.ToString();
-            txtTenLop.Text = dgvLopHoc.CurrentRow.Cells[1].Value.ToString();
-            cboKhoiLop.Text = dgvLopHoc.CurrentRow.Cells[2].Value.ToString();
-            cboMaNamHoc.Text = dgvLopHoc.CurrentRow.Cells[3].Value.ToString();
-            txtSiSo.Text = dgvLopHoc.CurrentRow.Cells[4].Value.ToString();
-            cboGVCN.Text = dgvLopHoc.CurrentRow.Cells[5].Value.ToString();
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -103,6 +111,7 @@ namespace testVS2019_Winform.Controller
             txtTenLop.Enabled = true;
             cboMaNamHoc.Enabled = true;
             cboKhoiLop.Enabled = true;
+            cboGVCN.Enabled = true;
             txtMaLop.Text = "";
             txtTenLop.Text = "";
             cboGVCN.Text = "";
@@ -113,11 +122,8 @@ namespace testVS2019_Winform.Controller
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //cho phép sửa sỉ số lớp và GVCN
-            txtMaLop.Enabled = false;
-            txtTenLop.Enabled = false;
-            cboMaNamHoc.Enabled = false;
-            cboKhoiLop.Enabled = false;
+            cboGVCN.Enabled = true;
+            txtTenLop.Enabled = true;
         }
 
 
@@ -129,23 +135,42 @@ namespace testVS2019_Winform.Controller
                 {
                     if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Never)
                     {
+                        if (cboGVCN.Text == "-Vui lòng chọn-"|| cboKhoiLop.Text =="-Vui lòng chọn-" || cboMaNamHoc.Text=="-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Bạn không có quyền, thêm thất bại");
+                        } 
+                        else
                         lophoc.themLop(txtMaLop.Text, txtTenLop.Text,cboKhoiLop.SelectedValue.ToString(),cboMaNamHoc.SelectedValue.ToString(),0,cboGVCN.SelectedValue.ToString());
                     }
                     if (btnSua.Visibility == BarItemVisibility.Always && btnThem.Visibility == BarItemVisibility.Never)
                     {
-                        //string malop,string manamhoc,string tenlop, string magv
-                        lophoc.suaLop(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString(), txtTenLop.Text, cboGVCN.SelectedValue.ToString());
-                    }
-                    else if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Always)
-                    {
-                        if (lophoc.ktkc(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString()) == false)
+                        if (cboGVCN.Text == "-Vui lòng chọn-" || cboKhoiLop.Text == "-Vui lòng chọn-" || cboMaNamHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Bạn không có quyền, cập nhật thất bại");
+                        }
+                        else
                         {
                             lophoc.suaLop(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString(), txtTenLop.Text, cboGVCN.SelectedValue.ToString());
                         }
+                    }
+                    else if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Always)
+                    {
+                        if (cboGVCN.Text == "-Vui lòng chọn-" || cboKhoiLop.Text == "-Vui lòng chọn-" || cboMaNamHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Bạn không có quyền");
+                        }
                         else
-                            lophoc.themLop(txtMaLop.Text, txtTenLop.Text, cboKhoiLop.SelectedValue.ToString(), cboMaNamHoc.SelectedValue.ToString(), 0, cboGVCN.SelectedValue.ToString());
+                        {
+                            if (lophoc.ktkc(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString()) == false)
+                            {
+                                lophoc.suaLop(txtMaLop.Text, cboMaNamHoc.SelectedValue.ToString(), txtTenLop.Text, cboGVCN.SelectedValue.ToString());
+                            }
+                            else
+                                lophoc.themLop(txtMaLop.Text, txtTenLop.Text, cboKhoiLop.SelectedValue.ToString(), cboMaNamHoc.SelectedValue.ToString(), 0, cboGVCN.SelectedValue.ToString());
+                        }
                     }
                     loaddgv();
+                    this.Refresh();
                 }
                 else
                 {
@@ -169,6 +194,16 @@ namespace testVS2019_Winform.Controller
         private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
             frm_LopHoc_Load(sender, e);
+        }
+
+        private void dgvLopHoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaLop.Text = dgvLopHoc.CurrentRow.Cells[0].Value.ToString();
+            txtTenLop.Text = dgvLopHoc.CurrentRow.Cells[1].Value.ToString();
+            cboKhoiLop.Text = dgvLopHoc.CurrentRow.Cells[2].Value.ToString();
+            cboMaNamHoc.Text = dgvLopHoc.CurrentRow.Cells[3].Value.ToString();
+            txtSiSo.Text = dgvLopHoc.CurrentRow.Cells[4].Value.ToString();
+            cboGVCN.Text = dgvLopHoc.CurrentRow.Cells[5].Value.ToString();
         }
     }
 }

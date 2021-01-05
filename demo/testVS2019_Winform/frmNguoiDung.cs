@@ -15,6 +15,7 @@ namespace QLDiemTHPT_Winform
 {
     public partial class frmNguoiDung : Form
     {
+
         public frmNguoiDung()
         {
             InitializeComponent();
@@ -23,6 +24,15 @@ namespace QLDiemTHPT_Winform
         DangNhap_Data dn = new DangNhap_Data();
         NguoiDung_Data db = new NguoiDung_Data();
         NhomNguoiDung_Data nnd = new NhomNguoiDung_Data();
+        PQtrongForm pq = new PQtrongForm();
+        string idnv;
+        int group;
+        public frmNguoiDung(string id, int group)
+        {
+            InitializeComponent();
+            this.idnv = id;
+            this.group = group;
+        }
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
             loadNDung();
@@ -65,7 +75,7 @@ namespace QLDiemTHPT_Winform
 
         public void loadGV()
         {
-            cboGV.DataSource = gv.loadDataGridView();
+            cboGV.DataSource = gv.loadDataGridView(idnv,pq.loadMagv(idnv));
             cboGV.DisplayMember = "TenGiaoVien";
             cboGV.ValueMember = "MaGiaoVien";
         }

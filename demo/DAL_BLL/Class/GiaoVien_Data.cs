@@ -3,36 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace DAL_BLL.Class
 {
     public class GiaoVien_Data
     {
         QLDiemTHPTDataContext db = new QLDiemTHPTDataContext();
-        public GiaoVien_Data()
+        PQtrongForm pq = new PQtrongForm();
+        public dynamic loadDataGridView(string id, string magv)
         {
-
+            if (id == "LND004")
+            {
+                return db.GIAOVIENs.Select(t => t);
+            }
+            else
+            {
+                var ghichu = db.GIAOVIENs.FirstOrDefault(t => t.GhiChu == "To truong");
+                if(ghichu == null)
+                {
+                    return db.GIAOVIENs.Where(t => t.MaGiaoVien == magv);
+                }    
+                else
+                {
+                    var mh = db.GIAOVIENs.FirstOrDefault(t => t.MaGiaoVien == magv).MaMonHoc;
+                    return db.GIAOVIENs.Where(t => t.MaMonHoc == mh);
+                }                    
+            }                
+        }
+        public string loadtenMH(string mamh)
+        {
+            return db.MONHOCs.SingleOrDefault(t => t.MaMonHoc == mamh).TenMonHoc;
         }
 
-        public dynamic loadDataGridView()
+        public IEnumerable<MONHOC> loadMonHoc(string id,string magv)
         {
-            var giaovien = from gv in db.GIAOVIENs
-                           from mh in db.MONHOCs
-                           where gv.MaMonHoc == mh.MaMonHoc
-                           select new
-                           {
-                               gv.MaGiaoVien,
-                               gv.TenGiaoVien,
-                               gv.DiaChi,
-                               gv.DienThoai,
-                               mh.TenMonHoc
-                           };
-            return giaovien;
-        }
-
-        public IQueryable<MONHOC> loadMonHoc()
-        {
-            return from mh in db.MONHOCs select mh;
+            if(id == "LND004")
+            {
+                return db.MONHOCs.Select(t=>t);
+            }
+            else
+            {
+                var mh = db.GIAOVIENs.FirstOrDefault(t => t.MaGiaoVien == magv).MaMonHoc;
+                return db.MONHOCs.Where(t => t.MaMonHoc == mh);
+            }    
         }
 
         public bool ktkc(string ma)
@@ -50,7 +63,7 @@ namespace DAL_BLL.Class
         }
 
         // thêm mới
-        public bool themGV(string magv, string tengv, string diachi, string sdt, string mamh)
+        public void themGV(string magv, string tengv, string diachi, string sdt, string mamh)
         {
             if (ktkc(magv) == true)
             {
@@ -62,15 +75,16 @@ namespace DAL_BLL.Class
                 gv.MaMonHoc = mamh;
                 db.GIAOVIENs.InsertOnSubmit(gv);
                 db.SubmitChanges();
-                return true;
+                MessageBox.Show("Thêm giáo viên thành công");
             }
             else
             {
-                return false;
+                MessageBox.Show("Thêm giáo viên thất bại");
             }
         }
+
         // sửa
-        public bool suaGV(string magv, string tengv, string diachi, string sdt, string mamh)
+        public void suaGV(string magv, string tengv, string diachi, string sdt, string mamh)
         {
             if (ktkc(magv) == false)
             {
@@ -81,10 +95,10 @@ namespace DAL_BLL.Class
                 gv.DienThoai = sdt;
                 gv.MaMonHoc = mamh;
                 db.SubmitChanges();
-                return true;
+                MessageBox.Show("Cập nhật giáo viên thành công");
             }
             else
-                return false;
+                MessageBox.Show("Cập nhật giáo viên thất bại");
         }
 
     }

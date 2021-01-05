@@ -154,7 +154,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlTop.Size = new System.Drawing.Size(1067, 30);
             // 
             // barDockControlBottom
@@ -163,7 +163,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 554);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlBottom.Size = new System.Drawing.Size(1067, 0);
             // 
             // barDockControlLeft
@@ -172,7 +172,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
             // 
             // barDockControlRight
@@ -181,7 +181,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1067, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
             // 
             // barManager2
@@ -198,7 +198,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager2;
-            this.barDockControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControl1.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControl1.Size = new System.Drawing.Size(1067, 0);
             // 
             // barDockControl2
@@ -207,7 +207,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl2.Location = new System.Drawing.Point(0, 554);
             this.barDockControl2.Manager = this.barManager2;
-            this.barDockControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControl2.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControl2.Size = new System.Drawing.Size(1067, 0);
             // 
             // barDockControl3
@@ -216,7 +216,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager2;
-            this.barDockControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControl3.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControl3.Size = new System.Drawing.Size(0, 554);
             // 
             // barDockControl4
@@ -225,7 +225,7 @@ namespace QLDiemTHPT_Winform
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl4.Location = new System.Drawing.Point(1067, 0);
             this.barDockControl4.Manager = this.barManager2;
-            this.barDockControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barDockControl4.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControl4.Size = new System.Drawing.Size(0, 554);
             // 
             // layoutControl1
@@ -234,7 +234,7 @@ namespace QLDiemTHPT_Winform
             this.layoutControl1.Controls.Add(this.txtMaNghe);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl1.Location = new System.Drawing.Point(0, 30);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(1067, 33);
@@ -243,21 +243,21 @@ namespace QLDiemTHPT_Winform
             // 
             // txtTenNghe
             // 
-            this.txtTenNghe.Location = new System.Drawing.Point(592, 14);
-            this.txtTenNghe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenNghe.Location = new System.Drawing.Point(590, 12);
+            this.txtTenNghe.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenNghe.MenuManager = this.barManager1;
             this.txtTenNghe.Name = "txtTenNghe";
-            this.txtTenNghe.Size = new System.Drawing.Size(438, 22);
+            this.txtTenNghe.Size = new System.Drawing.Size(444, 22);
             this.txtTenNghe.StyleController = this.layoutControl1;
             this.txtTenNghe.TabIndex = 5;
             // 
             // txtMaNghe
             // 
-            this.txtMaNghe.Location = new System.Drawing.Point(83, 14);
-            this.txtMaNghe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaNghe.Location = new System.Drawing.Point(78, 12);
+            this.txtMaNghe.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaNghe.MenuManager = this.barManager1;
             this.txtMaNghe.Name = "txtMaNghe";
-            this.txtMaNghe.Size = new System.Drawing.Size(436, 22);
+            this.txtMaNghe.Size = new System.Drawing.Size(442, 22);
             this.txtMaNghe.StyleController = this.layoutControl1;
             this.txtMaNghe.TabIndex = 4;
             // 
@@ -270,7 +270,7 @@ namespace QLDiemTHPT_Winform
             this.emptySpaceItem1,
             this.layoutControlItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1046, 60);
+            this.Root.Size = new System.Drawing.Size(1046, 56);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -278,7 +278,7 @@ namespace QLDiemTHPT_Winform
             this.layoutControlItem1.Control = this.txtMaNghe;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(509, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(512, 26);
             this.layoutControlItem1.Text = "Mã nghề:";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(63, 17);
             // 
@@ -287,15 +287,15 @@ namespace QLDiemTHPT_Winform
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 26);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1020, 10);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1026, 10);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtTenNghe;
-            this.layoutControlItem2.Location = new System.Drawing.Point(509, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(512, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(511, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(514, 26);
             this.layoutControlItem2.Text = "Tên nghề:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(63, 17);
             // 
@@ -304,7 +304,7 @@ namespace QLDiemTHPT_Winform
             this.layoutControl2.Controls.Add(this.panelControl1);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 63);
-            this.layoutControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.layoutControl2.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
             this.layoutControl2.Size = new System.Drawing.Size(1067, 491);
@@ -314,10 +314,10 @@ namespace QLDiemTHPT_Winform
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.dgvNN);
-            this.panelControl1.Location = new System.Drawing.Point(16, 14);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl1.Location = new System.Drawing.Point(12, 12);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1035, 463);
+            this.panelControl1.Size = new System.Drawing.Size(1043, 467);
             this.panelControl1.TabIndex = 4;
             // 
             // dgvNN
@@ -330,11 +330,11 @@ namespace QLDiemTHPT_Winform
             this.Column2});
             this.dgvNN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNN.Location = new System.Drawing.Point(2, 2);
-            this.dgvNN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvNN.Margin = new System.Windows.Forms.Padding(4);
             this.dgvNN.MultiSelect = false;
             this.dgvNN.Name = "dgvNN";
             this.dgvNN.RowHeadersWidth = 51;
-            this.dgvNN.Size = new System.Drawing.Size(1031, 459);
+            this.dgvNN.Size = new System.Drawing.Size(1039, 463);
             this.dgvNN.TabIndex = 0;
             this.dgvNN.SelectionChanged += new System.EventHandler(this.dgvNN_SelectionChanged);
             // 
@@ -367,7 +367,7 @@ namespace QLDiemTHPT_Winform
             this.layoutControlItem3.Control = this.panelControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1041, 467);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1047, 471);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -386,7 +386,7 @@ namespace QLDiemTHPT_Winform
             this.Controls.Add(this.barDockControl4);
             this.Controls.Add(this.barDockControl2);
             this.Controls.Add(this.barDockControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_NgheNghiep";
             this.Text = "Nghề nghiệp";
             this.Load += new System.EventHandler(this.frm_NgheNghiep_Load);

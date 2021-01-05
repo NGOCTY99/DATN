@@ -34,10 +34,10 @@ namespace testVS2019_Winform
             this.btnGiaoVien = new DevExpress.XtraBars.BarButtonItem();
             this.btnTraCuuHS = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKQHKLH = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKQHKMH = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKQCNLH = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKQCNMH = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonQuanLy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonLop_KhoiLop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.btnLopHoc = new DevExpress.XtraBars.BarButtonItem();
@@ -119,37 +119,37 @@ namespace testVS2019_Winform
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
-            // barButtonItem2
+            // btnKQHKLH
             // 
-            this.barButtonItem2.Caption = "Kết quả học kỳ theo lớp học";
-            this.barButtonItem2.Id = 28;
-            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnKQHKLH.Caption = "Kết quả học kỳ theo lớp học";
+            this.btnKQHKLH.Id = 28;
+            this.btnKQHKLH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnKQHKLH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnKQHKLH.Name = "btnKQHKLH";
             // 
-            // barButtonItem4
+            // btnKQHKMH
             // 
-            this.barButtonItem4.Caption = "Kết quả học kỳ theo môn học";
-            this.barButtonItem4.Id = 29;
-            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
-            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.btnKQHKMH.Caption = "Kết quả học kỳ theo môn học";
+            this.btnKQHKMH.Id = 29;
+            this.btnKQHKMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
+            this.btnKQHKMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.btnKQHKMH.Name = "btnKQHKMH";
             // 
-            // barButtonItem5
+            // btnKQCNLH
             // 
-            this.barButtonItem5.Caption = "Kết quả cả năm theo lớp học";
-            this.barButtonItem5.Id = 30;
-            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.btnKQCNLH.Caption = "Kết quả cả năm theo lớp học";
+            this.btnKQCNLH.Id = 30;
+            this.btnKQCNLH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.btnKQCNLH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.btnKQCNLH.Name = "btnKQCNLH";
             // 
-            // barButtonItem6
+            // btnKQCNMH
             // 
-            this.barButtonItem6.Caption = "Kết quả cả năm theo môn học";
-            this.barButtonItem6.Id = 31;
-            this.barButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
-            this.barButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
-            this.barButtonItem6.Name = "barButtonItem6";
+            this.btnKQCNMH.Caption = "Kết quả cả năm theo môn học";
+            this.btnKQCNMH.Id = 31;
+            this.btnKQCNMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
+            this.btnKQCNMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
+            this.btnKQCNMH.Name = "btnKQCNMH";
             // 
             // ribbonQuanLy
             // 
@@ -374,16 +374,16 @@ namespace testVS2019_Winform
             // 
             // ribbonKQHK
             // 
-            this.ribbonKQHK.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonKQHK.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonKQHK.ItemLinks.Add(this.btnKQHKLH);
+            this.ribbonKQHK.ItemLinks.Add(this.btnKQHKMH);
             this.ribbonKQHK.Name = "ribbonKQHK";
             this.ribbonKQHK.Text = "Kết quả học kỳ";
             // 
             // ribbonKQCN
             // 
             this.ribbonKQCN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonKQCN.ImageOptions.Image")));
-            this.ribbonKQCN.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonKQCN.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonKQCN.ItemLinks.Add(this.btnKQCNLH);
+            this.ribbonKQCN.ItemLinks.Add(this.btnKQCNMH);
             this.ribbonKQCN.Name = "ribbonKQCN";
             this.ribbonKQCN.Text = "Kết quả cuối năm";
             // 
@@ -425,10 +425,10 @@ namespace testVS2019_Winform
             this.btnPhanCong,
             this.btnTraCuuHS,
             this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem4,
-            this.barButtonItem5,
-            this.barButtonItem6,
+            this.btnKQHKLH,
+            this.btnKQHKMH,
+            this.btnKQCNLH,
+            this.btnKQCNMH,
             this.btnDN,
             this.btnQMK,
             this.btnTDMK,
@@ -630,10 +630,10 @@ namespace testVS2019_Winform
         private DevExpress.XtraBars.BarButtonItem btnGiaoVien;
         private DevExpress.XtraBars.BarButtonItem btnTraCuuHS;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem btnKQHKLH;
+        private DevExpress.XtraBars.BarButtonItem btnKQHKMH;
+        private DevExpress.XtraBars.BarButtonItem btnKQCNLH;
+        private DevExpress.XtraBars.BarButtonItem btnKQCNMH;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonQuanLy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonLop_KhoiLop;
         private DevExpress.XtraBars.BarButtonItem btnLopHoc;

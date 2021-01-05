@@ -15,9 +15,19 @@ namespace QLDiemTHPT_Winform
     {
         TraCuuGV_Data tracuu = new TraCuuGV_Data();
         GiaoVien_Data gv = new GiaoVien_Data();
+        PQtrongForm pq = new PQtrongForm();
+        string idnv;
+        int group;
         public frm_TraCuuGV()
         {
             InitializeComponent();
+        }
+
+        public frm_TraCuuGV(string id, int group)
+        {
+            InitializeComponent();
+            this.idnv = id;
+            this.group = group;
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
@@ -25,9 +35,8 @@ namespace QLDiemTHPT_Winform
             try
             {
                 dgvGiaoVien.DataSource = tracuu.traCuu(txtTimKiem.Text);
-
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Không tìm được nội dung phù hợp");
             }
@@ -35,7 +44,7 @@ namespace QLDiemTHPT_Winform
 
         private void frm_TraCuuGV_Load(object sender, EventArgs e)
         {
-            dgvGiaoVien.DataSource = gv.loadDataGridView();
+            dgvGiaoVien.DataSource = gv.loadDataGridView(idnv,pq.loadMagv(idnv));
         }
     }
 }

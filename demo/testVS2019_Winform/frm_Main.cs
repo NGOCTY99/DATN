@@ -59,11 +59,11 @@ namespace testVS2019_Winform
             btnPhanCong.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonQuanLy, btnPhanCong.Name);
             barButtonItem1.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonTraCuu, barButtonItem1.Name);
             btnTraCuuHS.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonTraCuu, btnTraCuuHS.Name);
-            barButtonItem2.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, barButtonItem2.Name);
+            btnKQHKLH.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, btnKQHKLH.Name);
             barButtonItem3.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, barButtonItem3.Name);
-            barButtonItem4.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, barButtonItem4.Name);
-            barButtonItem5.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, barButtonItem5.Name);
-            barButtonItem6.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, barButtonItem6.Name);
+            btnKQHKMH.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, btnKQHKMH.Name);
+            btnKQCNLH.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, btnKQCNLH.Name);
+            btnKQCNMH.Visibility = db.LoadGroup(db.LoaiNV(idnv), ribbonThongKe, btnKQCNMH.Name);
             GroupAdmin.Visible = ShowGroup(btnNND, btnRole, btnPermission, btnTacVu,null);
             ribbonLop_KhoiLop.Visible = ShowGroup(btnLopHoc, btnKhoiLop, null, null, null);
             ribbonHocKy_NamHoc.Visible = ShowGroup(btnHocKy, btnNamHoc, null, null, null);
@@ -72,8 +72,8 @@ namespace testVS2019_Winform
             ribbonKetQua.Visible = ShowGroup(btnKetQua, btnHocLuc, btnHanhKiem, null, null);
             ribbonMonHoc_Diem.Visible = ShowGroup(btnMonHoc, btnDiem, null, null, null);
             ribbonTT.Visible = ShowGroup(barButtonItem1, btnTraCuuHS, null, null, null);
-            ribbonKQHK.Visible = ShowGroup(barButtonItem2, barButtonItem4, null, null,null);
-            ribbonKQCN.Visible = ShowGroup(barButtonItem5, barButtonItem6, null, null, null);
+            ribbonKQHK.Visible = ShowGroup(btnKQHKLH, btnKQHKMH, null, null,null);
+            ribbonKQCN.Visible = ShowGroup(btnKQCNLH, btnKQCNMH, null, null, null);
         }
         public bool ShowGroup(BarButtonItem barButtonItem1, BarButtonItem barButtonItem2, BarButtonItem barButtonItem3, BarButtonItem barButtonItem4, BarButtonItem barButtonItem5)
         {
@@ -235,7 +235,7 @@ namespace testVS2019_Winform
             Form frm = kiemtraform(typeof(frm_DanToc));
             if (frm == null)
             {
-                frm_DanToc f = new frm_DanToc(db.LoaiNV(idnv), db.Group(btnNamHoc.Name));
+                frm_DanToc f = new frm_DanToc(db.LoaiNV(idnv), db.Group(btnDanToc.Name));
                 f.MdiParent = this;
                 f.Show();
             }
@@ -265,7 +265,7 @@ namespace testVS2019_Winform
             Form frm = kiemtraform(typeof(frm_Diem));
             if (frm == null)
             {
-                frm_Diem forms = new frm_Diem();
+                frm_Diem forms = new frm_Diem(db.LoaiNV(idnv), db.Group(btnDiem.Name));
                 forms.MdiParent = this;
                 forms.Show();
             }
@@ -385,7 +385,7 @@ namespace testVS2019_Winform
             Form frm = kiemtraform(typeof(frm_GiaoVien));
             if (frm == null)
             {
-                frm_GiaoVien forms = new frm_GiaoVien();
+                frm_GiaoVien forms = new frm_GiaoVien(db.LoaiNV(idnv), db.Group(btnGiaoVien.Name));
                 forms.MdiParent = this;
                 forms.Show();
             }

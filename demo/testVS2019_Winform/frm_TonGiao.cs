@@ -96,7 +96,7 @@ namespace QLDiemTHPT_Winform
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Thất bại");
             }

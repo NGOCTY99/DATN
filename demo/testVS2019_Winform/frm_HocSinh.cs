@@ -44,7 +44,11 @@ namespace QLDiemTHPT_Winform
             if (dgvHocSinh.Visible == true)
             {
                 loadDSHS();
-            }    
+            }
+            LoadDanToc();
+            LoadTonGiao();
+            LoadNNCha();
+            LoadNNMe();
         }
 
         public void loadDSHS()
@@ -118,26 +122,6 @@ namespace QLDiemTHPT_Winform
             frm_HocSinh_Load(sender, e);
         }
 
-        private void dgvHocSinh_SelectionChanged(object sender, EventArgs e)
-        {
-            txtMaHS.Text = dgvHocSinh.CurrentRow.Cells[1].Value.ToString();
-            txtHoTen.Text = dgvHocSinh.CurrentRow.Cells[2].Value.ToString();
-            if (dgvHocSinh.CurrentRow.Cells[3].Value.ToString() == "Nam")
-            {
-                rbtNam.Checked = true;
-            }
-            else
-                rbtNu.Checked = true;
-            txtNgaySinh.Value = DateTime.Parse(dgvHocSinh.CurrentRow.Cells[4].Value.ToString());
-            txtNoiSinh.Text = dgvHocSinh.CurrentRow.Cells[5].Value.ToString();
-            cboDanToc.Text = dgvHocSinh.CurrentRow.Cells[6].Value.ToString();
-            cboTonGiao.Text = dgvHocSinh.CurrentRow.Cells[7].Value.ToString();
-            txtHoTenCha.Text = dgvHocSinh.CurrentRow.Cells[8].Value.ToString();
-            cboNNCha.Text = dgvHocSinh.CurrentRow.Cells[9].Value.ToString();
-            txtHoTenMe.Text = dgvHocSinh.CurrentRow.Cells[10].Value.ToString();
-            cboNNMe.Text = dgvHocSinh.CurrentRow.Cells[11].Value.ToString();
-
-        }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             txtMaHS.Enabled = txtHoTen.Enabled = txtHoTenCha.Enabled = txtHoTenMe.Enabled
@@ -185,21 +169,47 @@ namespace QLDiemTHPT_Winform
         {
             try
             {
-                if (txtMaHS.Text != "" && txtHoTen.Text != "" && txtNoiSinh.Text != "" && txtHoTenCha.Text != "" && txtHoTenMe.Text != "")
+                if (string.IsNullOrEmpty(txtMaHS.Text) || string.IsNullOrEmpty(txtHoTen.Text) || string.IsNullOrEmpty(txtNoiSinh.Text) || string.IsNullOrEmpty(txtHoTenCha.Text) || string.IsNullOrEmpty(txtHoTenMe.Text))
+                {
+                    MessageBox.Show("Vui lòng điền thông tin");
+                }
+                else
                 {
                     if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Never)
                     {
-                        hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
+                        if (cboDanToc.Text == "-Vui lòng chọn-" || cboNNCha.Text == "-Vui lòng chọn-" || cboNNMe.Text == "-Vui lòng chọn-" || cboTonGiao.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
                                 cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
-                                txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());                    }
+                                txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());
+                        }
+                    }
                     if (btnSua.Visibility == BarItemVisibility.Always && btnThem.Visibility == BarItemVisibility.Never)
                     {
-                        hocsinh.suaHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, DateTime.Parse(txtNgaySinh.Text),
+                        if (cboDanToc.Text == "-Vui lòng chọn-" || cboNNCha.Text == "-Vui lòng chọn-" || cboNNMe.Text == "-Vui lòng chọn-" || cboTonGiao.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            hocsinh.suaHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, DateTime.Parse(txtNgaySinh.Text),
                             cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
-                            txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());                   }
+                            txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());
+                        }
+                    }
                     else if (btnThem.Visibility == BarItemVisibility.Always && btnSua.Visibility == BarItemVisibility.Always)
                     {
-                        if (hocsinh.ktkc(txtMaHS.Text) == false)
+                        if (cboDanToc.Text == "-Vui lòng chọn-" || cboNNCha.Text == "-Vui lòng chọn-" || cboNNMe.Text == "-Vui lòng chọn-" || cboTonGiao.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            if (hocsinh.ktkc(txtMaHS.Text) == false)
                         {
                             hocsinh.suaHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, DateTime.Parse(txtNgaySinh.Text),
                             cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
@@ -208,7 +218,9 @@ namespace QLDiemTHPT_Winform
                         else
                             hocsinh.themHS(txtMaHS.Text, txtHoTen.Text, txtNoiSinh.Text, gioiTinh(), DateTime.Parse(txtNgaySinh.Text),
                                     cboDanToc.SelectedValue.ToString(), cboTonGiao.SelectedValue.ToString(),
-                                    txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());                  }
+                                    txtHoTenCha.Text, cboNNCha.SelectedValue.ToString(), txtHoTenMe.Text, cboNNMe.SelectedValue.ToString());
+                        }
+                    }
                 }
                 loadDSHS();
                 }
@@ -216,6 +228,26 @@ namespace QLDiemTHPT_Winform
             {
                 MessageBox.Show("Thất bại, vui lòng kiểm tra dữ liệu nhập vào");
             }
+        }
+
+        private void dgvHocSinh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaHS.Text = dgvHocSinh.CurrentRow.Cells[1].Value.ToString();
+            txtHoTen.Text = dgvHocSinh.CurrentRow.Cells[2].Value.ToString();
+            if (dgvHocSinh.CurrentRow.Cells[3].Value.ToString() == "Nam")
+            {
+                rbtNam.Checked = true;
+            }
+            else
+                rbtNu.Checked = true;
+            txtNgaySinh.Value = DateTime.Parse(dgvHocSinh.CurrentRow.Cells[4].Value.ToString());
+            txtNoiSinh.Text = dgvHocSinh.CurrentRow.Cells[5].Value.ToString();
+            cboDanToc.Text = dgvHocSinh.CurrentRow.Cells[6].Value.ToString();
+            cboTonGiao.Text = dgvHocSinh.CurrentRow.Cells[7].Value.ToString();
+            txtHoTenCha.Text = dgvHocSinh.CurrentRow.Cells[8].Value.ToString();
+            cboNNCha.Text = dgvHocSinh.CurrentRow.Cells[9].Value.ToString();
+            txtHoTenMe.Text = dgvHocSinh.CurrentRow.Cells[10].Value.ToString();
+            cboNNMe.Text = dgvHocSinh.CurrentRow.Cells[11].Value.ToString();
         }
     }
 }

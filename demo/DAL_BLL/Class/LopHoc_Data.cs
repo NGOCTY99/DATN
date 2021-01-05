@@ -109,8 +109,14 @@ namespace DAL_BLL
         }
         public IQueryable<GIAOVIEN> loadGiaoVien(string id, string magv)
         {
-            //if(id==")
-            return from gv in db.GIAOVIENs select gv;
+            if(id=="LND004")
+            {
+                return from gv in db.GIAOVIENs select gv;
+            }
+            else
+            {
+                return db.GIAOVIENs.Where(t => t.MaGiaoVien == magv);
+            }    
         }
 
         //CRUD lớp học

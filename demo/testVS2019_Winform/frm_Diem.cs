@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL_BLL;
 using DAL_BLL.Class;
+using DevExpress.XtraBars;
+
 namespace QLDiemTHPT_Winform
 {
     public partial class frm_Diem : Form
@@ -16,69 +18,132 @@ namespace QLDiemTHPT_Winform
 
         QLDiemTHPTDataContext db = new QLDiemTHPTDataContext();
         Diem_Data diem = new Diem_Data();
+        PQtrongForm pq = new PQtrongForm();
+        string idnv;
+        int group;
         public frm_Diem()
         {
             InitializeComponent();
         }
+
+        public frm_Diem(string id, int group)
+        {
+            InitializeComponent();
+            this.idnv = id;
+            this.group = group;
+        }
+        public void loadper()
+        {
+            btnThemDiem.Visible = pq.loadpertheobutton(idnv, group, btnThemDiem.Name);
+            btnSuaDiem.Visible = pq.loadpertheobutton(idnv, group, btnSuaDiem.Name);
+            dgvDiem.Visible = pq.loaddgv(idnv, group, dgvDiem.Name);
+            dgvHS.Visible = pq.loaddgv(idnv, group, dgvHS.Name);
+            if (btnSuaDiem.Visible ==false && btnThemDiem.Visible == false)
+            {
+                btnLuu.Visible=false;
+                bar2.Visible = false;
+            }
+            loadcboLoaiDiem();
+            loadCBONamHoc();
+            loadCBO_HocKy();
+            loadCBO_MonHoc();
+        }
+
         // load cbo năm học
         public void loadCBONamHoc()
         {
-            cboNamHoc.DataSource = diem.loadcboNamHoc();
-            cboNamHoc.ValueMember = "MaNamHoc";
-            cboNamHoc.DisplayMember = "TenNamHoc";
+            if (pq.LoadCombobox(cboNamHoc) == false)
+            {
+                cboNamHoc.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboNamHoc.DataSource = diem.loadcboNamHoc(idnv, pq.loadMagv(idnv));
+                cboNamHoc.ValueMember = "MaNamHoc";
+                cboNamHoc.DisplayMember = "TenNamHoc";
+            }
         }
         // load cbo khối lớp
         public void loadCBOKhoiLop()
         {
-            cboMaKhoi.DataSource = diem.loadcboKhoiLop();
-            cboMaKhoi.ValueMember = "MaKhoiLop";
-            cboMaKhoi.DisplayMember = "TenKhoiLop";
+            if (pq.LoadCombobox(cboMaKhoi) == false)
+            {
+                cboMaKhoi.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboMaKhoi.DataSource = diem.loadcboKhoiLop(idnv, pq.loadMagv(idnv),cboNamHoc.SelectedValue.ToString());
+                cboMaKhoi.ValueMember = "MaKhoiLop";
+                cboMaKhoi.DisplayMember = "TenKhoiLop";
+            }
         }
 
         // load cbo lớp học theo khối và năm học
         public void loadCBO_LopHoc()
         {
-            cboMaLop.DataSource = diem.loadcboLopHoc(cboMaKhoi.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString());
-            cboMaLop.ValueMember = "MaLop";
-            cboMaLop.DisplayMember = "TenLop";
+            if (pq.LoadCombobox(cboMaLop) == false)
+            {
+                cboMaLop.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboMaLop.DataSource = diem.loadcboLopHoc(idnv, pq.loadMagv(idnv),cboMaKhoi.SelectedValue.ToString(),cboNamHoc.SelectedValue.ToString());
+                cboMaLop.ValueMember = "MaLop";
+                cboMaLop.DisplayMember = "TenLop";
+            }
         }
 
         // load cbo môn học
         public void loadCBO_MonHoc()
         {
-            cboMonHoc.DataSource = diem.LoadMonHoc();
-            cboMonHoc.ValueMember = "MaMonHoc";
-            cboMonHoc.DisplayMember = "TenMonHoc";
+            if (pq.LoadCombobox(cboMonHoc) == false)
+            {
+                cboMonHoc.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboMonHoc.DataSource = diem.LoadMonHoc(idnv, pq.loadMagv(idnv));
+                cboMonHoc.ValueMember = "MaMonHoc";
+                cboMonHoc.DisplayMember = "TenMonHoc";
+            }
         }
         // load cbo học kỳ
         public void loadCBO_HocKy()
         {
-            cboHocKy.DataSource = diem.LoadHocKy();
-            cboHocKy.ValueMember = "MaHocKy";
-            cboHocKy.DisplayMember = "TenHocKy";
+            if (pq.LoadCombobox(cboHocKy) == false)
+            {
+                cboHocKy.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboHocKy.DataSource = diem.LoadHocKy();
+                cboHocKy.ValueMember = "MaHocKy";
+                cboHocKy.DisplayMember = "TenHocKy";
+            }
         }
        // load dgv diem
        public void loadDiemCuThe()
         {
-            dgvDiem.DataSource = diem.LoadDiem(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString());
-            
+            dgvDiem.DataSource = diem.LoadDiem(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString());         
         }
 
         //load cboLoai điểm khi thêm mới
         public void loadcboLoaiDiem()
         {
-            cboLoaiDiem.DataSource = diem.LoaiCBOLoaiDiem();
-            cboLoaiDiem.ValueMember = "MaLoai";
-            cboLoaiDiem.DisplayMember = "TenLoai";
+            if (pq.LoadCombobox(cboLoaiDiem) == false)
+            {
+                cboLoaiDiem.Text = "-Vui lòng chọn-";
+            }
+            else
+            {
+                cboLoaiDiem.DataSource = diem.LoaiCBOLoaiDiem();
+                cboLoaiDiem.ValueMember = "MaLoai";
+                cboLoaiDiem.DisplayMember = "TenLoai";
+            }
         }
         private void frm_Diem_Load(object sender, EventArgs e)
         {
-
-            loadCBONamHoc();
-            loadCBOKhoiLop();
-            loadCBO_MonHoc();
-            loadCBO_HocKy();
-            loadcboLoaiDiem();
+            loadper();
             tableLayoutPanel6.Visible = false;
             btnSuaDiem.Visible = false;
             btnLuu.Visible = false;
@@ -92,7 +157,7 @@ namespace QLDiemTHPT_Winform
 
         private void btnLocTheoDK_Click(object sender, EventArgs e)
         {
-            dgvHS.DataSource = diem.loadDL(cboMaLop.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString());
+            dgvHS.DataSource = diem.loadDL(idnv, pq.loadMagv(idnv),cboMaLop.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString());
           
         }
 
@@ -105,7 +170,7 @@ namespace QLDiemTHPT_Winform
 
         private void btnLocDSHS_Click(object sender, EventArgs e)
         {
-            dgvHS.DataSource = diem.loadDLHS(cboNamHoc.SelectedValue.ToString(), cboMaKhoi.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
+            dgvHS.DataSource = diem.loadDLHS(idnv, pq.loadMagv(idnv),cboNamHoc.SelectedValue.ToString(), cboMaKhoi.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
         }
 
         private void txtSoDiem_KeyPress(object sender, KeyPressEventArgs e)
@@ -137,7 +202,7 @@ namespace QLDiemTHPT_Winform
             }
             catch 
             {
-
+                MessageBox.Show("Lỗi");
             }
 
         }
@@ -169,7 +234,7 @@ namespace QLDiemTHPT_Winform
                         dgvHS_SelectionChanged(sender, e);
                         // MessageBox.Show("Đang bug, chưa fix thông cảm");
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         MessageBox.Show("Lỗi");
                     }
@@ -187,10 +252,25 @@ namespace QLDiemTHPT_Winform
                     dgvHS_SelectionChanged(sender, e);
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 MessageBox.Show("Thất bại");
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cboNamHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadCBOKhoiLop();
         }
     }
 }
