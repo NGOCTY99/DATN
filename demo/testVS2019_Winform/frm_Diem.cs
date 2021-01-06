@@ -38,7 +38,7 @@ namespace QLDiemTHPT_Winform
             btnSuaDiem.Visible = pq.loadpertheobutton(idnv, group, btnSuaDiem.Name);
             dgvDiem.Visible = pq.loaddgv(idnv, group, dgvDiem.Name);
             dgvHS.Visible = pq.loaddgv(idnv, group, dgvHS.Name);
-            if (btnSuaDiem.Visible ==false && btnThemDiem.Visible == false)
+            if (btnSuaDiem.Visible == false && btnThemDiem.Visible == false)
             {
                 btnLuu.Visible=false;
                 bar2.Visible = false;
@@ -121,11 +121,6 @@ namespace QLDiemTHPT_Winform
                 cboHocKy.DisplayMember = "TenHocKy";
             }
         }
-       // load dgv diem
-       public void loadDiemCuThe()
-        {
-            dgvDiem.DataSource = diem.LoadDiem(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString());         
-        }
 
         //load cboLoai điểm khi thêm mới
         public void loadcboLoaiDiem()
@@ -145,9 +140,6 @@ namespace QLDiemTHPT_Winform
         {
             loadper();
             tableLayoutPanel6.Visible = false;
-            btnSuaDiem.Visible = false;
-            btnLuu.Visible = false;
-            btnThemDiem.Visible = false;
         }
 
         private void cboMaKhoi_SelectedValueChanged(object sender, EventArgs e)
@@ -161,13 +153,6 @@ namespace QLDiemTHPT_Winform
           
         }
 
-        private void dgvHS_SelectionChanged(object sender, EventArgs e)
-        {
-            loadDiemCuThe();
-            txtSoDiem.Text = "";
-            btnThemDiem.Visible = true;
-        }
-
         private void btnLocDSHS_Click(object sender, EventArgs e)
         {
             dgvHS.DataSource = diem.loadDLHS(idnv, pq.loadMagv(idnv),cboNamHoc.SelectedValue.ToString(), cboMaKhoi.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
@@ -175,7 +160,7 @@ namespace QLDiemTHPT_Winform
 
         private void txtSoDiem_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -184,72 +169,97 @@ namespace QLDiemTHPT_Winform
         private void btnThemDiem_Click(object sender, EventArgs e)
         {
             tableLayoutPanel6.Visible = true;
+            txtSoDiem.Text = "";
             txtSoDiem.Focus();
-            btnLuu.Visible = true;
-        }
-
-        private void dgvDiem_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                string stt = diem.LaySTT(dgvDiem.CurrentRow.Cells[1].Value.ToString(),int.Parse( dgvDiem.CurrentRow.Cells[0].Value.ToString()));
-                MessageBox.Show(stt);
-                cboLoaiDiem.Enabled = true;
-                btnSuaDiem.Visible = true;
-                cboLoaiDiem.Text = dgvDiem.CurrentRow.Cells[2].Value.ToString();
-                txtSoDiem.Text = dgvDiem.CurrentRow.Cells[3].Value.ToString();
-                tableLayoutPanel6.Visible = true;
-            }
-            catch 
-            {
-                MessageBox.Show("Lỗi");
-            }
-
         }
 
         private void btnSuaDiem_Click(object sender, EventArgs e)
         {
+            tableLayoutPanel6.Visible = true;
             cboLoaiDiem.Enabled = false;
             txtSoDiem.Focus();
-            btnLuu.Visible = true;
         }
         
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             try
             {
-                if (cboLoaiDiem.Enabled == false) // sửa điểm
+                if (string.IsNullOrEmpty(txtSoDiem.Text) )
                 {
-                    try
-                    {
-                        diem.suaDiem(int.Parse(dgvDiem.CurrentRow.Cells[0].Value.ToString()),
-                            dgvHS.CurrentRow.Cells[0].Value.ToString(),
-                                     cboMonHoc.SelectedValue.ToString(),
-                                     cboHocKy.SelectedValue.ToString(),
-                                     cboNamHoc.SelectedValue.ToString(),
-                                     cboMaLop.SelectedValue.ToString(),
-                                     dgvDiem.CurrentRow.Cells[1].Value.ToString(),
-                                     float.Parse(txtSoDiem.Text));
-                        MessageBox.Show("Cập nhật điểm của môn học thành công");
-                        dgvHS_SelectionChanged(sender, e);
-                        // MessageBox.Show("Đang bug, chưa fix thông cảm");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Lỗi");
-                    }
-
+                    MessageBox.Show("Vui lòng điền thông tin");
                 }
-                else // thêm điểm
+                else
                 {
-                    diem.themDiem(dgvHS.CurrentRow.Cells[0].Value.ToString(),
-                                   cboMonHoc.SelectedValue.ToString(),
-                                   cboHocKy.SelectedValue.ToString(),
-                                   cboNamHoc.SelectedValue.ToString(),
-                                   cboMaLop.SelectedValue.ToString(),
-                                   cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
-                    MessageBox.Show("Thêm điểm của môn học thành công");
-                    dgvHS_SelectionChanged(sender, e);
+                    if (btnThemDiem.Visible ==true && btnSuaDiem.Visible == false)
+                    {
+                        if (cboMonHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            diem.loadcotdiem(dgvHS.CurrentRow.Cells[0].Value.ToString(),
+                            cboMonHoc.SelectedValue.ToString(),
+                            cboHocKy.SelectedValue.ToString(),
+                            cboNamHoc.SelectedValue.ToString(),
+                            cboMaLop.SelectedValue.ToString(),
+                            cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
+                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
+                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
+                        }
+                    }
+                    if (btnSuaDiem.Visible == true && btnThemDiem.Visible == false)
+                    {
+                        if (cboMonHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            diem.suaDiem(int.Parse(dgvDiem.CurrentRow.Cells[0].Value.ToString()),
+                                dgvHS.CurrentRow.Cells[0].Value.ToString(),
+                                         cboMonHoc.SelectedValue.ToString(),
+                                         cboHocKy.SelectedValue.ToString(),
+                                         cboNamHoc.SelectedValue.ToString(),
+                                         cboMaLop.SelectedValue.ToString(),
+                                         dgvDiem.CurrentRow.Cells[1].Value.ToString(),
+                                         float.Parse(txtSoDiem.Text));
+                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
+                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
+                        }
+                    }
+                    else if (btnThemDiem.Visible == true && btnSuaDiem.Visible == true)
+                    {
+                        if (cboMonHoc.Text == "-Vui lòng chọn-")
+                        {
+                            MessageBox.Show("Không có quyền");
+                        }
+                        else
+                        {
+                            if (cboLoaiDiem.Enabled==false)
+                            {
+                                diem.suaDiem(int.Parse(dgvDiem.CurrentRow.Cells[0].Value.ToString()),
+                                    dgvHS.CurrentRow.Cells[0].Value.ToString(),
+                                             cboMonHoc.SelectedValue.ToString(),
+                                             cboHocKy.SelectedValue.ToString(),
+                                             cboNamHoc.SelectedValue.ToString(),
+                                             cboMaLop.SelectedValue.ToString(),
+                                             dgvDiem.CurrentRow.Cells[1].Value.ToString(),
+                                             float.Parse(txtSoDiem.Text));
+                            }
+                            else
+                            {
+                                diem.loadcotdiem(dgvHS.CurrentRow.Cells[0].Value.ToString(),
+                                cboMonHoc.SelectedValue.ToString(),
+                                cboHocKy.SelectedValue.ToString(),
+                                cboNamHoc.SelectedValue.ToString(),
+                                cboMaLop.SelectedValue.ToString(),
+                                cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
+                            }
+                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
+                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
+                        }
+                    }
                 }
             }
             catch
@@ -258,19 +268,46 @@ namespace QLDiemTHPT_Winform
             }
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void cboNamHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadCBOKhoiLop();
+        }
+
+        private void dgvHS_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    string x = dgvHS.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID");
+                    dt.Columns.Add("Loại điểm");
+                    dt.Columns.Add("Học kỳ");
+                    dt.Columns.Add("Điểm");
+                    foreach (var item in diem.LoadDiem(x,cboMonHoc.SelectedValue.ToString(),cboHocKy.SelectedValue.ToString()))
+                    {
+                        DataRow dr = dt.NewRow();
+                        DataGridViewRow dgvR = (DataGridViewRow)dgvHS.CurrentRow;
+                        dr[0] = item.STT;
+                        dr[1] = diem.loaiDiem(item.MaLoai);
+                        dr[2] = item.MaHocKy;
+                        dr[3] = item.Diem1;
+                        dt.Rows.Add(dr);
+                    }
+                    dgvDiem.DataSource = dt;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+
+        private void dgvDiem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtSoDiem.Text=dgvDiem.CurrentRow.Cells[3].Value.ToString();
+
         }
     }
 }
