@@ -17,10 +17,10 @@ namespace DAL_BLL.Class
 
         public dynamic loadcboNamHoc(string id, string magv)
         {
-            if(id=="LND004")
+            if (id == "LND004")
             {
                 return db.NAMHOCs.Select(t => t);
-            }    
+            }
             else
             {
                 var namday = from nh in db.NAMHOCs
@@ -35,75 +35,75 @@ namespace DAL_BLL.Class
                                  nh.TenNamHoc
                              };
                 return namday;
-            }                
+            }
         }
 
         //Load combobox khối lớp
-        public dynamic loadcboKhoiLop(string id, string magv,string namhoc)
+        public dynamic loadcboKhoiLop(string id, string magv, string namhoc)
         {
-            if(id=="LND004")
+            if (id == "LND004")
             {
-                    var khoi = (from kl in db.KHOILOPs
-                               join l in db.LOPs on kl.MaKhoiLop equals l.MaKhoiLop
-                               join nam in db.NAMHOCs on l.MaNamHoc equals nam.MaNamHoc
-                               where nam.MaNamHoc == namhoc
-                               group kl by new { kl.MaKhoiLop, kl.TenKhoiLop } into kl1
-                               select new
-                               {
-                                   kl1.Key.MaKhoiLop,
-                                   kl1.Key.TenKhoiLop
-                               });
+                var khoi = (from kl in db.KHOILOPs
+                            join l in db.LOPs on kl.MaKhoiLop equals l.MaKhoiLop
+                            join nam in db.NAMHOCs on l.MaNamHoc equals nam.MaNamHoc
+                            where nam.MaNamHoc == namhoc
+                            group kl by new { kl.MaKhoiLop, kl.TenKhoiLop } into kl1
+                            select new
+                            {
+                                kl1.Key.MaKhoiLop,
+                                kl1.Key.TenKhoiLop
+                            });
                 return khoi;
-                
+
             }
             else
             {
-                    var kq = from kl in db.KHOILOPs
-                             from l in db.LOPs
-                             from gv in db.GIAOVIENs
-                             from pc in db.PHANCONGs
-                             from nh in db.NAMHOCs
-                             where kl.MaKhoiLop == l.MaKhoiLop &&
-                             gv.MaGiaoVien == pc.MaGiaoVien &&
-                             gv.MaGiaoVien == magv &&
-                             nh.MaNamHoc == l.MaNamHoc &&
-                             nh.MaNamHoc == namhoc &&
-                             pc.MaLop == l.MaLop
-                             group kl by new { kl.MaKhoiLop, kl.TenKhoiLop } into kl1
-                             select new
-                             {
-                                 kl1.Key.MaKhoiLop,
-                                 kl1.Key.TenKhoiLop
-                             };
+                var kq = from kl in db.KHOILOPs
+                         from l in db.LOPs
+                         from gv in db.GIAOVIENs
+                         from pc in db.PHANCONGs
+                         from nh in db.NAMHOCs
+                         where kl.MaKhoiLop == l.MaKhoiLop &&
+                         gv.MaGiaoVien == pc.MaGiaoVien &&
+                         gv.MaGiaoVien == magv &&
+                         nh.MaNamHoc == l.MaNamHoc &&
+                         nh.MaNamHoc == namhoc &&
+                         pc.MaLop == l.MaLop
+                         group kl by new { kl.MaKhoiLop, kl.TenKhoiLop } into kl1
+                         select new
+                         {
+                             kl1.Key.MaKhoiLop,
+                             kl1.Key.TenKhoiLop
+                         };
                 return kq;
-            }    
+            }
         }
 
         //Load combobox lớp học 
-        public dynamic loadcboLopHoc(string id, string magv,string makhoi, string namhoc)
+        public dynamic loadcboLopHoc(string id, string magv, string makhoi, string namhoc)
         {
-            if(id=="LND004")
+            if (id == "LND004")
             {
-                    return db.LOPs.Where(t => t.MaKhoiLop == makhoi && t.MaNamHoc == namhoc);
+                return db.LOPs.Where(t => t.MaKhoiLop == makhoi && t.MaNamHoc == namhoc);
             }
             else
             {
-                    var kq = from l in db.LOPs
-                             from kl in db.KHOILOPs
-                             from nh in db.NAMHOCs
-                             from pc in db.PHANCONGs
-                             from gv in db.GIAOVIENs
-                             where l.MaKhoiLop == kl.MaKhoiLop &&
-                             l.MaNamHoc == nh.MaNamHoc &&
-                             pc.MaGiaoVien == gv.MaGiaoVien &&
-                             gv.MaGiaoVien == magv &&
-                             pc.MaLop == l.MaLop
-                             select new
-                             {
-                                 l.MaLop,
-                                 l.TenLop
-                             };
-                    return kq;
+                var kq = from l in db.LOPs
+                         from kl in db.KHOILOPs
+                         from nh in db.NAMHOCs
+                         from pc in db.PHANCONGs
+                         from gv in db.GIAOVIENs
+                         where l.MaKhoiLop == kl.MaKhoiLop &&
+                         l.MaNamHoc == nh.MaNamHoc &&
+                         pc.MaGiaoVien == gv.MaGiaoVien &&
+                         gv.MaGiaoVien == magv &&
+                         pc.MaLop == l.MaLop
+                         select new
+                         {
+                             l.MaLop,
+                             l.TenLop
+                         };
+                return kq;
             }
         }
 
@@ -126,7 +126,7 @@ namespace DAL_BLL.Class
                                  mh.TenMonHoc
                              };
                 return monhoc;
-            }    
+            }
         }
 
         // load cbb học kỳ
@@ -135,7 +135,7 @@ namespace DAL_BLL.Class
             return from hk in db.HOCKies select hk;
         }
         //Load datagridView: hiện ds học sinh theo năm, khối, lớp
-        public dynamic loadDLHS(string id, string magv,string manam, string makhoi, string malop)
+        public dynamic loadDLHS(string id, string magv, string manam, string makhoi, string malop)
         {
             if (id == "LND004")
             {
@@ -168,7 +168,7 @@ namespace DAL_BLL.Class
                                 p.MaNamHoc == manam &&
                                 h.MaHocSinh == p.MaHocSinh &&
                                 p.MaLop == l.MaLop &&
-                                pc.MaGiaoVien==gv.MaGiaoVien &&
+                                pc.MaGiaoVien == gv.MaGiaoVien &&
                                 pc.MaLop == l.MaLop &&
                                 gv.MaGiaoVien == magv
                           select new
@@ -178,13 +178,11 @@ namespace DAL_BLL.Class
                               h.NgaySinh,
                               l.TenLop
                           });
-                if (dl == null)
-                    return "Không có dữ liệu";
                 return dl;
             }
         }
         //Load datagridView theo từng môn học của học kỳ (DS HS đã có điểm)
-        public dynamic loadDL(string id,string magv,string malop, string mamh, string mahk)
+        public dynamic loadDL(string id, string magv, string malop, string mamh, string mahk)
         {
             if (id == "LND004")
             {
@@ -202,12 +200,18 @@ namespace DAL_BLL.Class
                                 l.MaLop == d.MaLop &&
                                 mh.MaMonHoc == d.MaMonHoc &&
                                 hk.MaHocKy == d.MaHocKy
-                          select new
-                          {
+                          group h by new {
                               h.MaHocSinh,
                               h.HoTen,
                               h.NgaySinh,
                               l.TenLop
+                          } into g
+                          select new
+                          {
+                              g.Key.MaHocSinh,
+                              g.Key.HoTen,
+                              g.Key.NgaySinh,
+                              g.Key.TenLop
                           });
                 return dl;
             }
@@ -232,33 +236,27 @@ namespace DAL_BLL.Class
                                 pc.MaGiaoVien == gv.MaGiaoVien &&
                                 pc.MaLop == l.MaLop &&
                                 gv.MaGiaoVien == magv
-                          select new
+                          group h by new
                           {
                               h.MaHocSinh,
                               h.HoTen,
                               h.NgaySinh,
                               l.TenLop
+                          } into g
+                          select new
+                          {
+                              g.Key.MaHocSinh,
+                              g.Key.HoTen,
+                              g.Key.NgaySinh,
+                              g.Key.TenLop
                           });
                 return dl;
             }
         }
         // load điểm của học sinh theo từng loại điểm của môn học 
-        public dynamic LoadDiem(string mahs, string mamh, string hocky)
+        public IEnumerable<DIEM> LoadDiem(string mahs, string mamh, string hocky)
         {
-            var diem = from d in db.DIEMs
-                       from ld in db.LOAIDIEMs
-                       where d.MaHocSinh == mahs &&
-                             d.MaMonHoc == mamh &&
-                             d.MaHocKy == hocky &&
-                             d.MaLoai == ld.MaLoai
-                       select new
-                       {
-                           d.STT,
-                           d.MaLoai,
-                           ld.TenLoai,
-                           d.Diem1
-                       };
-            return diem;
+            return db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamh && t.MaHocKy == hocky);
         }
         // Load cbo Loại điểm
         public dynamic LoaiCBOLoaiDiem()
@@ -266,26 +264,63 @@ namespace DAL_BLL.Class
             return from ld in db.LOAIDIEMs select ld;
         }
         // thêm điểm môn học 
+        public void loadcotdiem(string mahs, string mamh, string mahk, string manh, string malop, string maloaidiem,float diem)
+        {
+            var demdiemieng = db.DIEMs.Where(t => t.MaHocSinh == mahs
+                             && t.MaHocKy == mahk
+                             && t.MaNamHoc == manh
+                             && t.MaMonHoc == mamh
+                             && t.MaLoai == maloaidiem).Count();
+                if (maloaidiem == "LD0001" || maloaidiem == "LD0002")
+                {
+                if (demdiemieng <= 4)
+                {
+                    themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
+                }
+                else MessageBox.Show("Điểm miệng và điểm 15 có tối đa 4 cột");
+                }
+                else if (maloaidiem == "LD0003")
+                {
+                    if (demdiemieng > 2) MessageBox.Show("Điểm 1 tiết có 2 cột");
+                else themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
+            }
+                else
+                {
+                    if (demdiemieng > 1)
+                    MessageBox.Show("Điểm thi duy nhất 1");
+                else themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
+            }
+        }
+
         public void themDiem(string mahs, string mamh, string mahk, string manh, string malop, string maloaidiem, float diem)
         {
             DIEM d = new DIEM();
-            d.MaHocSinh = mahs;
             d.MaMonHoc = mamh;
             d.MaHocKy = mahk;
+            d.MaHocSinh = mahs;
             d.MaNamHoc = manh;
             d.MaLop = malop;
             d.MaLoai = maloaidiem;
             d.Diem1 = diem;
             db.DIEMs.InsertOnSubmit(d);
             db.SubmitChanges();
-            MessageBox.Show("Thêm điểm thành công");
+            MessageBox.Show("Thêm thành công");
+        }        
+        
+        public bool ktst (int stt)
+        {
+            var kq = (from d in db.DIEMs where d.STT == stt select d).SingleOrDefault();
+            if (kq != null) return false;
+            else return true;
+
         }
         // Sửa điểm môn học 
         public void suaDiem(int stt, string mahs, string mamh, string mahk, string manh, string malop, string maloaidiem, float diem)
         {
-            var kt = (from d in db.DIEMs where d.STT == stt select d).SingleOrDefault();
-            if (kt != null)
+
+            if (ktst(stt) == false)
             {
+                var kt = db.DIEMs.FirstOrDefault(t => t.STT == stt);
                 kt.MaHocSinh = mahs;
                 kt.MaMonHoc = mamh;
                 kt.MaHocKy = mahk;
@@ -299,19 +334,92 @@ namespace DAL_BLL.Class
             else MessageBox.Show("Cập nhật điểm thất bại");
         }
 
-        public string LaySTT(string mahs, int stt)
+        public string loaiDiem(string ma)
         {
-            var dp = from p in db.DIEMs
-                     where p.MaLoai == mahs &&
-                     p.STT == stt
-                     select p;
-            foreach (var item in dp)
-            {
-                return item.STT.ToString();
-            }
-            return "";
+            return db.LOAIDIEMs.SingleOrDefault(t => t.MaLoai == ma).TenLoai;
         }
+        public double tinhdiemTBM(string mahs,string mamonhoc)
+        {
+            double diemtb=0;
+            double diem;
+            List<double> lstdiemhs1 = new List<double>();
+            List<double> lstdiemhs2 = new List<double>();
+            List<double> lstdiemhs3 = new List<double>();
+            var diemmieng = db.DIEMs.Where(t => t.MaHocSinh == mahs &&t.MaMonHoc==mamonhoc && t.MaLoai == "LD0001");
+            var diem15 = db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaLoai == "LD0002");
+            var diemtiet = db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaLoai == "LD0003");
+            var diemthi = db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaLoai == "LD0004");
+            if(diemmieng == null || diem15 == null || diemtiet == null || diemthi == null)
+            {
+                diemtb = 0;
+            }    
+            if (diemmieng != null && diem15 != null && diemtiet != null&& diemthi != null)
+            {
+                foreach (var item in db.DIEMs.Where(t=>t.MaHocSinh==mahs))
+                { 
+                    if(item.MaLoai=="LD0001" || item.MaLoai =="LD0002")
+                    {
+                        diem = item.Diem1;
+                        lstdiemhs1.Add(diem);
+                    }    
+                    if(item.MaLoai == "LD0003")
+                    {
+                        diem = item.Diem1;
+                        lstdiemhs2.Add(diem);
+                    }
+                    else
+                    {
+                        diem = item.Diem1;
+                        lstdiemhs3.Add(diem);
 
+                    }
+                }    
+                for(int i=0; i<lstdiemhs1.Count;i++)
+                {
+                    diemtb += lstdiemhs1[i];
+                }
+                for (int i = 0; i < lstdiemhs2.Count; i++)
+                {
+                    diemtb += lstdiemhs2[i]*2;
+                }
+                for (int i = 0; i < lstdiemhs3.Count; i++)
+                {
+                    diemtb += lstdiemhs3[i] * 3;
+                }
+                diemtb = diemtb / (lstdiemhs1.Count + lstdiemhs2.Count * 2 + lstdiemhs3.Count *3) ;
+            }
+            return (double)Math.Round(Convert.ToDecimal(diemtb), 2);
+        }
+        public bool ktdiemmhhk(string mahs, string mahk, string mon,string manamhoc)
+        {
+            var ketqua = db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaNamHoc == manamhoc && t.MaMonHoc == mon);
+            if (ketqua == null)
+                return true;
+            return false;
+        }
+        
+
+        public void tinhdiemtheohocky(string mahs, string mahk, string mon, string manamhoc,string malop)
+        {
+            if(ktdiemmhhk(mahs,mahk,mon,manamhoc))
+            {
+                KQ_HOC_KY_MON_HOC hk = new KQ_HOC_KY_MON_HOC();
+                hk.MaHocSinh = mahs;
+                hk.MaHocKy = mahk;
+                hk.MaMonHoc = mon;
+                hk.MaNamHoc = manamhoc;
+                hk.MaLop = malop;
+                hk.DTBMonHocKy = tinhdiemTBM(mahs,mon);
+                db.KQ_HOC_KY_MON_HOCs.InsertOnSubmit(hk);
+                db.SubmitChanges();
+            }
+            else
+            {
+                KQ_HOC_KY_MON_HOC hk = db.KQ_HOC_KY_MON_HOCs.FirstOrDefault(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaNamHoc == manamhoc && t.MaMonHoc == mon);
+                hk.DTBMonHocKy = tinhdiemTBM(mahs,mon);             
+                db.SubmitChanges();
+            }
+        }
     }
 
 }

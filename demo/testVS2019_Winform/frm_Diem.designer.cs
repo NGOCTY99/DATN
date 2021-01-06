@@ -38,10 +38,6 @@ namespace QLDiemTHPT_Winform
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvDiem = new System.Windows.Forms.DataGridView();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
@@ -116,7 +112,7 @@ namespace QLDiemTHPT_Winform
             this.dgvHS.RowHeadersWidth = 51;
             this.dgvHS.Size = new System.Drawing.Size(642, 504);
             this.dgvHS.TabIndex = 0;
-            this.dgvHS.SelectionChanged += new System.EventHandler(this.dgvHS_SelectionChanged);
+            this.dgvHS.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHS_CellClick);
             // 
             // Column1
             // 
@@ -168,11 +164,6 @@ namespace QLDiemTHPT_Winform
             this.dgvDiem.AllowUserToAddRows = false;
             this.dgvDiem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column8,
-            this.Column7,
-            this.Column4,
-            this.Column6});
             this.dgvDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDiem.Location = new System.Drawing.Point(4, 4);
             this.dgvDiem.Margin = new System.Windows.Forms.Padding(4);
@@ -180,35 +171,7 @@ namespace QLDiemTHPT_Winform
             this.dgvDiem.RowHeadersWidth = 51;
             this.dgvDiem.Size = new System.Drawing.Size(401, 154);
             this.dgvDiem.TabIndex = 2;
-            this.dgvDiem.SelectionChanged += new System.EventHandler(this.dgvDiem_SelectionChanged);
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "STT";
-            this.Column8.HeaderText = "STT";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "MaLoai";
-            this.Column7.HeaderText = "Mã loại";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "TenLoai";
-            this.Column4.HeaderText = "Loại điểm";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Diem1";
-            this.Column6.HeaderText = "Điểm";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
+            this.dgvDiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiem_CellClick);
             // 
             // tableLayoutPanel4
             // 
@@ -246,7 +209,6 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 51);
             this.tableLayoutPanel5.TabIndex = 0;
-            this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
             // 
             // btnLuu
             // 
@@ -426,7 +388,6 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 42);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // label1
             // 
@@ -645,9 +606,5 @@ namespace QLDiemTHPT_Winform
         private System.Windows.Forms.TextBox txtSoDiem;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
