@@ -170,6 +170,7 @@ namespace QLDiemTHPT_Winform
         {
             tableLayoutPanel6.Visible = true;
             txtSoDiem.Text = "";
+            cboLoaiDiem.Enabled = true;
             txtSoDiem.Focus();
         }
 
@@ -204,8 +205,9 @@ namespace QLDiemTHPT_Winform
                             cboNamHoc.SelectedValue.ToString(),
                             cboMaLop.SelectedValue.ToString(),
                             cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
-                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
-                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
+                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
+                            if (label9.Text != "????")
+                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
                         }
                     }
                     if (btnSuaDiem.Visible == true && btnThemDiem.Visible == false)
@@ -222,10 +224,11 @@ namespace QLDiemTHPT_Winform
                                          cboHocKy.SelectedValue.ToString(),
                                          cboNamHoc.SelectedValue.ToString(),
                                          cboMaLop.SelectedValue.ToString(),
-                                         dgvDiem.CurrentRow.Cells[1].Value.ToString(),
+                                         diem.loadMaLoai(dgvDiem.CurrentRow.Cells[1].Value.ToString()),
                                          float.Parse(txtSoDiem.Text));
-                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
-                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
+                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
+                            if (label9.Text != "????")
+                                diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
                         }
                     }
                     else if (btnThemDiem.Visible == true && btnSuaDiem.Visible == true)
@@ -244,8 +247,11 @@ namespace QLDiemTHPT_Winform
                                              cboHocKy.SelectedValue.ToString(),
                                              cboNamHoc.SelectedValue.ToString(),
                                              cboMaLop.SelectedValue.ToString(),
-                                             dgvDiem.CurrentRow.Cells[1].Value.ToString(),
+                                             diem.loadMaLoai(dgvDiem.CurrentRow.Cells[1].Value.ToString()),
                                              float.Parse(txtSoDiem.Text));
+                                label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
+                                if (label9.Text != "????")
+                                    diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
                             }
                             else
                             {
@@ -255,16 +261,17 @@ namespace QLDiemTHPT_Winform
                                 cboNamHoc.SelectedValue.ToString(),
                                 cboMaLop.SelectedValue.ToString(),
                                 cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
+                                label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(),cboNamHoc.SelectedValue.ToString(),cboHocKy.SelectedValue.ToString()).ToString();
+                                if (label9.Text != "????")
+                                    diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
                             }
-                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
-                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString());
                         }
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Thất bại");
+                MessageBox.Show("Lỗi");
             }
         }
 
