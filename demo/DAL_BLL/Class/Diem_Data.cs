@@ -258,6 +258,11 @@ namespace DAL_BLL.Class
         {
             return db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamh && t.MaHocKy == hocky);
         }
+
+        public string loadMaLoai(string tenloai)
+        {
+            return db.LOAIDIEMs.Single(t => t.TenLoai == tenloai).MaLoai.ToString();
+        }
         // Load cbo Loại điểm
         public dynamic LoaiCBOLoaiDiem()
         {
@@ -338,70 +343,62 @@ namespace DAL_BLL.Class
         {
             return db.LOAIDIEMs.SingleOrDefault(t => t.MaLoai == ma).TenLoai;
         }
-        public double tinhdiemTBM(string mahs,string mamonhoc)
+
+        public string tinhdiemTBM(string mahs, string mamonhoc, string manam, string mahocky)
         {
             double diemtb=0;
             double diem;
             List<double> lstdiemhs1 = new List<double>();
             List<double> lstdiemhs2 = new List<double>();
             List<double> lstdiemhs3 = new List<double>();
-            var diemmieng = db.DIEMs.Where(t => t.MaHocSinh == mahs &&t.MaMonHoc==mamonhoc && t.MaLoai == "LD0001");
-            var diem15 = db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaLoai == "LD0002");
-            var diemtiet = db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaLoai == "LD0003");
-            var diemthi = db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaLoai == "LD0004");
-            if(diemmieng == null || diem15 == null || diemtiet == null || diemthi == null)
+            foreach (var item in db.DIEMs.Where(t => t.MaHocSinh == mahs))
             {
-                diemtb = 0;
-            }    
-            if (diemmieng != null && diem15 != null && diemtiet != null&& diemthi != null)
-            {
-                foreach (var item in db.DIEMs.Where(t=>t.MaHocSinh==mahs))
-                { 
-                    if(item.MaLoai=="LD0001" || item.MaLoai =="LD0002")
-                    {
-                        diem = item.Diem1;
-                        lstdiemhs1.Add(diem);
-                    }    
-                    if(item.MaLoai == "LD0003")
-                    {
-                        diem = item.Diem1;
-                        lstdiemhs2.Add(diem);
-                    }
-                    else
-                    {
-                        diem = item.Diem1;
-                        lstdiemhs3.Add(diem);
-
-                    }
-                }    
-                for(int i=0; i<lstdiemhs1.Count;i++)
+                if (item.MaLoai == "LD0001" || item.MaLoai == "LD0002")
+                {
+                    diem = item.Diem1;
+                    lstdiemhs1.Add(diem);
+                }
+                else if (item.MaLoai == "LD0003")
+                {
+                    diem = item.Diem1;
+                    lstdiemhs2.Add(diem);
+                }
+                else
+                {
+                    lstdiemhs3.Add(item.Diem1);
+                }
+                for (int i = 0; i < lstdiemhs1.Count; i++)
                 {
                     diemtb += lstdiemhs1[i];
                 }
                 for (int i = 0; i < lstdiemhs2.Count; i++)
                 {
-                    diemtb += lstdiemhs2[i]*2;
+                    diemtb += lstdiemhs2[i] * 2;
                 }
                 for (int i = 0; i < lstdiemhs3.Count; i++)
                 {
                     diemtb += lstdiemhs3[i] * 3;
                 }
-                diemtb = diemtb / (lstdiemhs1.Count + lstdiemhs2.Count * 2 + lstdiemhs3.Count *3) ;
+                diemtb = (double)Math.Round(Convert.ToDecimal((diemtb) / (lstdiemhs1.Count + (lstdiemhs2.Count * 2) + (lstdiemhs3.Count*3) )), 2);
+
             }
-            return (double)Math.Round(Convert.ToDecimal(diemtb), 2);
-        }
-        public bool ktdiemmhhk(string mahs, string mahk, string mon,string manamhoc)
-        {
-            var ketqua = db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaNamHoc == manamhoc && t.MaMonHoc == mon);
-            if (ketqua == null)
-                return true;
-            return false;
+            return diemtb.ToString();
         }
         
-
-        public void tinhdiemtheohocky(string mahs, string mahk, string mon, string manamhoc,string malop)
+        public void tinhdiemtheohocky(string mahs, string mahk, string mon, string manamhoc,string malop,double diemtb)
         {
-            if(ktdiemmhhk(mahs,mahk,mon,manamhoc))
+            KQ_HOC_KY_MON_HOC ketqua = db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaNamHoc == manamhoc && t.MaMonHoc == mon).SingleOrDefault();
+            if (ketqua != null)
+            {
+                ketqua.MaHocSinh = mahs;
+                ketqua.MaHocKy = mahk;
+                ketqua.MaMonHoc = mon;
+                ketqua.MaNamHoc = manamhoc;
+                ketqua.MaLop = malop;
+                ketqua.DTBMonHocKy = diemtb;
+                db.SubmitChanges();
+            }
+            else
             {
                 KQ_HOC_KY_MON_HOC hk = new KQ_HOC_KY_MON_HOC();
                 hk.MaHocSinh = mahs;
@@ -409,14 +406,8 @@ namespace DAL_BLL.Class
                 hk.MaMonHoc = mon;
                 hk.MaNamHoc = manamhoc;
                 hk.MaLop = malop;
-                hk.DTBMonHocKy = tinhdiemTBM(mahs,mon);
+                hk.DTBMonHocKy = diemtb;
                 db.KQ_HOC_KY_MON_HOCs.InsertOnSubmit(hk);
-                db.SubmitChanges();
-            }
-            else
-            {
-                KQ_HOC_KY_MON_HOC hk = db.KQ_HOC_KY_MON_HOCs.FirstOrDefault(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaNamHoc == manamhoc && t.MaMonHoc == mon);
-                hk.DTBMonHocKy = tinhdiemTBM(mahs,mon);             
                 db.SubmitChanges();
             }
         }
