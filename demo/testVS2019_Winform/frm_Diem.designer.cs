@@ -85,13 +85,12 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel2.Controls.Add(this.dgvHS, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 42);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 34);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 512F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1067, 512);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 416F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(800, 416);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dgvHS
@@ -105,12 +104,11 @@ namespace QLDiemTHPT_Winform
             this.Column3,
             this.Column5});
             this.dgvHS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHS.Location = new System.Drawing.Point(4, 4);
-            this.dgvHS.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvHS.Location = new System.Drawing.Point(3, 3);
             this.dgvHS.MultiSelect = false;
             this.dgvHS.Name = "dgvHS";
             this.dgvHS.RowHeadersWidth = 51;
-            this.dgvHS.Size = new System.Drawing.Size(642, 504);
+            this.dgvHS.Size = new System.Drawing.Size(482, 410);
             this.dgvHS.TabIndex = 0;
             this.dgvHS.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHS_CellClick);
             // 
@@ -146,17 +144,16 @@ namespace QLDiemTHPT_Winform
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.dgvDiem, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(654, 4);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(491, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.19512F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.80488F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(409, 504);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(306, 410);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // dgvDiem
@@ -165,31 +162,29 @@ namespace QLDiemTHPT_Winform
             this.dgvDiem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDiem.Location = new System.Drawing.Point(4, 4);
-            this.dgvDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDiem.Location = new System.Drawing.Point(3, 3);
             this.dgvDiem.Name = "dgvDiem";
             this.dgvDiem.RowHeadersWidth = 51;
-            this.dgvDiem.Size = new System.Drawing.Size(401, 154);
+            this.dgvDiem.Size = new System.Drawing.Size(300, 125);
             this.dgvDiem.TabIndex = 2;
             this.dgvDiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiem_CellClick);
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 401F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 166);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 134);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.73399F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.26601F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(401, 334);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(300, 273);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // tableLayoutPanel5
@@ -202,22 +197,20 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel5.Controls.Add(this.btnSuaDiem, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnThemDiem, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 51);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(295, 41);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnLuu
             // 
             this.btnLuu.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
-            this.btnLuu.Location = new System.Drawing.Point(219, 4);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuu.Location = new System.Drawing.Point(164, 3);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(68, 43);
+            this.btnLuu.Size = new System.Drawing.Size(51, 35);
             this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -226,10 +219,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.btnSuaDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSuaDiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaDiem.ImageOptions.Image")));
-            this.btnSuaDiem.Location = new System.Drawing.Point(180, 4);
-            this.btnSuaDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSuaDiem.Location = new System.Drawing.Point(135, 3);
             this.btnSuaDiem.Name = "btnSuaDiem";
-            this.btnSuaDiem.Size = new System.Drawing.Size(31, 43);
+            this.btnSuaDiem.Size = new System.Drawing.Size(23, 35);
             this.btnSuaDiem.TabIndex = 1;
             this.btnSuaDiem.Text = "Sửa";
             this.btnSuaDiem.Click += new System.EventHandler(this.btnSuaDiem_Click);
@@ -238,10 +230,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.btnThemDiem.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnThemDiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemDiem.ImageOptions.Image")));
-            this.btnThemDiem.Location = new System.Drawing.Point(104, 4);
-            this.btnThemDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThemDiem.Location = new System.Drawing.Point(78, 3);
             this.btnThemDiem.Name = "btnThemDiem";
-            this.btnThemDiem.Size = new System.Drawing.Size(68, 43);
+            this.btnThemDiem.Size = new System.Drawing.Size(51, 35);
             this.btnThemDiem.TabIndex = 0;
             this.btnThemDiem.Text = "Thêm";
             this.btnThemDiem.Click += new System.EventHandler(this.btnThemDiem_Click);
@@ -250,16 +241,15 @@ namespace QLDiemTHPT_Winform
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(4, 63);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 51);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.83105F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.16895F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(393, 267);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(295, 219);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -278,22 +268,20 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel7.Controls.Add(this.cboLoaiDiem, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.txtSoDiem, 3, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(385, 52);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(289, 44);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(340, 0);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(252, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 52);
+            this.label9.Size = new System.Drawing.Size(34, 44);
             this.label9.TabIndex = 5;
             this.label9.Text = "????";
             // 
@@ -301,10 +289,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(244, 0);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(180, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 52);
+            this.label8.Size = new System.Drawing.Size(66, 44);
             this.label8.TabIndex = 4;
             this.label8.Text = "Điểm trung bình môn:";
             // 
@@ -312,10 +299,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(148, 0);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(110, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 52);
+            this.label7.Size = new System.Drawing.Size(29, 44);
             this.label7.TabIndex = 2;
             this.label7.Text = "Số điểm:";
             // 
@@ -323,10 +309,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(4, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 52);
+            this.label6.Size = new System.Drawing.Size(29, 44);
             this.label6.TabIndex = 0;
             this.label6.Text = "Loại điểm:";
             // 
@@ -334,22 +319,20 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboLoaiDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboLoaiDiem.FormattingEnabled = true;
-            this.cboLoaiDiem.Location = new System.Drawing.Point(52, 4);
-            this.cboLoaiDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.cboLoaiDiem.Location = new System.Drawing.Point(38, 3);
             this.cboLoaiDiem.Name = "cboLoaiDiem";
-            this.cboLoaiDiem.Size = new System.Drawing.Size(88, 24);
+            this.cboLoaiDiem.Size = new System.Drawing.Size(66, 21);
             this.cboLoaiDiem.TabIndex = 1;
             this.cboLoaiDiem.Tag = "17";
             // 
             // txtSoDiem
             // 
             this.txtSoDiem.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtSoDiem.Location = new System.Drawing.Point(196, 4);
-            this.txtSoDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSoDiem.Location = new System.Drawing.Point(145, 3);
             this.txtSoDiem.MaxLength = 3;
             this.txtSoDiem.Name = "txtSoDiem";
             this.txtSoDiem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSoDiem.Size = new System.Drawing.Size(36, 22);
+            this.txtSoDiem.Size = new System.Drawing.Size(28, 20);
             this.txtSoDiem.TabIndex = 3;
             this.txtSoDiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoDiem_KeyPress);
             // 
@@ -382,21 +365,19 @@ namespace QLDiemTHPT_Winform
             this.tableLayoutPanel1.Controls.Add(this.btnLocDSHS, 6, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 42);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 34);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 42);
+            this.label1.Size = new System.Drawing.Size(32, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "Năm học:";
             // 
@@ -404,10 +385,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboNamHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboNamHoc.FormattingEnabled = true;
-            this.cboNamHoc.Location = new System.Drawing.Point(54, 4);
-            this.cboNamHoc.Margin = new System.Windows.Forms.Padding(4);
+            this.cboNamHoc.Location = new System.Drawing.Point(41, 3);
             this.cboNamHoc.Name = "cboNamHoc";
-            this.cboNamHoc.Size = new System.Drawing.Size(112, 24);
+            this.cboNamHoc.Size = new System.Drawing.Size(84, 21);
             this.cboNamHoc.TabIndex = 1;
             this.cboNamHoc.Tag = "10";
             this.cboNamHoc.SelectedValueChanged += new System.EventHandler(this.cboNamHoc_SelectedIndexChanged);
@@ -417,10 +397,9 @@ namespace QLDiemTHPT_Winform
             this.btnLocTheoDK.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnLocTheoDK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLocTheoDK.ImageOptions.Image")));
             this.btnLocTheoDK.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.btnLocTheoDK.Location = new System.Drawing.Point(1003, 4);
-            this.btnLocTheoDK.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLocTheoDK.Location = new System.Drawing.Point(752, 3);
             this.btnLocTheoDK.Name = "btnLocTheoDK";
-            this.btnLocTheoDK.Size = new System.Drawing.Size(45, 34);
+            this.btnLocTheoDK.Size = new System.Drawing.Size(34, 28);
             this.btnLocTheoDK.TabIndex = 14;
             this.btnLocTheoDK.Click += new System.EventHandler(this.btnLocTheoDK_Click);
             // 
@@ -428,10 +407,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(174, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(131, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 42);
+            this.label2.Size = new System.Drawing.Size(35, 34);
             this.label2.TabIndex = 15;
             this.label2.Text = "Khối lớp:";
             // 
@@ -439,10 +417,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboMaKhoi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboMaKhoi.FormattingEnabled = true;
-            this.cboMaKhoi.Location = new System.Drawing.Point(229, 4);
-            this.cboMaKhoi.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaKhoi.Location = new System.Drawing.Point(172, 3);
             this.cboMaKhoi.Name = "cboMaKhoi";
-            this.cboMaKhoi.Size = new System.Drawing.Size(120, 24);
+            this.cboMaKhoi.Size = new System.Drawing.Size(90, 21);
             this.cboMaKhoi.TabIndex = 16;
             this.cboMaKhoi.Tag = "8";
             this.cboMaKhoi.SelectedIndexChanged += new System.EventHandler(this.cboMaKhoi_SelectedValueChanged);
@@ -451,10 +428,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(357, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(268, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 42);
+            this.label3.Size = new System.Drawing.Size(32, 34);
             this.label3.TabIndex = 18;
             this.label3.Text = "Lớp:";
             // 
@@ -462,10 +438,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(599, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(450, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 42);
+            this.label4.Size = new System.Drawing.Size(29, 34);
             this.label4.TabIndex = 19;
             this.label4.Text = "Môn học:";
             // 
@@ -473,10 +448,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboMonHoc.FormattingEnabled = true;
-            this.cboMonHoc.Location = new System.Drawing.Point(645, 4);
-            this.cboMonHoc.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMonHoc.Location = new System.Drawing.Point(485, 3);
             this.cboMonHoc.Name = "cboMonHoc";
-            this.cboMonHoc.Size = new System.Drawing.Size(134, 24);
+            this.cboMonHoc.Size = new System.Drawing.Size(100, 21);
             this.cboMonHoc.TabIndex = 20;
             this.cboMonHoc.Tag = "13";
             // 
@@ -484,10 +458,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(787, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(591, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 42);
+            this.label5.Size = new System.Drawing.Size(43, 34);
             this.label5.TabIndex = 21;
             this.label5.Text = "Học kỳ:";
             // 
@@ -495,10 +468,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboHocKy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboHocKy.FormattingEnabled = true;
-            this.cboHocKy.Location = new System.Drawing.Point(853, 4);
-            this.cboHocKy.Margin = new System.Windows.Forms.Padding(4);
+            this.cboHocKy.Location = new System.Drawing.Point(640, 3);
             this.cboHocKy.Name = "cboHocKy";
-            this.cboHocKy.Size = new System.Drawing.Size(142, 24);
+            this.cboHocKy.Size = new System.Drawing.Size(106, 21);
             this.cboHocKy.TabIndex = 22;
             this.cboHocKy.Tag = "9";
             // 
@@ -506,10 +478,9 @@ namespace QLDiemTHPT_Winform
             // 
             this.cboMaLop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboMaLop.FormattingEnabled = true;
-            this.cboMaLop.Location = new System.Drawing.Point(407, 4);
-            this.cboMaLop.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaLop.Location = new System.Drawing.Point(306, 3);
             this.cboMaLop.Name = "cboMaLop";
-            this.cboMaLop.Size = new System.Drawing.Size(116, 24);
+            this.cboMaLop.Size = new System.Drawing.Size(87, 21);
             this.cboMaLop.TabIndex = 23;
             this.cboMaLop.Tag = "1";
             // 
@@ -518,10 +489,9 @@ namespace QLDiemTHPT_Winform
             this.btnLocDSHS.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnLocDSHS.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLocDSHS.ImageOptions.Image")));
             this.btnLocDSHS.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.btnLocDSHS.Location = new System.Drawing.Point(531, 4);
-            this.btnLocDSHS.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLocDSHS.Location = new System.Drawing.Point(399, 3);
             this.btnLocDSHS.Name = "btnLocDSHS";
-            this.btnLocDSHS.Size = new System.Drawing.Size(45, 34);
+            this.btnLocDSHS.Size = new System.Drawing.Size(34, 28);
             this.btnLocDSHS.TabIndex = 24;
             this.btnLocDSHS.Click += new System.EventHandler(this.btnLocDSHS_Click);
             // 
@@ -545,12 +515,11 @@ namespace QLDiemTHPT_Winform
             // 
             // frm_Diem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_Diem";
             this.Text = "Bảng điểm";
             this.Load += new System.EventHandler(this.frm_Diem_Load);

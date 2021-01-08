@@ -26,8 +26,8 @@ namespace DAL_BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-SPL0PUE\\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;Persist Secu" +
-            "rity Info=True;User ID=sa;Password=sa2012")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NGOCTY\\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;Persist Security Info" +
+            "=True;User ID=sa;Password=sa2012")]
         public string QLHocSinhTHPTConnectionString {
             get {
                 return ((string)(this["QLHocSinhTHPTConnectionString"]));

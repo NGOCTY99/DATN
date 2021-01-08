@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLHocSinhTHPT" Class="QLDiemTHPTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-SPL0PUE\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;Persist Security Info=True;User ID=sa" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLHocSinhTHPTConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=NGOCTY\SQLEXPRESS;Initial Catalog=QLHocSinhTHPT;Persist Security Info=True;User ID=sa" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLHocSinhTHPTConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.DANTOC" Member="DANTOCs">
     <Type Name="DANTOC">
       <Column Name="MaDanToc" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
