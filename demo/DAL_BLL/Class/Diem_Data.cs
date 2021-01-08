@@ -269,31 +269,58 @@ namespace DAL_BLL.Class
             return from ld in db.LOAIDIEMs select ld;
         }
         // thêm điểm môn học 
-        public void loadcotdiem(string mahs, string mamh, string mahk, string manh, string malop, string maloaidiem,float diem)
+        public void loadcotdiem(string mahs, string mamh, string mahk, string manh, string malop, string maloaidiem, float diem)
         {
-            var demdiemieng = db.DIEMs.Where(t => t.MaHocSinh == mahs
+            var demdiemmieng = db.DIEMs.Where(t => t.MaHocSinh == mahs
                              && t.MaHocKy == mahk
                              && t.MaNamHoc == manh
                              && t.MaMonHoc == mamh
-                             && t.MaLoai == maloaidiem).Count();
-                if (maloaidiem == "LD0001" || maloaidiem == "LD0002")
-                {
-                if (demdiemieng <= 4)
+                             && t.MaLoai == "LD0001").Count();
+            var demdiem15 = db.DIEMs.Where(t => t.MaHocSinh == mahs
+                 && t.MaHocKy == mahk
+                 && t.MaNamHoc == manh
+                 && t.MaMonHoc == mamh
+                 && t.MaLoai == "LD0002").Count();
+            var demdiem1 = db.DIEMs.Where(t => t.MaHocSinh == mahs
+                 && t.MaHocKy == mahk
+                 && t.MaNamHoc == manh
+                 && t.MaMonHoc == mamh
+                 && t.MaLoai == "LD0003").Count();
+            var demdiemthi = db.DIEMs.Where(t => t.MaHocSinh == mahs
+                 && t.MaHocKy == mahk
+                 && t.MaNamHoc == manh
+                 && t.MaMonHoc == mamh
+                 && t.MaLoai == "LD0004").Count();
+            if (maloaidiem == "LD0001")
+            {
+                if (demdiemmieng < 4)
                 {
                     themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
                 }
                 else MessageBox.Show("Điểm miệng và điểm 15 có tối đa 4 cột");
-                }
-                else if (maloaidiem == "LD0003")
+            }
+            if (maloaidiem == "LD0002")
+            {
+                if (demdiem15 < 4)
                 {
-                    if (demdiemieng > 2) MessageBox.Show("Điểm 1 tiết có 2 cột");
+                    themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
+                }
+                else MessageBox.Show("Điểm miệng và điểm 15 có tối đa 4 cột");
+            }
+
+            if (maloaidiem == "LD0003")
+            {
+                if (demdiem1 > 1) MessageBox.Show("Điểm 1 tiết có 2 cột");
                 else themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
             }
-                else
+            else
+            {
+                if (maloaidiem == "LD0004")
                 {
-                    if (demdiemieng > 1)
-                    MessageBox.Show("Điểm thi duy nhất 1");
-                else themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
+                    if (demdiemthi > 0) MessageBox.Show("Điểm thi duy nhất 1");
+
+                    else themDiem(mahs, mamh, mahk, manh, malop, maloaidiem, diem);
+                }
             }
         }
 
@@ -310,9 +337,9 @@ namespace DAL_BLL.Class
             db.DIEMs.InsertOnSubmit(d);
             db.SubmitChanges();
             MessageBox.Show("Thêm thành công");
-        }        
-        
-        public bool ktst (int stt)
+        }
+
+        public bool ktst(int stt)
         {
             var kq = (from d in db.DIEMs where d.STT == stt select d).SingleOrDefault();
             if (kq != null) return false;
@@ -344,48 +371,48 @@ namespace DAL_BLL.Class
             return db.LOAIDIEMs.SingleOrDefault(t => t.MaLoai == ma).TenLoai;
         }
 
-        public string tinhdiemTBM(string mahs, string mamonhoc, string manam, string mahocky)
+        public double tinhdiemTBM(string mahs, string mamonhoc, string manam, string mahocky)
         {
-            double diemtb=0;
+            double diemtb = new double();
             double diem;
             List<double> lstdiemhs1 = new List<double>();
             List<double> lstdiemhs2 = new List<double>();
             List<double> lstdiemhs3 = new List<double>();
-            foreach (var item in db.DIEMs.Where(t => t.MaHocSinh == mahs))
+            foreach (var item in db.DIEMs.Where(t => t.MaHocSinh == mahs && t.MaMonHoc == mamonhoc && t.MaNamHoc == manam && t.MaHocKy == mahocky))
             {
                 if (item.MaLoai == "LD0001" || item.MaLoai == "LD0002")
                 {
                     diem = item.Diem1;
                     lstdiemhs1.Add(diem);
                 }
-                else if (item.MaLoai == "LD0003")
+                if (item.MaLoai == "LD0003")
                 {
                     diem = item.Diem1;
                     lstdiemhs2.Add(diem);
                 }
                 else
                 {
-                    lstdiemhs3.Add(item.Diem1);
+                    if (item.MaLoai == "LD0004")
+                        lstdiemhs3.Add(item.Diem1);
                 }
-                for (int i = 0; i < lstdiemhs1.Count; i++)
-                {
-                    diemtb += lstdiemhs1[i];
-                }
-                for (int i = 0; i < lstdiemhs2.Count; i++)
-                {
-                    diemtb += lstdiemhs2[i] * 2;
-                }
-                for (int i = 0; i < lstdiemhs3.Count; i++)
-                {
-                    diemtb += lstdiemhs3[i] * 3;
-                }
-                diemtb = (double)Math.Round(Convert.ToDecimal((diemtb) / (lstdiemhs1.Count + (lstdiemhs2.Count * 2) + (lstdiemhs3.Count*3) )), 2);
-
             }
-            return diemtb.ToString();
+            for (int i = 0; i < lstdiemhs1.Count; i++)
+            {
+                diemtb += lstdiemhs1[i];
+            }
+            for (int i = 0; i < lstdiemhs2.Count; i++)
+            {
+                diemtb += lstdiemhs2[i] * 2;
+            }
+            for (int i = 0; i < lstdiemhs3.Count; i++)
+            {
+                diemtb += lstdiemhs3[i] * 3;
+            }
+            diemtb = (double)((diemtb) / (lstdiemhs1.Count + (lstdiemhs2.Count * 2) + (lstdiemhs3.Count * 3)));
+            return (double)Math.Round(Convert.ToDecimal(diemtb), 2);
         }
-        
-        public void tinhdiemtheohocky(string mahs, string mahk, string mon, string manamhoc,string malop,double diemtb)
+
+        public void tinhdiemtheohocky(string mahs, string mahk, string mon, string manamhoc, string malop, double diemtb)
         {
             KQ_HOC_KY_MON_HOC ketqua = db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaNamHoc == manamhoc && t.MaMonHoc == mon).SingleOrDefault();
             if (ketqua != null)
@@ -411,6 +438,95 @@ namespace DAL_BLL.Class
                 db.SubmitChanges();
             }
         }
-    }
+        public string layTenMon(string malop)
+        {
+            var l = db.LOPs.SingleOrDefault(t => t.MaLop == malop).MaGiaoVien;
+            var gv = db.GIAOVIENs.SingleOrDefault(t => t.MaGiaoVien == l).MaMonHoc;
+            return gv;
+        }
 
+        public double tinhdiemHK(string mahs, string malop, string mahk, string manh)
+        {
+            List<double> dtbmonhs2 = new List<double>();
+            List<double> dtbmon = new List<double>();
+            double dtbhk = 0;
+            double diem;
+            foreach (var item in db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaLop == malop))
+            {
+                if (item.MaMonHoc == "MH0001")
+                {
+                    diem = item.DTBMonHocKy;
+                    dtbmonhs2.Add(diem);
+                }
+                else if (item.MaMonHoc == "MH0005")
+                {
+                    diem = item.DTBMonHocKy;
+                    dtbmonhs2.Add(diem);
+                }
+                else if (item.MaMonHoc == "MH0002" || item.MaMonHoc == "MH0003" || item.MaMonHoc == "MH0004" ||
+                            item.MaMonHoc == "MH0006" || item.MaMonHoc == "MH0007" || item.MaMonHoc == "MH0009")
+                {
+                    if (item.MaMonHoc == layTenMon(item.MaLop))
+                    {
+                        diem = item.DTBMonHocKy;
+                        dtbmonhs2.Add(diem);
+                    }
+                    else dtbmon.Add(item.DTBMonHocKy);
+                }
+                else if (item.MaMonHoc == "MH0008")
+                {
+                    if (layTenMon(item.MaLop) != "MH0002" && layTenMon(item.MaLop) != "MH0003" && layTenMon(item.MaLop) != "MH0004" &&
+                            layTenMon(item.MaLop) != "MH0006" && layTenMon(item.MaLop) != "MH0007" && layTenMon(item.MaLop) != "MH0009")
+                    {
+                        diem = item.DTBMonHocKy;
+                        dtbmonhs2.Add(diem);
+                    }
+                    else dtbmon.Add(item.DTBMonHocKy);
+                }    
+                else dtbmon.Add(item.DTBMonHocKy);
+            }
+            for (int i = 0; i < dtbmonhs2.Count(); i++)
+            {
+                dtbhk += (dtbmonhs2[i]*2);
+            }
+            for (int i=0; i < dtbmon.Count(); i++)
+            {
+                dtbhk += dtbmon[i];
+            }
+            dtbhk = dtbhk / 14;
+            dtbhk = (double)Math.Round(Convert.ToDecimal(dtbhk), 2);
+            return dtbhk;
+        }
+
+        public IEnumerable<HANHKIEM> loadHK()
+        {
+            return db.HANHKIEMs.Select(t => t);
+        }
+
+        public void capnhatdiemtbhk(string mahs, string malop, string mahk, string manamhoc, string mahocluc, string hk, double dtb)
+        {
+
+        }
+
+        public void XetHL(double diemtb, string hk, string mahs, string malop, string manam,string mahk)
+        {
+            double toan, van, anh, su, dia, vat, gdcd, gdqp, cn, hoa, sinh, td, tin;
+            foreach (var item in db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaLop == malop))
+            {
+                if (item.MaMonHoc == "MH0001") toan = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0005") van = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0008") anh = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0006") su = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0007") dia = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0002") vat= item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0009") gdcd = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0012") gdqp = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0013") cn = item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0003") hoa= item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0004") sinh= item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0011") td= item.DTBMonHocKy;
+                if (item.MaMonHoc == "MH0010") tin = item.DTBMonHocKy;
+            }
+        }
+    }
 }
