@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DAL_BLL;
 using DAL_BLL.Class;
 using DevExpress.XtraBars;
-
+using DevExpress.XtraLayout.Utils;
 namespace QLDiemTHPT_Winform
 {
     public partial class frm_Diem : Form
@@ -141,7 +141,7 @@ namespace QLDiemTHPT_Winform
             loadper();
             tableLayoutPanel6.Visible = true;
             txtDTBHK.Visible = btnDTB.Visible =  true;
-            lblDTKHK.Visibility = (DevExpress.XtraLayout.Utils.LayoutVisibility)BarItemVisibility.Always;
+            lblDTKHK.Visibility = (LayoutVisibility)BarItemVisibility.Always;
         }
 
         private void cboMaKhoi_SelectedValueChanged(object sender, EventArgs e)
@@ -208,8 +208,9 @@ namespace QLDiemTHPT_Winform
                             cboMaLop.SelectedValue.ToString(),
                             cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
                             txtDTBHK.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
-                            if (txtDTBHK.Text != "????")
-                            diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
+                            label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
+                            if (label9.Text != "????")
+                                diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
                         }
                     }
                     if (btnSuaDiem.Visible == true && btnThemDiem.Visible == false)
@@ -263,7 +264,7 @@ namespace QLDiemTHPT_Winform
                                 cboNamHoc.SelectedValue.ToString(),
                                 cboMaLop.SelectedValue.ToString(),
                                 cboLoaiDiem.SelectedValue.ToString(), float.Parse(txtSoDiem.Text));
-                                label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(),cboNamHoc.SelectedValue.ToString(),cboHocKy.SelectedValue.ToString()).ToString();
+                                label9.Text = diem.tinhdiemTBM(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
                                 if (label9.Text != "????")
                                     diem.tinhdiemtheohocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboHocKy.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMaLop.SelectedValue.ToString(), double.Parse(label9.Text));
                             }
@@ -322,8 +323,8 @@ namespace QLDiemTHPT_Winform
         private void btnDTB_Click(object sender, EventArgs e)
         {
             txtDTBHK.Text = diem.tinhdiemHK(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMaLop.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString()).ToString();
-            label9.Text = diem.layTenMon(cboMaLop.SelectedValue.ToString());
             loadHK();
+            loadHL();
         }
 
         public void loadHK()
@@ -332,10 +333,45 @@ namespace QLDiemTHPT_Winform
             cboHKHK.DisplayMember = "TenHanhKiem";
             cboHKHK.ValueMember = "MaHanhKiem";
         }
-
+        public void loadHL()
+        {
+            cboHL.DataSource = diem.loadhl();
+            cboHL.DisplayMember = "TenHocLuc";
+            cboHL.ValueMember = "MaHocLuc";
+        }
         private void btnXetHLHK_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string kq = diem.XetHLTheoDTB(double.Parse(txtDTBHK.Text), dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMaLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString());
+                cboHL.Text = diem.xetloaiHoclucHKCN(kq, cboHKHK.Text);
+                string tenloai = diem.loadMaHL(diem.xetloaiHoclucHKCN(kq, cboHKHK.Text));
+                diem.kqhocky(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMaLop.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), tenloai, cboHKHK.SelectedValue.ToString(), double.Parse(txtDTBHK.Text));
+                lblTinhDTBCN.Visibility = lblHanhKiemCN.Visibility = lblDTBCN.Visibility = lblXetHLCN.Visibility = (LayoutVisibility)BarItemVisibility.Always;
+            }
+            catch { 
+                MessageBox.Show("Lỗi"); 
+            }
+        }
 
+        private void btnDCN_Click(object sender, EventArgs e)
+        {
+            if(cboHocKy.SelectedValue.ToString()=="HK2")
+            {
+                lblHK1.Visibility = (DevExpress.XtraLayout.Utils.LayoutVisibility)BarItemVisibility.Always;
+                txtHKI.Text = diem.loaddiemcn(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMaLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), "HK1").ToString();
+            }
+        }
+
+        private void btnTinhDiemTBM_Click(object sender, EventArgs e)
+        {
+            if (cboHocKy.SelectedValue.ToString() == "HK2")
+            {
+                label11.Visible = true;
+                lblDTBMHCN.Visibility = (DevExpress.XtraLayout.Utils.LayoutVisibility)BarItemVisibility.Always;
+                label11.Text = diem.capnhatdiemMHcanam(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMaLop.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString()).ToString();
+                label9.Text =diem.loaddiemhk(dgvHS.CurrentRow.Cells[0].Value.ToString(), cboMaLop.SelectedValue.ToString(), cboMonHoc.SelectedValue.ToString(), cboNamHoc.SelectedValue.ToString(), cboHocKy.SelectedValue.ToString()).ToString();
+            }
         }
     }
 }

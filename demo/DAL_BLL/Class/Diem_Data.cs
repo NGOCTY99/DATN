@@ -200,7 +200,8 @@ namespace DAL_BLL.Class
                                 l.MaLop == d.MaLop &&
                                 mh.MaMonHoc == d.MaMonHoc &&
                                 hk.MaHocKy == d.MaHocKy
-                          group h by new {
+                          group h by new
+                          {
                               h.MaHocSinh,
                               h.HoTen,
                               h.NgaySinh,
@@ -409,7 +410,7 @@ namespace DAL_BLL.Class
                 diemtb += lstdiemhs3[i] * 3;
             }
             diemtb = (double)((diemtb) / (lstdiemhs1.Count + (lstdiemhs2.Count * 2) + (lstdiemhs3.Count * 3)));
-            return (double)Math.Round(Convert.ToDecimal(diemtb), 2);
+            return (double)Math.Round(Convert.ToDecimal(diemtb), 1);
         }
 
         public void tinhdiemtheohocky(string mahs, string mahk, string mon, string manamhoc, string malop, double diemtb)
@@ -482,19 +483,19 @@ namespace DAL_BLL.Class
                         dtbmonhs2.Add(diem);
                     }
                     else dtbmon.Add(item.DTBMonHocKy);
-                }    
+                }
                 else dtbmon.Add(item.DTBMonHocKy);
             }
             for (int i = 0; i < dtbmonhs2.Count(); i++)
             {
-                dtbhk += (dtbmonhs2[i]*2);
+                dtbhk += (dtbmonhs2[i] * 2);
             }
-            for (int i=0; i < dtbmon.Count(); i++)
+            for (int i = 0; i < dtbmon.Count(); i++)
             {
                 dtbhk += dtbmon[i];
             }
             dtbhk = dtbhk / 14;
-            dtbhk = (double)Math.Round(Convert.ToDecimal(dtbhk), 2);
+            dtbhk = (double)Math.Round(Convert.ToDecimal(dtbhk), 1);
             return dtbhk;
         }
 
@@ -502,31 +503,230 @@ namespace DAL_BLL.Class
         {
             return db.HANHKIEMs.Select(t => t);
         }
-
-        public void capnhatdiemtbhk(string mahs, string malop, string mahk, string manamhoc, string mahocluc, string hk, double dtb)
+        public double laydiemtheomon(string mahs, string malop, string manam, string mahk,string mamonhoc)
         {
-
+            return db.KQ_HOC_KY_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaNamHoc==manam && t.MaHocKy == mahk && t.MaLop == malop && t.MaMonHoc == mamonhoc).DTBMonHocKy;
         }
 
-        public void XetHL(double diemtb, string hk, string mahs, string malop, string manam,string mahk)
+        public bool KTMon(string mahs, string malop, string manam, string mahk, string mamonhoc)
+        {
+            var kq = db.KQ_HOC_KY_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaNamHoc == manam && t.MaHocKy == mahk && t.MaLop == malop && t.MaMonHoc == mamonhoc);
+            if (kq == null)
+                return true;
+            else return false;
+        }
+
+
+        string kq;
+        public string XetHLTheoDTB(double diemtb, string mahs, string malop, string manam, string mahk)
         {
             double toan, van, anh, su, dia, vat, gdcd, gdqp, cn, hoa, sinh, td, tin;
-            foreach (var item in db.KQ_HOC_KY_MON_HOCs.Where(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaLop == malop))
+            bool kqtoan, kqvan, kqanh, kqsu, kqdia, kqvat, kqgdcd, kqgdqp, kqcn, kqhoa, kqsinh, kqtd, kqtin;
+            //kt xem điểm có null hay không?
+            kqtoan = KTMon(mahs, malop, manam, mahk, "MH0001");
+            kqvan = KTMon(mahs, malop, manam, mahk, "MH0005");
+            kqanh = KTMon(mahs, malop, manam, mahk, "MH0008");
+            kqsu = KTMon(mahs, malop, manam, mahk, "MH0006");
+            kqdia = KTMon(mahs, malop, manam, mahk, "MH0007");
+            kqvat = KTMon(mahs, malop, manam, mahk, "MH0002");
+            kqgdcd = KTMon(mahs, malop, manam, mahk, "MH0009");
+            kqgdqp = KTMon(mahs, malop, manam, mahk, "MH0012");
+            kqcn = KTMon(mahs, malop, manam, mahk, "MH0013");
+            kqhoa = KTMon(mahs, malop, manam, mahk, "MH0003");
+            kqsinh = KTMon(mahs, malop, manam, mahk, "MH0004");
+            kqtd = KTMon(mahs, malop, manam, mahk, "MH0011");
+            kqtin = KTMon(mahs, malop, manam, mahk, "MH0010");
+
+            if (kqtoan == false && kqvan == false && kqanh == false &&
+                kqsu == false && kqdia == false && kqvat == false && kqgdcd == false &&
+                kqgdqp == false && kqcn == false && kqhoa == false && kqsinh == false &&
+                kqtd == false && kqtin == false)
             {
-                if (item.MaMonHoc == "MH0001") toan = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0005") van = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0008") anh = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0006") su = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0007") dia = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0002") vat= item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0009") gdcd = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0012") gdqp = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0013") cn = item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0003") hoa= item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0004") sinh= item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0011") td= item.DTBMonHocKy;
-                if (item.MaMonHoc == "MH0010") tin = item.DTBMonHocKy;
+                //lấy điểm của từng môn học nếu có
+                toan = laydiemtheomon(mahs, malop, manam, mahk, "MH0001");
+                van = laydiemtheomon(mahs, malop, manam, mahk, "MH0005");
+                anh = laydiemtheomon(mahs, malop, manam, mahk, "MH0008");
+                su = laydiemtheomon(mahs, malop, manam, mahk, "MH0006");
+                dia = laydiemtheomon(mahs, malop, manam, mahk, "MH0007");
+                vat = laydiemtheomon(mahs, malop, manam, mahk, "MH0002");
+                gdcd = laydiemtheomon(mahs, malop, manam, mahk, "MH0009");
+                gdqp = laydiemtheomon(mahs, malop, manam, mahk, "MH0012");
+                cn = laydiemtheomon(mahs, malop, manam, mahk, "MH0013");
+                hoa = laydiemtheomon(mahs, malop, manam, mahk, "MH0003");
+                sinh = laydiemtheomon(mahs, malop, manam, mahk, "MH0004");
+                td = laydiemtheomon(mahs, malop, manam, mahk, "MH0011");
+                tin = laydiemtheomon(mahs, malop, manam, mahk, "MH0010");
+
+                tin = db.KQ_HOC_KY_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaHocKy == mahk && t.MaLop == malop && t.MaMonHoc == "MH0010").DTBMonHocKy;
+                if (diemtb >= 8.0)
+                {
+                    if (anh >= 6.5 && su >= 6.5 && dia >= 6.5 && vat >= 6.5 && gdcd >= 6.5 && gdqp >= 6.5 && cn >= 6.5 && hoa >= 6.5 && sinh >= 6.5 && td >= 6.5 && tin >= 6.5)
+                    {
+                        if (van >= 8.0 && toan >= 6.5)
+                            kq = "Gioi";
+                        else if (van >= 6.5 && toan >= 8.0)
+                            kq = "Gioi";
+                    }
+                    else kq = "Kha";
+                }
+                else if (diemtb >= 6.5)
+                {
+                    if (anh >= 5.0 && su >= 5.0 && dia >= 5.0 && vat >= 5.0 && gdcd >= 5.0 && gdqp >= 5.0 && cn >= 5.0 && hoa >= 5.0 && sinh >= 5.0 && td >= 5.0 && tin >= 5.0)
+                    {
+                        if (van >= 6.5 && toan >= 5.0)
+                            kq = "Kha";
+                        else if (van >= 5.0 && toan >= 6.5)
+                            kq = "Kha";
+                    }
+                    else kq = "Trung binh";
+                }
+                else if (diemtb >= 5.0)
+                {
+                    if (anh >= 3.5 && su >= 3.5 && dia >= 3.5 && vat >= 3.5 && gdcd >= 3.5 && gdqp >= 3.5 && cn >= 3.5 && hoa >= 3.5 && sinh >= 3.5 && td >= 3.5 && tin >= 3.5)
+                    {
+                        if (van >= 5.0 && toan >= 3.5)
+                            kq = "Trung binh";
+                        else if (van >= 3.5 && toan >= 5.0)
+                            kq = "Trung binh";
+                    }
+                    else kq = "Yeu";
+                }
+                else
+                    kq = "Yeu";
+            }
+            else kq = "Trong";
+            return kq;
+        }
+        string kqhl;
+        public string xetloaiHoclucHKCN(string hltheodiem, string mahk)
+        {
+            if (hltheodiem == "Gioi")
+            {
+                if (mahk == "Tot")
+                    kqhl = "Gioi";
+                else
+                    kqhl = mahk;
+            }
+            else if (hltheodiem == "Kha")
+            {
+                if (mahk == "Tot" || mahk == "Kha")
+                    kqhl = "Kha";
+                else kqhl = mahk;
+            }
+            else if (hltheodiem == "Trung binh")
+            {
+                if (mahk == "Yeu") kqhl = mahk;
+                else kqhl = hltheodiem;
+            }
+            else kqhl = hltheodiem;
+            return kqhl;
+        }
+        public IEnumerable<HOCLUC> loadhl()
+        {
+            return db.HOCLUCs.Select(t => t);
+        }
+
+        public void kqhocky(string mahs,string malop, string mahocky, string manamhoc, string mahocluc, string mahk, double diem)
+        {
+            KQ_HOC_KY_TONG_HOP kq = db.KQ_HOC_KY_TONG_HOPs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaHocKy == mahocky && t.MaNamHoc == manamhoc);
+            if(kq!=null)
+            {
+                kq.MaHanhKiem = mahk;
+                kq.DTBMonHocKy = diem;
+                kq.MaHocLuc = mahocluc;
+                db.SubmitChanges();
+            }    
+            else
+            {
+                KQ_HOC_KY_TONG_HOP kqhk = new KQ_HOC_KY_TONG_HOP();
+                kqhk.MaHocSinh = mahs;
+                kqhk.MaLop = malop;
+                kqhk.MaHocKy = mahocky;
+                kqhk.MaNamHoc = manamhoc;
+                kqhk.MaHocLuc = mahocluc;
+                kqhk.MaHanhKiem = mahk;
+                kqhk.DTBMonHocKy = diem;
+                db.KQ_HOC_KY_TONG_HOPs.InsertOnSubmit(kqhk);
+                db.SubmitChanges();
             }
         }
+        
+        public string loadMaHL(string ten)
+        {
+            return db.HOCLUCs.SingleOrDefault(t => t.TenHocLuc == ten).MaHocLuc;
+        }
+
+        public double capnhatdiemMHcanam(string mahs, string malop, string manamhoc,string mamonhoc)
+        {
+            var kqk1 = db.KQ_HOC_KY_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaHocKy == "HK1" && t.MaMonHoc==mamonhoc && t.MaNamHoc == manamhoc).DTBMonHocKy;
+            var kqk2 = db.KQ_HOC_KY_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaHocKy == "HK2" && t.MaMonHoc == mamonhoc && t.MaNamHoc == manamhoc).DTBMonHocKy;
+            double kq;
+            if (kqk1 >=0 && kqk2 >=0)
+            {
+                kq = (double)((kqk1 + kqk2 * 2) / 3);
+                KQ_CA_NAM_MON_HOC kqmn = db.KQ_CA_NAM_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaMonHoc == mamonhoc && t.MaNamHoc == manamhoc);
+                if (kqmn == null)
+                {
+                    kqmn = new KQ_CA_NAM_MON_HOC();
+                    kqmn.MaHocSinh = mahs;
+                    kqmn.MaLop = malop;
+                    kqmn.MaNamHoc = manamhoc;
+                    kqmn.MaMonHoc = mamonhoc;
+                    kqmn.DTBCaNam = (double)Math.Round(Convert.ToDecimal(kq), 1);
+                    db.KQ_CA_NAM_MON_HOCs.InsertOnSubmit(kqmn);
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    kqmn.DTBCaNam = kq;
+                    db.SubmitChanges();
+                }
+            }
+            else kq = 0;
+
+            return (double)Math.Round(Convert.ToDecimal(kq), 1);
+        }
+
+        public double loaddiemhk(string mahs, string malop, string mamonhoc, string manamhoc, string hocky)
+        {
+            return db.KQ_HOC_KY_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaNamHoc == manamhoc && t.MaMonHoc == mamonhoc && t.MaHocKy == hocky).DTBMonHocKy;
+        }
+
+        public double loaddiemcn(string mahs, string malop, string manamhoc, string hocky)
+        {
+            return (double)db.KQ_HOC_KY_TONG_HOPs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaNamHoc == manamhoc  && t.MaHocKy == hocky).DTBMonHocKy;
+        }
+
+        public double capnhatDTBcanam(string mahs, string malop, string manamhoc, string mamonhoc)
+        {
+            var kqk1 = db.KQ_HOC_KY_TONG_HOPs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaHocKy == "HK1" && t.MaNamHoc == manamhoc).DTBMonHocKy;
+            var kqk2 = db.KQ_HOC_KY_TONG_HOPs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaHocKy == "HK2" && t.MaNamHoc == manamhoc).DTBMonHocKy;
+            double kq;
+            if (kqk1 >= 0 && kqk2 >= 0)
+            {
+                kq = (double)((kqk1 + kqk2 * 2) / 3);
+                KQ_CA_NAM_MON_HOC kqmn = db.KQ_CA_NAM_MON_HOCs.SingleOrDefault(t => t.MaHocSinh == mahs && t.MaLop == malop && t.MaMonHoc == mamonhoc && t.MaNamHoc == manamhoc);
+                if (kqmn == null)
+                {
+                    kqmn = new KQ_CA_NAM_MON_HOC();
+                    kqmn.MaHocSinh = mahs;
+                    kqmn.MaLop = malop;
+                    kqmn.MaNamHoc = manamhoc;
+                    kqmn.MaMonHoc = mamonhoc;
+                    kqmn.DTBCaNam = (double)Math.Round(Convert.ToDecimal(kq), 1);
+                    db.KQ_CA_NAM_MON_HOCs.InsertOnSubmit(kqmn);
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    kqmn.DTBCaNam = kq;
+                    db.SubmitChanges();
+                }
+            }
+            else kq = 0;
+
+            return (double)Math.Round(Convert.ToDecimal(kq), 1);
+        }
+
     }
 }
